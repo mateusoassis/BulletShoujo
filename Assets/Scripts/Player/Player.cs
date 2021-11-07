@@ -20,6 +20,14 @@ public class Player : MonoBehaviour
 	public float resetDashCooldown;
 	public float resetDashTimer;
 
+    [Header("Melee Attack")]
+    public Transform meleePoint;
+    public float attackRange = 0.5f;
+    public float meleeAttackStrength = 5.0f;
+    public LayerMask amayaLayer;
+    public BossDamage amayasHp;
+
+
 	[Header("Booleanos e Direcao")]
     public bool isOnCoolDown;
     public bool isNotMoving;
@@ -89,11 +97,15 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && !gameManager.pausedGame)
         {
             Shoot();
+            FindObjectOfType<AudioManager>().PlayOneShot("MagicShot");
         }
 		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
 		{
 			playerAttributes.CastHeal();
 		}
+        if(Input.GetMouseButtonDown(1) && !gameManager.pausedGame){
+            MeleeAttack();
+        }
 		
     }
 
@@ -309,6 +321,31 @@ public class Player : MonoBehaviour
         //Adicao de forca no tiro para impulsionar o prefab.
 
         bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+    }
+
+    void MeleeAttack(){
+        Collider[] hitEnemies = Physics.OverlapSphere(meleePoint.position, attackRange, amayaLayer);
+
+        foreach(Collider enemy in hitEnemies){
+
+
+            if(enemy.tag == "Boss" && !gameManager.pausedGame){
+                amayasHp = enemy.GetComponent<BossDamage>();
+                amayasHp.bossHPCurrent -=meleeAttackStrength;
+            }
+
+
+            if(enemy.tag == "Mirror" && !gameManager.pausedGame){
+                enemy.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected() {
+        if(meleePoint == null)
+            return;
+
+        Gizmos.DrawSphere(meleePoint.position, attackRange);
     }
 	
 	void OnCollisionEnter(Collision col){
