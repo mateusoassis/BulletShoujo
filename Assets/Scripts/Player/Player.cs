@@ -358,7 +358,8 @@ public class Player : MonoBehaviour
             }
 
 
-            if(enemy.tag == "Mirror" && !gameManager.pausedGame){
+            else if(enemy.tag == "Mirror" && !gameManager.pausedGame){
+                Debug.Log("paixão é chata");
                 enemy.gameObject.SetActive(false);
             }
         }
