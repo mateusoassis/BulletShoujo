@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
 	public bool recentlyDamaged;
     public int direction;
 	public bool isImmuneToDamage;
+    public bool isShielded;
 	private CapsuleCollider playerCollider;
 
 	[Header("Rigidbody do Player")]
@@ -47,7 +48,8 @@ public class Player : MonoBehaviour
 
     public Transform firePoint;
     public GameObject bulletPrefab;
-	
+    public GameObject laserPrefab;
+    public GameObject shieldObject;
 	public GameManagerScript gameManager;
 	
 	//direcoes
@@ -82,6 +84,8 @@ public class Player : MonoBehaviour
 		isDashing = false;
 		playerCollider = GetComponent<CapsuleCollider>();
 		resetDashTimer = resetDashCooldown;
+        isShielded = false;
+        shieldObject = GameObject.Find("ShieldHP");
     }
 
     void Update()
@@ -105,6 +109,15 @@ public class Player : MonoBehaviour
 		}
         if(Input.GetMouseButtonDown(1) && !gameManager.pausedGame){
             MeleeAttack();
+        }
+        if (Input.GetKey(KeyCode.Q))
+		{
+			StartCoroutine("Beam");
+		}
+        if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20)
+        {
+            isShielded = true;
+            shieldObject.SetActive(true);
         }
 		
     }
@@ -314,13 +327,23 @@ public class Player : MonoBehaviour
     void Shoot()
     {
         //Instanciamento de prefab do tiro de personagem.
-
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
 
         //Adicao de forca no tiro para impulsionar o prefab.
-
         bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+    }
+
+    public IEnumerator Beam()
+    {
+        //Instanciamento de prefab do tiro de personagem.
+        yield return new WaitForSeconds(0.5f);
+        GameObject laser = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody laserRb = laser.GetComponent<Rigidbody>();
+
+        //Adicao de forca no tiro para impulsionar o prefab.
+        
+        laserRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
     }
 
     void MeleeAttack(){
@@ -353,4 +376,13 @@ public class Player : MonoBehaviour
 			rb.velocity = Vector3.zero;
 		}
 	}
+
+    void OnTriggerEnter(Collider other){
+
+        if(other.gameObject.tag == "BossBullet" && isShielded)
+        {
+            isShielded = false;
+            shieldObject.SetActive(false);
+        }
+    }
 }
