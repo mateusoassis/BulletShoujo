@@ -75,6 +75,7 @@ public class PlayerAttributes : MonoBehaviour
         if (currentLife <= 0)
         {
             losePanelObject.SetActive(true);
+			pauseMenuInvk.pausedGame = true;
 			Time.timeScale = 0f;
         }		
     }
