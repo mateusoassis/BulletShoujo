@@ -5920,7 +5920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 0
-  maxLife: 100
+  maxLife: 3
   heartAmount:
   - {fileID: 1837374146}
   - {fileID: 701794442}
