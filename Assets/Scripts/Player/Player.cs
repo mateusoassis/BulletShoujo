@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
 		{
 			StartCoroutine("Beam");
 		}
-        if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20)
+        if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded)
         {
             isShielded = true;
             shieldObject.SetActive(true);
@@ -352,14 +352,14 @@ public class Player : MonoBehaviour
         foreach(Collider enemy in hitEnemies){
 
 
-            if(enemy.tag == "Boss" && !gameManager.pausedGame){
+            if(enemy.tag == "Boss" && !gameManager.pausedGame)
+            {
                 amayasHp = enemy.GetComponent<BossDamage>();
                 amayasHp.bossHPCurrent -=meleeAttackStrength;
             }
 
-
-            else if(enemy.tag == "Mirror" && !gameManager.pausedGame){
-                Debug.Log("paixão é chata");
+            if(enemy.tag == "Mirror" && !gameManager.pausedGame)
+            {
                 enemy.gameObject.SetActive(false);
             }
         }
@@ -380,7 +380,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
 
-        if(other.gameObject.tag == "BossBullet" && isShielded)
+        if(other.gameObject.tag == "BossBullet" && isShielded &&!isDashing)
         {
             isShielded = false;
             shieldObject.SetActive(false);

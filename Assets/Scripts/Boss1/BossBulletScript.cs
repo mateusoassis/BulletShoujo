@@ -57,15 +57,17 @@ public class BossBulletScript : MonoBehaviour
 		{
 			if(player.isDashing){
 				bulletCollider.enabled = false;
-			}else if(player.isShielded)
+			}else if(!player.isDashing)
 			{
+				if(player.isShielded){
 				player.isShielded = false;
 				player.shieldObject.SetActive(false);
 				this.gameObject.SetActive(false);
-			}else{
+				}else{
 				playerAttributes.currentLife--;
 				this.gameObject.SetActive(false);
 			}
+		  }
 		}
 	}	
 	void OnTriggerExit(Collider col)

@@ -174,6 +174,8 @@ public class PlayerAttributes : MonoBehaviour
     void OnCollisionEnter(Collision col) {
         if(col.gameObject.tag == "Boss")
         {	
+			if(!playerScript.isDashing)
+			{
 			if(playerScript.isShielded)
 			{
 				playerScript.isShielded = false;
@@ -182,6 +184,7 @@ public class PlayerAttributes : MonoBehaviour
 			{
 				currentLife--;
 				PlayerHealth.SetText("HP: " + currentLife.ToString());
+			}
 			}
         }
     }

@@ -44,9 +44,4 @@ public class BulletScript : MonoBehaviour
             rb.AddForce(mirror2.right * playerScript.bulletForce * bossMirror.reflectionSpeed, ForceMode.Impulse);
         }
 	}
-
-    void OnCollisionEnter(Collision other)
-    {
-
-    }
 }

@@ -10,7 +10,7 @@ TagManager:
   - BossBullet
   - Wall
   - Boss
-  - MIrror
+  - Mirror
   layers:
   - Default
   - TransparentFX
