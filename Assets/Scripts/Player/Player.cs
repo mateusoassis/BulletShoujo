@@ -85,7 +85,6 @@ public class Player : MonoBehaviour
 		playerCollider = GetComponent<CapsuleCollider>();
 		resetDashTimer = resetDashCooldown;
         isShielded = false;
-        shieldObject = GameObject.Find("ShieldHP");
     }
 
     void Update()
@@ -118,6 +117,7 @@ public class Player : MonoBehaviour
         {
             isShielded = true;
             shieldObject.SetActive(true);
+			playerAttributes.currentMana -= 20;
         }
 		
     }
