@@ -171,10 +171,17 @@ public class PlayerAttributes : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision col) {
-        if (col.gameObject.tag == "Boss")
-        {
-            currentLife--;
-			PlayerHealth.SetText("HP: " + currentLife.ToString());
+        if(col.gameObject.tag == "Boss")
+        {	
+			if(playerScript.isShielded)
+			{
+				playerScript.isShielded = false;
+				playerScript.shieldObject.SetActive(false);
+			}else
+			{
+				currentLife--;
+				PlayerHealth.SetText("HP: " + currentLife.ToString());
+			}
         }
     }
 }
