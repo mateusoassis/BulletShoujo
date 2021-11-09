@@ -946,8 +946,6 @@ GameObject:
   - component: {fileID: 257314918}
   - component: {fileID: 257314917}
   - component: {fileID: 257314920}
-  - component: {fileID: 257314921}
-  - component: {fileID: 257314922}
   - component: {fileID: 257314923}
   m_Layer: 0
   m_Name: Main Camera
@@ -1055,34 +1053,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &257314921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257314916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae42c8f78c60684aab6be6c18bd7a9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  colorblindShader: {fileID: 4800000, guid: b35b8f7ae8cf168488129d5f5f39ebf4, type: 3}
---- !u!114 &257314922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257314916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 124a6a70b6496ad40a172b3d8576f1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cbScript: {fileID: 257314921}
-  u: 0
 --- !u!114 &257314923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,7 +1075,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -8203,7 +8173,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 257314922}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeColorblindMode, Assembly-CSharp
         m_MethodName: ChangeMode
         m_Mode: 1

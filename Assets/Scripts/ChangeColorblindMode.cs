@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Wilberforce;
+/*using Wilberforce;
 
 public class ChangeColorblindMode : MonoBehaviour
 {
@@ -44,3 +44,4 @@ public class ChangeColorblindMode : MonoBehaviour
 		PlayerPrefs.SetInt("colorblind", cbScript.Type);
 	}
 }
+*/
