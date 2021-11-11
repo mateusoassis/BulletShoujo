@@ -3382,16 +3382,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866273802}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0271463262d0e4e49819798a203ade7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootinterval: 0.2
-  shootQuantity: 36
-  firePoint: {fileID: 1019489740}
+  firePoint: {fileID: 0}
   bulletForce: 20
   bulletPrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
+  bossRotation: {x: 0, y: 30, z: 0}
 --- !u!1 &888370510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4044,7 +4043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019489741}
   m_Layer: 6
-  m_Name: FirePoint
+  m_Name: BossFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5990,7 +5989,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389720243}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a9ad7c051abf94d810e5aa475c7366, type: 3}
   m_Name: 
@@ -6058,7 +6057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 0
-  maxLife: 3
+  maxLife: 10000
   heartAmount:
   - {fileID: 1837374146}
   - {fileID: 701794442}
@@ -8268,7 +8267,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926142974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 999bfa393e82d0540ae4c2e2af9b6383, type: 3}
   m_Name: 
@@ -8283,6 +8282,11 @@ MonoBehaviour:
   golpe3Duration: 4
   golpe3Delay: 0.02
   isBodySlamming: 0
+  golpe4: {fileID: 0}
+  rotSpeed: 0
+  golpe4Duration: 0
+  golpe4Delay: 0
+  isSpinnnig: 0
   player: {fileID: 0}
   playerRigidbody: {fileID: 0}
   playerScript: {fileID: 0}

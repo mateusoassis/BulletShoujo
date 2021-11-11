@@ -21,6 +21,14 @@ public class BossState : MonoBehaviour
 	public float golpe3Duration;
 	public float golpe3Delay;
 	public bool isBodySlamming;
+
+	/*[Header("Swirl Attack")]
+	public BossFireSwirl golpe4;
+	public float rotSpeed;
+	public float golpe4Duration;
+	public float golpe4Delay;
+	public bool isSpinning;
+	public Transform firePoint;*/
 	
 	
 	[Header("Ignora, André")]
@@ -47,6 +55,8 @@ public class BossState : MonoBehaviour
 		golpe1 = GameObject.Find("BossManager").GetComponent<BossFirePattern>();
 		golpe2 = GameObject.Find("BossManager").GetComponent<BossFirePattern2>();
 		golpe3 = GameObject.Find("BossManager").GetComponent<BossBodySlam>();
+		/*golpe4 = GameObject.Find("BossManager").GetComponent<BossFireSwirl>();
+		firePoint = GameObject.Find("BossFirePoint").GetComponent<Transform>();*/
 		boxCol = GetComponent<BoxCollider>();
 		currentState = 1;	
 		StartCoroutine("StartBoss");
@@ -58,6 +68,9 @@ public class BossState : MonoBehaviour
 		if(currentState == 1 || currentState == 2){
 			transform.LookAt(player.position, Vector3.up);
 		}
+		/*if(currentState == 4){
+			transform.Rotate(0, rotSpeed*Time.deltaTime, 0);
+		}*/
 
 		if(playerScript.isDashing)
 		{
@@ -84,6 +97,12 @@ public class BossState : MonoBehaviour
 				golpe3.InvokeRepeating("MoveToSlam", 2f, golpe3Delay);
 				StartCoroutine("CancelInvoke3");
 				break;
+			/*case 4:
+				isSpinning = true;
+				golpe4.Swirl();
+				StartCoroutine("CancelInvoke4");
+				break;*/
+
 		}
 		currentState = state;
 	}
@@ -113,6 +132,13 @@ public class BossState : MonoBehaviour
 			ChangeState(1);
 		}
 	}
+	/*private IEnumerator CancelInvoke4(){
+		yield return new WaitForSeconds(golpe4Duration);
+		if(!isSpinning){
+			golpe4.CancelInvoke("FireSwirl");
+			ChangeState(1);
+		}
+	}*/
 	
 	void OnCollisionEnter(Collision col)
 	{
