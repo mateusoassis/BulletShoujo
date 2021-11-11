@@ -5175,8 +5175,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.7118354, g: 0.4575472, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.2688679, g: 0.46826756, b: 1, a: 1}
+  m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7338,7 +7338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9cdfc9622bc58c4b9bfc66f8de33348, type: 2}
+  - {fileID: 2100000, guid: f702672c45e310249a1b7cd9e7b0f0f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8022,6 +8022,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4702090815234388366, guid: e0e11664461ff2a438e361410d4d360a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc952c23616457a4a8b27cba5edfeaa2, type: 2}
     - target: {fileID: 4702090815234388369, guid: e0e11664461ff2a438e361410d4d360a, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -8038,6 +8042,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4702090815692682646, guid: e0e11664461ff2a438e361410d4d360a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc952c23616457a4a8b27cba5edfeaa2, type: 2}
     - target: {fileID: 4702090815692682649, guid: e0e11664461ff2a438e361410d4d360a, type: 3}
       propertyPath: m_Layer
       value: 6
