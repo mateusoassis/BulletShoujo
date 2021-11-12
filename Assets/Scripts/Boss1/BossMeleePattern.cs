@@ -10,36 +10,43 @@ public class BossMeleePattern : MonoBehaviour
 	public PlayerAttributes playerAttributesScript;
 	public Transform boss;
 	public Transform areaDamage;
+	public Transform areaDamageParent;
 	public GameObject areaDamageObject;
 	public MeshRenderer areaDamageRenderer;
 	
 	[Header("Controles de tamanho da área")]
-	public bool horizontal;
-	public bool axisCheck;
 	public Vector3 horizontalScale;
-	public int horizontalMultiplierX;
-	public int horizontalMultiplierZ;
+	public float horizontalMultiplierX;
+	public float horizontalMultiplierZ;
 	
 	public Vector3 verticalScale;
-	public int verticalMultiplierX;
-	public int verticalMultiplierZ;
+	public float verticalMultiplierX;
+	public float verticalMultiplierZ;
 	
 	[Header("Controle de duração de buff")]
 	public bool isBuffUp;
 	public float buffDuration;
 	public float extraRangeMultiplier;
 	public float extraRange = 1f;
+	public float buffTimer;
 	
 	[Header("Movespeed e localização do player")]
 	public Vector3 targetPosition;
 	public bool playerPositionSaved;
-	private float bossMoveSpeed;
+	[SerializeField]private float bossMoveSpeed;
 	public float moveSpeed;
 	public bool isPlayerOnArea;
 	public bool canBossMove;
 	public bool isPlayerPosSaved;
 	public bool bossLookingAtPlayer;
 	public float timeMoving;
+	public float timeAwayFromPlayer;
+	
+	[Header("Stats do boss")]
+	public BossDamage bossDamage;
+	
+	[Header("Booleano de animação")]
+	public bool isBossMoving;
 	
     void Awake()
     {
@@ -49,11 +56,20 @@ public class BossMeleePattern : MonoBehaviour
 		playerAttributesScript = GameObject.Find("Player").GetComponent<PlayerAttributes>();
 		boss = GameObject.Find("Boss").GetComponent<Transform>();
 		areaDamage = GameObject.Find("AreaDamage").GetComponent<Transform>();
+		areaDamageParent = GameObject.Find("ScalingAreaDamage").GetComponent<Transform>();
 		areaDamageObject = GameObject.Find("AreaDamage");
 		areaDamageRenderer = GameObject.Find("AreaDamage").GetComponent<MeshRenderer>();
+		bossDamage = GameObject.Find("Boss").GetComponent<BossDamage>();
     }
 
-	void DoMeleeMoves()
+	void Start()
+	{
+		bossLookingAtPlayer = true;
+		canBossMove = true;
+		UpdateAxis();
+	}
+	
+	public void DoMeleeMoves()
 	{
 		//checar se buff do boss tá ativo
 		CheckIfBuffIsUp();
@@ -61,30 +77,79 @@ public class BossMeleePattern : MonoBehaviour
 		//checar se ele pode se mover (movespeed diferente de 0)
 		CheckIfBossCanMove();
 		
-		//mudar o tamanho da área da espadada
-        if(horizontal)
+		if(bossLookingAtPlayer)
 		{
-			areaDamage.transform.localScale = new Vector3((extraRangeMultiplier * horizontalMultiplierX * horizontalScale.x), horizontalScale.y, (horizontalMultiplierZ * horizontalScale.z));
-			areaDamage.transform.position = new Vector3(transform.position.x, transform.position.y, (verticalScale.z/2));
-		} else 
-		{
-			areaDamage.transform.localScale = new Vector3((verticalMultiplierX * verticalScale.x), verticalScale.y, (extraRangeMultiplier * verticalMultiplierZ * verticalScale.z));
-			areaDamage.transform.position = new Vector3(transform.position.x, transform.position.y, (verticalScale.z/2));
+			targetPosition.x = player.position.x;
+			targetPosition.z = player.position.z;
 		}
+		boss.LookAt(targetPosition, Vector3.up);
 		
 		//checar se o player está na área para continuar se aproximando dele antes de ataca-lo
 		if(!isPlayerOnArea)
 		{
-			boss.position = Vector3.MoveTowards(boss.position, player.position, bossMoveSpeed * Time.deltaTime);
+			boss.position = Vector3.MoveTowards(boss.position, targetPosition, bossMoveSpeed * Time.deltaTime);
 		} else
 		{
+			boss.position = Vector3.MoveTowards(boss.position, targetPosition, bossMoveSpeed * Time.deltaTime);
 			timeMoving += Time.deltaTime;
-			boss.position = Vector3.MoveTowards(boss.position, player.position, bossMoveSpeed * Time.deltaTime);
 			if(timeMoving >= 1.5f)
 			{
-				Invoke("WaitForAtk", 0.1f);
+				StartCoroutine("WaitForAtk");
+				timeMoving = 0f;
 			}
 		}
+		timeAwayFromPlayer += Time.deltaTime;
+	}
+	
+	public void UpdateAxis()
+	{
+		
+		// 0 = horizontal
+		// 1 = vertical
+		// 2 = buff + random.range entre os dois de novo
+		
+		//mudar o tamanho da área da espadada
+		if(!isBuffUp)
+		{
+			int u = Random.Range(0,3);
+			if(u == 0)
+			{
+				areaDamageParent.transform.localScale = new Vector3((extraRangeMultiplier * horizontalMultiplierX), 1f, ((extraRangeMultiplier/1.5f) * horizontalMultiplierZ));
+			} else if(u == 1)
+			{
+				areaDamageParent.transform.localScale = new Vector3(((extraRangeMultiplier/1.5f) * verticalMultiplierX), 1f, (extraRangeMultiplier * verticalMultiplierZ));
+			} else if(u == 2)
+			{
+				TurnOnBuff();
+				
+				int v = Random.Range(0,2);
+				if(v == 0)
+				{
+					areaDamageParent.transform.localScale = new Vector3((extraRangeMultiplier * horizontalMultiplierX), 1f, ((extraRangeMultiplier/1.5f) * horizontalMultiplierZ));
+				} else if(v == 1)
+				{
+					areaDamageParent.transform.localScale = new Vector3(((extraRangeMultiplier/1.5f) * verticalMultiplierX), 1f, (extraRangeMultiplier * verticalMultiplierZ));
+				}
+			}
+		} else if(isBuffUp)
+		{
+			int w = Random.Range(0,2);
+				if(w == 0)
+				{
+					areaDamageParent.transform.localScale = new Vector3((extraRangeMultiplier * horizontalMultiplierX), 1f, ((extraRangeMultiplier/1.5f) * horizontalMultiplierZ));
+				} else if(w == 1)
+				{
+					areaDamageParent.transform.localScale = new Vector3(((extraRangeMultiplier/1.5f) * verticalMultiplierX), 1f, (extraRangeMultiplier * verticalMultiplierZ));
+				}
+		}
+        
+	}
+	
+	//liga buff de range e dano
+	public void TurnOnBuff()
+	{
+		isBuffUp = true;
+		buffTimer = buffDuration;
 	}
 	
 	//salvar posição do jogador e setar booleano como salvo
@@ -101,9 +166,11 @@ public class BossMeleePattern : MonoBehaviour
 		if(canBossMove)
 		{
 			bossMoveSpeed = moveSpeed;
+			isBossMoving = true;
 		} else
 		{
 			bossMoveSpeed = 0;
+			isBossMoving = false;
 		}
 	}
 	
@@ -113,23 +180,16 @@ public class BossMeleePattern : MonoBehaviour
 		if(isBuffUp)
 		{
 			extraRangeMultiplier = extraRange;
+			buffTimer -= Time.deltaTime;
+			if(buffTimer <= 0f)
+			{
+				isBuffUp = false;
+			}
 		} else
 		{
 			extraRangeMultiplier = 1f;
 		}
-	}
-	
-	//mudar de horizontal para vertical
-	public void SwitchAxis()
-	{
-		if(horizontal)
-		{
-			horizontal = false;
-		} else 
-		{
-			horizontal = true;
-		}
-	}
+	}	
 	
 	//enumerator referente ao ATK que faz o seguinte:
 	//- para de OLHAR para o player
@@ -155,7 +215,7 @@ public class BossMeleePattern : MonoBehaviour
 		
 		if(isPlayerOnArea && !playerScript.isDashing && !isBuffUp)
 		{
-			playerAttributesScript.currentLife--;
+			playerAttributesScript.currentLife--;		
 		} else if(isPlayerOnArea && !playerScript.isDashing && isBuffUp)
 		{
 			playerAttributesScript.currentLife -= 2;
@@ -164,23 +224,9 @@ public class BossMeleePattern : MonoBehaviour
 		areaDamageRenderer.enabled = false;
 		canBossMove = true;
 		isPlayerPosSaved = false;
-		SwitchAxis();
+		UpdateAxis();
 		bossLookingAtPlayer = true;
 		timeMoving = 0f;
-	}
-	
-	void OnTriggerEnter(Collider col)
-	{
-		if(col.gameObject.tag == "Player")
-		{
-			isPlayerOnArea = true;
-		}
-	}
-	void OnTriggerExit(Collider col)
-	{
-		if(col.gameObject.tag == "Player")
-		{
-			isPlayerOnArea = false;
-		}
+		//timeAwayFromPlayer = 0f;
 	}
 }

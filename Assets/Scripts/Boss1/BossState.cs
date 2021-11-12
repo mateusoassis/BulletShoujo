@@ -30,6 +30,8 @@ public class BossState : MonoBehaviour
 	public bool isSpinning;
 	public Transform firePoint;*/
 	
+	[Header("Meleezada")]
+	public BossMeleePattern bossMeleePattern;
 	
 	[Header("Ignora, André")]
 	public Transform player;
@@ -58,25 +60,27 @@ public class BossState : MonoBehaviour
 		/*golpe4 = GameObject.Find("BossManager").GetComponent<BossFireSwirl>();
 		firePoint = GameObject.Find("BossFirePoint").GetComponent<Transform>();*/
 		boxCol = GetComponent<BoxCollider>();
-		currentState = 1;	
-		StartCoroutine("StartBoss");
+		currentState = 0;
+		bossMeleePattern = GameObject.Find("BossManager").GetComponent<BossMeleePattern>();
+		//StartCoroutine("StartBoss");
     }
 	
 	void Update()
 	{
-		// boss olha para o player enquanto tá no state 1 e 2
+		bossMeleePattern.DoMeleeMoves();
+		/*// boss olha para o player enquanto tá no state 1 e 2
 		if(currentState == 1 || currentState == 2){
 			transform.LookAt(player.position, Vector3.up);
 		}
-		/*if(currentState == 4){
-			transform.Rotate(0, rotSpeed*Time.deltaTime, 0);
-		}*/
+		//if(currentState == 4){
+		//	transform.Rotate(0, rotSpeed*Time.deltaTime, 0);
+		//}
 
 		if(playerScript.isDashing)
 		{
 			boxCol.isTrigger = true;
 			StartCoroutine("WaitForCollision");
-		}
+		}*/
 	}
 	
 	public void ChangeState(int state){
