@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossMeleePattern : MonoBehaviour
 {
-	[Header("Objetos mutáveis")]
+	[Header("Objetos imutáveis")]
 	public Transform player;
 	public Player playerScript;
 	public PlayerAttributes playerAttributesScript;
@@ -42,6 +42,18 @@ public class BossMeleePattern : MonoBehaviour
 	public float timeMoving;
 	public float timeAwayFromPlayer;
 	
+	[Header("Dash do Boss")]
+	public Vector3 distanceVector;
+	public float distanceFromPlayer;
+	public float dashDuration;
+	public bool isDashOnCollider;
+	public BoxCollider bossMeleeCollider;
+	public SphereCollider bossDashCollider; // esse é o collider do dash NO PLAYER
+	public bool isDashOnCooldown; // true pra resta tempo até re-uso, false pra já pode ser usado
+	public float dashCooldownTimer;
+	public float dashCooldown;
+	public bool isBossDashing;
+	
 	[Header("Stats do boss")]
 	public BossDamage bossDamage;
 	
@@ -60,6 +72,8 @@ public class BossMeleePattern : MonoBehaviour
 		areaDamageObject = GameObject.Find("AreaDamage");
 		areaDamageRenderer = GameObject.Find("AreaDamage").GetComponent<MeshRenderer>();
 		bossDamage = GameObject.Find("Boss").GetComponent<BossDamage>();
+		bossMeleeCollider = GameObject.Find("AreaDamage").GetComponent<BoxCollider>();
+		bossDashCollider = GameObject.Find("BossDashCollider").GetComponent<SphereCollider>();
     }
 
 	void Start()
@@ -67,16 +81,91 @@ public class BossMeleePattern : MonoBehaviour
 		bossLookingAtPlayer = true;
 		canBossMove = true;
 		UpdateAxis();
+		
+		//template do dash
+		//StartCoroutine(Dash(this.transform.parent, player.position, 2f));
 	}
 	
 	public void DoMeleeMoves()
 	{
+		distanceVector = boss.position - player.position;
+		distanceFromPlayer = Vector3.Distance(boss.position, player.position);
+		
 		//checar se buff do boss tá ativo
 		CheckIfBuffIsUp();
 		
 		//checar se ele pode se mover (movespeed diferente de 0)
 		CheckIfBossCanMove();
 		
+		//checar cooldown do dash
+		CheckDashCooldown();
+		
+		Move();
+		
+		timeAwayFromPlayer += Time.deltaTime;
+	}
+	
+	public IEnumerator Dash(Transform transform, Vector3 position, float timeToMove)
+	//StartCoroutine("Dash", boss, player.position, 2f)
+	{
+		isBossDashing = true;
+		bossLookingAtPlayer = false;
+		bossDashCollider.enabled = true;
+		Vector3 playerPos = position;
+		var t = 0f;
+		while(t < 1 && canBossMove)
+		{
+			if(isDashOnCollider)
+			{
+				isBossDashing = false;
+				bossDashCollider.enabled = false;
+				bossLookingAtPlayer = true;
+				Debug.Log("dash termina");
+				yield break;
+			}
+			else{
+			 t += Time.deltaTime / timeToMove;
+			 transform.position = Vector3.Lerp(transform.position, position, t);
+			 yield return null;
+			}
+		}
+		isBossDashing = false;
+		bossDashCollider.enabled = false;
+		bossLookingAtPlayer = true;
+		Debug.Log("dash termina");
+	}
+	
+	public void DashToPlayer()
+	{
+		if(!isDashOnCooldown)
+		{
+			StartCoroutine(Dash(this.transform.parent, player.position, dashDuration));
+			Debug.Log("dash inicia");
+			isDashOnCooldown = true;
+			dashCooldownTimer = dashCooldown;
+		}		
+	}
+	
+	// true pra resta tempo até re-uso, false pra já pode ser usado
+	public void CheckDashCooldown()
+	{
+		if(isDashOnCooldown && dashCooldownTimer > 0)
+		{
+			dashCooldownTimer -= Time.deltaTime;
+		} else {
+			isDashOnCooldown = false;
+		}
+	}
+	
+	/*
+	public void StopDash()
+	{
+		StopCoroutine(Dash(this.transform.parent, player.position, dashDuration));
+		Debug.Log("parou corrotina");
+	}*/
+	
+	public void Move()
+	{
 		if(bossLookingAtPlayer)
 		{
 			targetPosition.x = player.position.x;
@@ -85,10 +174,18 @@ public class BossMeleePattern : MonoBehaviour
 		boss.LookAt(targetPosition, Vector3.up);
 		
 		//checar se o player está na área para continuar se aproximando dele antes de ataca-lo
-		if(!isPlayerOnArea)
+		if(distanceFromPlayer > 15f)
 		{
-			boss.position = Vector3.MoveTowards(boss.position, targetPosition, bossMoveSpeed * Time.deltaTime);
-		} else
+			// dashcd true pra resta tempo até re-uso, false pra já pode ser usado
+			if(!isDashOnCooldown && !isBossDashing)
+			{
+				DashToPlayer();	
+			} else if(!isBossDashing && isDashOnCooldown)
+			{
+				boss.position = Vector3.MoveTowards(boss.position, targetPosition, bossMoveSpeed * Time.deltaTime);
+			}
+			//boss.position = Vector3.MoveTowards(boss.position, targetPosition, 2 * bossMoveSpeed * Time.deltaTime);
+		} else if(!isBossDashing && isDashOnCooldown)
 		{
 			boss.position = Vector3.MoveTowards(boss.position, targetPosition, bossMoveSpeed * Time.deltaTime);
 			timeMoving += Time.deltaTime;
@@ -98,7 +195,6 @@ public class BossMeleePattern : MonoBehaviour
 				timeMoving = 0f;
 			}
 		}
-		timeAwayFromPlayer += Time.deltaTime;
 	}
 	
 	public void UpdateAxis()
@@ -211,7 +307,8 @@ public class BossMeleePattern : MonoBehaviour
 		canBossMove = false;
 		SavePlayerPosition();	
 		
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0.9f);
+		bossMeleeCollider.enabled = true; //após um tempinho
 		
 		if(isPlayerOnArea && !playerScript.isDashing && !isBuffUp)
 		{
@@ -227,6 +324,7 @@ public class BossMeleePattern : MonoBehaviour
 		UpdateAxis();
 		bossLookingAtPlayer = true;
 		timeMoving = 0f;
+		bossMeleeCollider.enabled = false;
 		//timeAwayFromPlayer = 0f;
 	}
 }

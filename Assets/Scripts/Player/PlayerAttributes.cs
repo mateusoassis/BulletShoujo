@@ -176,15 +176,15 @@ public class PlayerAttributes : MonoBehaviour
         {	
 			if(!playerScript.isDashing)
 			{
-			if(playerScript.isShielded)
-			{
-				playerScript.isShielded = false;
-				playerScript.shieldObject.SetActive(false);
-			}else
-			{
-				currentLife--;
-				PlayerHealth.SetText("HP: " + currentLife.ToString());
-			}
+				if(playerScript.isShielded)
+				{
+					playerScript.isShielded = false;
+					playerScript.shieldObject.SetActive(false);
+				} else
+				{
+					currentLife--;
+					PlayerHealth.SetText("HP: " + currentLife.ToString());
+				}
 			}
         }
     }

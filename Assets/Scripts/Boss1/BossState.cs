@@ -63,24 +63,29 @@ public class BossState : MonoBehaviour
 		currentState = 0;
 		bossMeleePattern = GameObject.Find("BossManager").GetComponent<BossMeleePattern>();
 		//StartCoroutine("StartBoss");
+		
+		//salvando a template do dash
+		//StartCoroutine(bossMeleePattern.Dash(this.transform, player.position, 2f));
     }
 	
 	void Update()
 	{
 		bossMeleePattern.DoMeleeMoves();
+		
+		
 		/*// boss olha para o player enquanto tá no state 1 e 2
 		if(currentState == 1 || currentState == 2){
 			transform.LookAt(player.position, Vector3.up);
 		}
-		//if(currentState == 4){
-		//	transform.Rotate(0, rotSpeed*Time.deltaTime, 0);
-		//}
+		if(currentState == 4){
+			transform.Rotate(0, rotSpeed*Time.deltaTime, 0);
+		}*/
 
 		if(playerScript.isDashing)
 		{
 			boxCol.isTrigger = true;
 			StartCoroutine("WaitForCollision");
-		}*/
+		}
 	}
 	
 	public void ChangeState(int state){
@@ -154,8 +159,30 @@ public class BossState : MonoBehaviour
 			StartCoroutine("ImmuneTime");
 		}
 	}
-
-
+	
+	private IEnumerator ResetIsDashOnCollider()
+	{
+		yield return new WaitForSeconds(0.1f);
+		bossMeleePattern.isDashOnCollider = false;
+	}
+	void OnTriggerEnter(Collider col)
+	{
+		if(col.gameObject.tag == "DashCollider")
+		{
+			bossMeleePattern.isDashOnCollider = true;
+			Debug.Log("entra");
+			StartCoroutine(ResetIsDashOnCollider());
+		}
+	}
+	
+	void OnTriggerExit(Collider col)
+	{
+		if(col.gameObject.tag == "DashCollider")
+		{
+			bossMeleePattern.isDashOnCollider = false;
+			Debug.Log("sai");
+		}
+	}
 	
 	public IEnumerator ImmuneTime()
     {
