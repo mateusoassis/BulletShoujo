@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - Mirror
   - AreaDamage
+  - DashCollider
   layers:
   - Default
   - TransparentFX
