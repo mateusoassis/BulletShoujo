@@ -3395,8 +3395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0271463262d0e4e49819798a203ade7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootinterval: 0.4
-  shootQuantity: 36
+  shootinterval: 0.1
+  shootQuantity: 48
   firePoint: {fileID: 1019489741}
   bulletForce: 20
   bulletPrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
@@ -8530,7 +8530,13 @@ MonoBehaviour:
   MELEE_STATE: 2
   DASH_STATE: 3
   ORBS_STATE: 4
-  FRONTAL_ORBS_STATE: 5
+  FIRE_SWIRL_STATE: 5
+  golpe4: {fileID: 0}
+  rotSpeed: 180
+  golpe4Duration: 0
+  golpe4Delay: 0
+  isSpinning: 0
+  firePoint: {fileID: 0}
   currentState: 0
   currentShotState: 0
   isCasting: 0

@@ -116,7 +116,7 @@ public class MeleeBoss : MonoBehaviour
 		distanceFromPlayer = Vector3.Distance(bossTransform.position, playerTransform.position);
 		
 		//if !isDashing
-		if(!isBossDashing && bossState.isCasting)
+		if(!isBossDashing && !bossState.isCasting)
 		{
 			if(!isBossAttacking)
 			{
@@ -197,13 +197,13 @@ public class MeleeBoss : MonoBehaviour
 		int randomNextAttack = Random.Range(0,3);
 		if(randomNextAttack == 0)
 		{
-			bossState.ChangeState(bossState.ORBS_STATE);
+			bossState.ChangeState(bossState.ORBS_STATE); // state 4
 		}else if(randomNextAttack == 1)
 		{
-			bossState.ChangeState(bossState.MOVE_STATE);
-		}else if(randomNextAttack == 2)
+			bossState.ChangeState(bossState.FIRE_SWIRL_STATE); // state 5
+		}else
 		{
-			bossState.ChangeState(bossState.FRONTAL_ORBS_STATE);
+			bossState.ChangeState(bossState.MOVE_STATE); // state 1		
 		}
 		
 		bossLookingAtPlayer = true;
@@ -240,6 +240,7 @@ public class MeleeBoss : MonoBehaviour
 		isBossDashing = true;
 		bossLookingAtPlayer = false;
 		canBossMove = false;
+		bossTransform.LookAt(targetPosition, Vector3.up);
 		//bossDashCollider.enabled = true;
 		Vector3 playerPos = position;
 		float duration = dashDuration;
@@ -261,7 +262,7 @@ public class MeleeBoss : MonoBehaviour
 			//bossTransform.position = Vector3.Lerp(bossTransform.position, position, t);
 			bossTransform.position = Vector3.MoveTowards(bossTransform.position, playerPos, time * Time.deltaTime);
 			yield return null;
-			//}
+			//} FRONTAL_ORBS_STATE
 		}
 		isBossDashing = false;
 		//bossDashCollider.enabled = false;
