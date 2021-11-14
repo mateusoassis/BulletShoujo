@@ -959,7 +959,7 @@ Transform:
   m_GameObject: {fileID: 233181202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 1, z: 0.5}
   m_Children:
   - {fileID: 1814784173}
   m_Father: {fileID: 1926142979}
@@ -3325,7 +3325,6 @@ GameObject:
   - component: {fileID: 866273808}
   - component: {fileID: 866273804}
   - component: {fileID: 866273803}
-  - component: {fileID: 866273806}
   - component: {fileID: 866273807}
   m_Layer: 6
   m_Name: BossManager
@@ -3388,25 +3387,6 @@ Transform:
   m_Father: {fileID: 1926142979}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &866273806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866273802}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d51ac2b4e77699419b416bf864dea4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  boss: {fileID: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
-  bodySlamSpeed: 150
-  playerPositionSaved: 0
-  bossStateScript: {fileID: 0}
-  bossRigidbody: {fileID: 0}
 --- !u!114 &866273807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3433,50 +3413,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 866273802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad37193c4c42e274bae5f48ffe924ef0, type: 3}
+  m_Script: {fileID: 11500000, guid: bfbace2560415cc499cea610c05d724c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerScript: {fileID: 0}
-  playerAttributesScript: {fileID: 0}
-  boss: {fileID: 0}
-  areaDamage: {fileID: 0}
-  areaDamageParent: {fileID: 0}
-  areaDamageObject: {fileID: 0}
-  areaDamageRenderer: {fileID: 0}
-  horizontalScale: {x: 3, y: 0.2, z: 3}
-  horizontalMultiplierX: 3
-  horizontalMultiplierZ: 0.5
-  verticalScale: {x: 1.5, y: 0.2, z: 6}
-  verticalMultiplierX: 1.5
-  verticalMultiplierZ: 1
-  isBuffUp: 0
-  buffDuration: 15
-  extraRangeMultiplier: 1
-  extraRange: 2.5
-  buffTimer: 0
-  targetPosition: {x: 0, y: 0, z: 0}
   playerPositionSaved: 0
-  bossMoveSpeed: 0
   moveSpeed: 5
-  isPlayerOnArea: 1
-  canBossMove: 0
-  isPlayerPosSaved: 0
-  bossLookingAtPlayer: 0
-  timeMoving: 0
-  timeAwayFromPlayer: 0
-  distanceVector: {x: 0, y: 0, z: 0}
-  distanceFromPlayer: 0
-  dashDuration: 1.8
-  isDashOnCollider: 0
-  bossMeleeCollider: {fileID: 0}
-  bossDashCollider: {fileID: 0}
-  isDashOnCooldown: 0
-  dashCooldownTimer: 0
-  dashCooldown: 5
-  isBossDashing: 0
-  bossDamage: {fileID: 0}
   isBossMoving: 0
+  canBossMove: 0
+  bossLookingAtPlayer: 0
+  isBossDashing: 0
+  isBossAttacking: 0
+  isPlayerOnArea: 0
+  distanceFromPlayer: 0
+  attackAntecipation: 0.5
+  timeInsideAreaDamage: 0.8
+  dashDuration: 0.5
+  verticalMultiplierX: 1
+  verticalMultiplierZ: 1
+  horizontalMultiplierX: 1
+  horizontalMultiplierZ: 1
+  isBuffUp: 0
+  extraRange: 1
+  extraRangeMultiplier: 1
+  verticalAttackScale: {x: 1.5, y: 1, z: 1}
+  horizontalAttackScale: {x: 3, y: 1, z: 0.5}
 --- !u!1 &888370510
 GameObject:
   m_ObjectHideFlags: 0
@@ -7841,7 +7801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a787efe68aeb9164ca21a56b03834e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossMeleePattern: {fileID: 0}
 --- !u!1 &1820099390
 GameObject:
   m_ObjectHideFlags: 0
@@ -8571,23 +8530,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999bfa393e82d0540ae4c2e2af9b6383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golpe1: {fileID: 0}
-  golpe1Duration: 5
-  golpe1Delay: 1
-  golpe2: {fileID: 0}
-  golpe2Duration: 5
-  golpe2Delay: 2
-  golpe3: {fileID: 0}
-  golpe3Duration: 4
-  golpe3Delay: 0.02
-  isBodySlamming: 0
-  bossMeleePattern: {fileID: 0}
-  player: {fileID: 0}
-  playerRigidbody: {fileID: 0}
-  playerScript: {fileID: 0}
-  knockbackDirection: {x: 0, y: 0, z: 0}
-  knockbackForce: 10
-  state: 0
+  MOVE_STATE: 1
+  MELEE_STATE: 2
+  DASH_STATE: 3
   currentState: 0
 --- !u!65 &1926142976
 BoxCollider:
@@ -8630,7 +8575,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 999
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0

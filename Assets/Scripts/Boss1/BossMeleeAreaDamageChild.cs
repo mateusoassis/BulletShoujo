@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class BossMeleeAreaDamageChild : MonoBehaviour
 {
-	public BossMeleePattern bossMeleePattern;
+	private MeleeBoss meleeBoss;
 	
 	void Awake()
 	{
-		bossMeleePattern = GameObject.Find("BossManager").GetComponent<BossMeleePattern>();
+		meleeBoss = GameObject.Find("BossManager").GetComponent<MeleeBoss>();
 	}
   
 	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject.tag == "Player")
 		{
-			bossMeleePattern.isPlayerOnArea = true;
+			meleeBoss.isPlayerOnArea = true;
 		}
 	}
 	void OnTriggerExit(Collider col)
 	{
 		if(col.gameObject.tag == "Player")
 		{
-			bossMeleePattern.isPlayerOnArea = false;
+			meleeBoss.isPlayerOnArea = false;
 		}
 	}
 }
