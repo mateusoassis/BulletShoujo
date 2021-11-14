@@ -373,7 +373,11 @@ public class Player : MonoBehaviour
     }
 	
 	void OnCollisionEnter(Collision col){
-		if(col.gameObject.tag == "Wall"){
+		if(col.gameObject.tag == "Wall")
+		{
+			rb.velocity = Vector3.zero;
+		} else if(col.gameObject.tag == "Boss")
+		{
 			rb.velocity = Vector3.zero;
 		}
 	}

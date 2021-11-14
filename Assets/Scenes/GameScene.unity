@@ -3396,7 +3396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootinterval: 0.1
-  shootQuantity: 48
+  shootQuantity: 44
   firePoint: {fileID: 1019489741}
   bulletForce: 20
   bulletPrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
@@ -8526,6 +8526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999bfa393e82d0540ae4c2e2af9b6383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IDLE_STATE: 0
   MOVE_STATE: 1
   MELEE_STATE: 2
   DASH_STATE: 3
@@ -8539,6 +8540,8 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   currentState: 0
   currentShotState: 0
+  idleDuration: 2
+  isBossIdle: 0
   isCasting: 0
 --- !u!65 &1926142976
 BoxCollider:
@@ -8586,7 +8589,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1926142981
 MonoBehaviour:
   m_ObjectHideFlags: 0

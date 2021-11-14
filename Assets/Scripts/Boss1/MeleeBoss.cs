@@ -133,7 +133,7 @@ public class MeleeBoss : MonoBehaviour
 	{		
 		// cálculo de distância até player
 		distanceFromPlayer = Vector3.Distance(bossTransform.position, playerTransform.position);
-		//bossRb.angularVelocity = new Vector3(bossRb.angularVelocity.x, 0, bossRb.angularVelocity.z);
+		
 		if(distanceFromPlayer > 10f && !isBossDashing && !bossState.isCasting)
 		// checar se o player está no ALCANCE para continuar se aproximando dele antes de ataca-lo
 		{
@@ -172,8 +172,7 @@ public class MeleeBoss : MonoBehaviour
 		areaDamageRenderer.enabled = true;
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;
-			
-		
+				
 		yield return new WaitForSeconds(attackAntecipation);
 		//bossMeleeCollider.enabled = true; //após um tempinho
 		
@@ -194,20 +193,9 @@ public class MeleeBoss : MonoBehaviour
 		//bossMeleeCollider.enabled = false;
 		//timeAwayFromPlayer = 0f;
 		
-		int randomNextAttack = Random.Range(0,3);
-		if(randomNextAttack == 0)
-		{
-			bossState.ChangeState(bossState.ORBS_STATE); // state 4
-		}else if(randomNextAttack == 1)
-		{
-			bossState.ChangeState(bossState.FIRE_SWIRL_STATE); // state 5
-		}else
-		{
-			bossState.ChangeState(bossState.MOVE_STATE); // state 1		
-		}
-		
 		bossLookingAtPlayer = true;
 		isBossAttacking = false;
+		bossState.ChangeState(bossState.IDLE_STATE);
 	}
 	
 	public void SwitchMeleeAttack()

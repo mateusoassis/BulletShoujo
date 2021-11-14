@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossState : MonoBehaviour
 {
+	public int IDLE_STATE = 0;
 	public int MOVE_STATE = 1;
 	public int MELEE_STATE = 2;
 	public int DASH_STATE = 3;
@@ -24,6 +25,8 @@ public class BossState : MonoBehaviour
 	[Header("Check da máquina de STATES")]
 	public int currentState;
 	public int currentShotState;
+	public int idleDuration;
+	public bool isBossIdle;
 	
 	[Header("Boss")]
 	private Rigidbody bossRb;
@@ -50,8 +53,7 @@ public class BossState : MonoBehaviour
 	private PlayerAttributes playerAttributesScript;
 
     void Start()
-    {
-		
+    {		
 		playerTransform = GameObject.Find("Player").GetComponent<Transform>();
 		playerScript = GameObject.Find("Player").GetComponent<Player>();
 		playerAttributesScript = GameObject.Find("Player").GetComponent<PlayerAttributes>();
@@ -70,7 +72,7 @@ public class BossState : MonoBehaviour
 		
 		//salvando a template do dash
 		//StartCoroutine(bossMeleePattern.Dash(this.transform, player.position, 2f));
-		ChangeState(MOVE_STATE);
+		StartCoroutine("StartBoss");
     }
 	
 	void Update()
@@ -90,14 +92,14 @@ public class BossState : MonoBehaviour
 			StartCoroutine("WaitForCollision");
 		}*/
 	}
-	/*
 	
-	// tempo pro boss iniciar qualquer ação
-	private IEnumerator StartBoss()
+	
+	//tempo pro boss iniciar o combate
+	public IEnumerator StartBoss()
 	{
 		yield return new WaitForSeconds(3f);
-		ChangeState(1);
-	}*/
+		ChangeState(MOVE_STATE);
+	}
 	
 	/*private IEnumerator CancelInvoke4(){
 		yield return new WaitForSeconds(golpe4Duration);
@@ -151,6 +153,9 @@ public class BossState : MonoBehaviour
 	{
 		switch (state){
 			
+			case 0:
+				StartCoroutine("StartIdleState");
+				break;
 			case 1:			
 				
 				break;
@@ -179,6 +184,28 @@ public class BossState : MonoBehaviour
 				break;*/
 		}
 		currentState = state;
+	}
+
+	
+	public IEnumerator StartIdleState()
+	{
+		isBossIdle = true;
+		yield return new WaitForSeconds(idleDuration);
+		
+		int randomNextAttack = Random.Range(0,3);
+		if(randomNextAttack == 0)
+		{
+			isBossIdle = false;
+			ChangeState(ORBS_STATE); // state 4
+		}else if(randomNextAttack == 1)
+		{
+			isBossIdle = false;
+			ChangeState(FIRE_SWIRL_STATE); // state 5
+		}else
+		{
+			isBossIdle = false;
+			ChangeState(MOVE_STATE); // state 1		
+		}	
 	}
 
 	public IEnumerator CastBigOrbs()
