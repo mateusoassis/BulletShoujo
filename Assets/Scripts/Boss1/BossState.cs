@@ -7,6 +7,8 @@ public class BossState : MonoBehaviour
 	public int MOVE_STATE = 1;
 	public int MELEE_STATE = 2;
 	public int DASH_STATE = 3;
+	public int ORBS_STATE = 4;
+	public int FRONTAL_ORBS_STATE =5;
 	
 	/*
 	[Header("Tiro 2")]
@@ -26,17 +28,25 @@ public class BossState : MonoBehaviour
 	
 	[Header("Check da máquina de STATES")]
 	public int currentState;
+	public int currentShotState;
 	
 	[Header("Boss")]
 	private Rigidbody bossRb;
 	private Transform bossTransform;
 	private Transform areaDamage;
 	private Transform areaDamageParent;
+	
+	private Transform bossFirePoint;
 	private GameObject areaDamageObject;
 	private MeshRenderer areaDamageRenderer;
 	private Vector3 verticalAttackScale;
 	private Vector3 horizontalAttackScale;
 	private BossDamage bossDamage;
+	private BossFirePattern bossFrontalShots;
+	private BossShotBigOrbs bossOrbs;
+	private BossFireSwirl bossFireSwirlScript;
+
+	public bool isCasting;
 	
 	[Header("Player")]
 	private Rigidbody playerRb;
@@ -58,7 +68,12 @@ public class BossState : MonoBehaviour
 		areaDamageObject = GameObject.Find("AreaDamage");
 		areaDamageRenderer = GameObject.Find("AreaDamage").GetComponent<MeshRenderer>();
 		meleeBoss = GameObject.Find("BossManager").GetComponent<MeleeBoss>();
+		bossOrbs = GameObject.Find("BossManager").GetComponent<BossShotBigOrbs>();
+		bossFrontalShots = GameObject.Find("BossManager").GetComponent<BossFirePattern>();
+		bossFirePoint = GameObject.Find("BossFirePoint").GetComponent<Transform>();
+		bossFireSwirlScript = GameObject.Find("BossManager").GetComponent<BossFireSwirl>();
 		
+		isCasting = false;
 		//salvando a template do dash
 		//StartCoroutine(bossMeleePattern.Dash(this.transform, player.position, 2f));
 		ChangeState(MOVE_STATE);
@@ -66,6 +81,7 @@ public class BossState : MonoBehaviour
 	
 	void Update()
 	{
+
 		if(currentState == MOVE_STATE)
 		{
 			meleeBoss.LookAndMove();
@@ -203,6 +219,7 @@ public class BossState : MonoBehaviour
 	public void ChangeState(int state)
 	{
 		switch (state){
+			
 			case 1:
 				
 				//golpe1.InvokeRepeating("Fire", 2f, golpe1Delay);
@@ -216,14 +233,57 @@ public class BossState : MonoBehaviour
 			case 3:
 				StartCoroutine(meleeBoss.Dash(bossTransform, playerTransform.position));
 				break;
-			/*case 4:
+			case 4:
+			    StartCoroutine("CastBigOrbs");
+				state = MOVE_STATE;
+				break;
+			case 5:
+				StartCoroutine("CastFireSwirl");
+				state = MOVE_STATE;
+				break;
+			/*case 5:
 				isSpinning = true;
 				golpe4.Swirl();
 				StartCoroutine("CancelInvoke4");
 				break;*/
-
 		}
 		currentState = state;
+	}
+
+	public IEnumerator CastBigOrbs()
+	{
+		Debug.Log("casting");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		yield return new WaitForSeconds(2.0f);
+		bossOrbs.BigOrbs(bossOrbs.numberOfProjectiles);
+		yield return new WaitForSeconds(2.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+	}
+
+	public IEnumerator CastFirePattern()
+	{
+		Debug.Log("casting");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		yield return new WaitForSeconds(2.0f);
+		bossOrbs.BigOrbs(8);
+		yield return new WaitForSeconds(2.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+	}
+
+	public IEnumerator CastFireSwirl()
+	{
+		Debug.Log("casting");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		yield return new WaitForSeconds(2.0f);
+		bossFireSwirlScript.Swirl();
+		yield return new WaitForSeconds(2.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
 	}
 }
 

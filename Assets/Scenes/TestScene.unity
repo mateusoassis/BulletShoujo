@@ -157,7 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfProjectiles: 6
   projectileSpeed: 5
+  orbsCooldown: 0
   ProjectilePrefab: {fileID: 5343705775056039160, guid: 7c0a09e5e4c7339418e1a61b5e307f81, type: 3}
+  bossTransform: {fileID: 179729106}
 --- !u!136 &179729103
 CapsuleCollider:
   m_ObjectHideFlags: 0

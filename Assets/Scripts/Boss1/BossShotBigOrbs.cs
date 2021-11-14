@@ -8,22 +8,23 @@ public class BossShotBigOrbs : MonoBehaviour
     public int numberOfProjectiles;
     public float projectileSpeed;
     public GameObject ProjectilePrefab;
+    public Transform bossTransform;
 
     [Header("Private Variables")]
     private Vector3 startPoint;
     private const float radius = 1f;
-
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        /*if(Input.GetKeyDown(KeyCode.Space))
         {
             startPoint = transform.position;
             BigOrbs(numberOfProjectiles);
-        }
+        }*/
     }
 
     public void BigOrbs(int _numberOfProjectiles)
     {
+        startPoint = bossTransform.position;
         float angleStep = 360f/_numberOfProjectiles;
         float angle = 0f;
 

@@ -109,10 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6f5cfed8f00f84b836724ecddad5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSmallOrbs: 8
+  numberOfSmallOrbs: 20
   projectileSpeed: 10
-  destructionTimer: 5
-  ProjectilePrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
+  destructionTimer: 8
+  projectilePrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
 --- !u!54 &-813979803996759488
 Rigidbody:
   m_ObjectHideFlags: 0

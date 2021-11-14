@@ -3342,17 +3342,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 866273802}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8e5010ab576c646a94fd15a728129b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0050dc1bf7195c744a445f5c2c730efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsAmount: 15
-  bulDirX: 0
-  bulDirZ: 0
-  bulDirY: 0
-  firePoint: {fileID: 1019489740}
-  Player: {fileID: 1389720247}
-  startAngle: 90
-  endAngle: 270
+  numberOfProjectiles: 4
+  projectileSpeed: 12
+  ProjectilePrefab: {fileID: 5343705775056039160, guid: 7c0a09e5e4c7339418e1a61b5e307f81, type: 3}
+  bossTransform: {fileID: 1926142979}
 --- !u!114 &866273804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3399,9 +3395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0271463262d0e4e49819798a203ade7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootinterval: 0.2
+  shootinterval: 0.4
   shootQuantity: 36
-  firePoint: {fileID: 1019489740}
+  firePoint: {fileID: 1019489741}
   bulletForce: 20
   bulletPrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
 --- !u!114 &866273808
@@ -3411,7 +3407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866273802}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfbace2560415cc499cea610c05d724c, type: 3}
   m_Name: 
@@ -3426,7 +3422,7 @@ MonoBehaviour:
   isPlayerOnArea: 0
   distanceFromPlayer: 0
   attackAntecipation: 0.5
-  timeInsideAreaDamage: 0.8
+  timeInsideAreaDamage: 1
   dashDuration: 0.5
   verticalMultiplierX: 1
   verticalMultiplierZ: 1
@@ -4089,7 +4085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1019489741}
   m_Layer: 6
-  m_Name: FirePoint
+  m_Name: BossFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4102,13 +4098,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019489740}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.046, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 1926142979}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090534026
 GameObject:
   m_ObjectHideFlags: 0
@@ -6045,14 +6041,14 @@ MonoBehaviour:
   bulletForce: 25
   reflectionSpeed: 0
   dashForce: 50
-  dashDuration: 0.25
+  dashDuration: 0.3
   startDashTime: 0.25
   dashAmount: 0
-  maxDashAmount: 2
+  maxDashAmount: 1
   resetDashCooldown: 1
   resetDashTimer: 0
   meleePoint: {fileID: 1965678241}
-  attackRange: 0.9
+  attackRange: 2
   meleeAttackStrength: 5
   amayaLayer:
     serializedVersion: 2
@@ -6104,7 +6100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 0
-  maxLife: 3
+  maxLife: 100
   heartAmount:
   - {fileID: 1837374146}
   - {fileID: 701794442}
@@ -8533,7 +8529,11 @@ MonoBehaviour:
   MOVE_STATE: 1
   MELEE_STATE: 2
   DASH_STATE: 3
+  ORBS_STATE: 4
+  FRONTAL_ORBS_STATE: 5
   currentState: 0
+  currentShotState: 0
+  isCasting: 0
 --- !u!65 &1926142976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8545,8 +8545,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0189936, z: 1}
-  m_Center: {x: -0, y: 0.1685438, z: 0}
+  m_Size: {x: 0.94336975, y: 1.0189936, z: 0.5588648}
+  m_Center: {x: 0.0011333823, y: 0.16854379, z: -0.0025486152}
 --- !u!4 &1926142979
 Transform:
   m_ObjectHideFlags: 0

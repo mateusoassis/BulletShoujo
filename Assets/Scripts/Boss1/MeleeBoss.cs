@@ -10,7 +10,7 @@ public class MeleeBoss : MonoBehaviour
 	private float bossMoveSpeed; // fórmula
 	public float moveSpeed;	// valor editável
 	[SerializeField] private bool isBossMoving;	
-	[SerializeField] private bool canBossMove;
+	[SerializeField] public bool canBossMove;
 	[SerializeField] private bool bossLookingAtPlayer;
 	[SerializeField] private bool isBossDashing;
 	[SerializeField] private bool isBossAttacking;
@@ -95,7 +95,7 @@ public class MeleeBoss : MonoBehaviour
 	
 	public void CheckIfBossCanMove()
 	{
-		if(canBossMove && !isBossDashing) // && !isDashing
+		if(canBossMove && !isBossDashing && bossState.isCasting) // && !isDashing
 		{
 			if(distanceFromPlayer > 10)
 			{
@@ -116,7 +116,7 @@ public class MeleeBoss : MonoBehaviour
 		distanceFromPlayer = Vector3.Distance(bossTransform.position, playerTransform.position);
 		
 		//if !isDashing
-		if(!isBossDashing )
+		if(!isBossDashing && bossState.isCasting)
 		{
 			if(!isBossAttacking)
 			{
@@ -134,8 +134,7 @@ public class MeleeBoss : MonoBehaviour
 		// cálculo de distância até player
 		distanceFromPlayer = Vector3.Distance(bossTransform.position, playerTransform.position);
 		//bossRb.angularVelocity = new Vector3(bossRb.angularVelocity.x, 0, bossRb.angularVelocity.z);
-		
-		if(distanceFromPlayer > 15f && !isBossDashing)
+		if(distanceFromPlayer > 10f && !isBossDashing && !bossState.isCasting)
 		// checar se o player está no ALCANCE para continuar se aproximando dele antes de ataca-lo
 		{
 			bossState.ChangeState(bossState.DASH_STATE);
@@ -195,7 +194,18 @@ public class MeleeBoss : MonoBehaviour
 		//bossMeleeCollider.enabled = false;
 		//timeAwayFromPlayer = 0f;
 		
-		bossState.ChangeState(bossState.MOVE_STATE);
+		int randomNextAttack = Random.Range(0,3);
+		if(randomNextAttack == 0)
+		{
+			bossState.ChangeState(bossState.ORBS_STATE);
+		}else if(randomNextAttack == 1)
+		{
+			bossState.ChangeState(bossState.MOVE_STATE);
+		}else if(randomNextAttack == 2)
+		{
+			bossState.ChangeState(bossState.FRONTAL_ORBS_STATE);
+		}
+		
 		bossLookingAtPlayer = true;
 		isBossAttacking = false;
 	}
