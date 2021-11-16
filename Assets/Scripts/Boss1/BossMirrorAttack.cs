@@ -7,6 +7,10 @@ public class BossMirrorAttack : MonoBehaviour
     public float rotationSpeed;
 
     public Transform bossTarget;
+
+    public Transform bossFirePoint;
+
+    public GameObject mirrorsPrefab;
     public float reflectionSpeed;
     void Start()
     {
@@ -21,5 +25,11 @@ public class BossMirrorAttack : MonoBehaviour
             Vector3 newPosition = new Vector3(bossTarget.position.x, transform.position.y, bossTarget.position.z);
             transform.position = newPosition;
         }
+    }
+
+    public void CastMirrors()
+    {
+        GameObject mirrors = Instantiate(mirrorsPrefab, bossFirePoint.position, Quaternion.identity) as GameObject;
+        mirrorsPrefab.transform.SetParent (GameObject.FindGameObjectWithTag("Boss").transform, false);
     }
 }

@@ -34,6 +34,6 @@ Material:
     m_Floats:
     - Vector1_c0b0c912bef54235ad27a6b2059caa2e: 0
     m_Colors:
-    - Color_: {r: 0.4245283, g: 0.33093017, b: 0, a: 1}
+    - Color_: {r: 1, g: 0.9548047, b: 0.33490568, a: 1}
     - FresnelColor_: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

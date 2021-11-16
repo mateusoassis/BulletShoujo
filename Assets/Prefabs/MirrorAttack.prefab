@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4702090815234388367}
   m_Layer: 0
   m_Name: Mirror2
-  m_TagString: Untagged
+  m_TagString: Mirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 4702090815692682647}
   m_Layer: 0
   m_Name: Mirror1
-  m_TagString: Untagged
+  m_TagString: Mirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,6 +351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 70
   bossTarget: {fileID: 0}
+  bossFirePoint: {fileID: 0}
+  mirrorsPrefab: {fileID: 0}
   reflectionSpeed: 1.5
 --- !u!1 &4702090816262469464
 GameObject:
