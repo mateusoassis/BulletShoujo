@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     public GameObject shieldObject;
 	public GameManagerScript gameManager;
 	
+	private BossMirrorAttack bossMirrorAttack;
+	
 	//direcoes
 	// 1 cima
 	// 2 baixo
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
 	void Awake()
 	{
 		gameManager = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
+		bossMirrorAttack = GameObject.Find("MirrorPoint").GetComponent<BossMirrorAttack>();
 	}
 
     void Start()
@@ -358,10 +361,17 @@ public class Player : MonoBehaviour
                 amayasHp.bossHPCurrent -=meleeAttackStrength;
             }
 
-            if(enemy.tag == "Mirror" && !gameManager.pausedGame)
+            if(enemy.tag == "Mirror1" && !gameManager.pausedGame)
             {
-                enemy.gameObject.SetActive(false);
+				Debug.Log("acertou mirror 1");
+                bossMirrorAttack.Mirror1Break();
             }
+			
+			if(enemy.tag == "Mirror2"  && !gameManager.pausedGame)
+			{
+				Debug.Log("acertou mirror 2");
+				bossMirrorAttack.Mirror2Break();
+			}
         }
     }
 

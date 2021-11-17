@@ -72,7 +72,7 @@ public class BossState : MonoBehaviour
 		bossFirePoint = GameObject.Find("BossFirePoint").GetComponent<Transform>();
 		bossFireSwirlScript = GameObject.Find("BossManager").GetComponent<BossFireSwirl>();
 		fullFireScript = GameObject.Find("BossManager").GetComponent<BossFullFire>();
-		mirrorCastScript = GameObject.Find("BossManager").GetComponent<BossMirrorAttack>();
+		mirrorCastScript = GameObject.Find("MirrorPoint").GetComponent<BossMirrorAttack>();
 		
 		isCasting = false;
 		
@@ -212,10 +212,15 @@ public class BossState : MonoBehaviour
 		}else if(randomNextAttack == 3){
 			isBossIdle = false;
 			ChangeState(FULL_FIRE_STATE); // state 6
-		}else
+		}else if(randomNextAttack == 4 && mirrorCastScript.canUseMirror)
 		{
 			isBossIdle = false;
-			ChangeState(MIRROR_CAST);
+			Debug.Log("pode usar");
+			ChangeState(MIRROR_CAST); // state 7
+		} else if(randomNextAttack == 4 && !mirrorCastScript.canUseMirror)
+		{
+			Debug.Log("n pode usar");
+			ChangeState(MOVE_STATE); // state 1
 		}
 	}
 
@@ -273,7 +278,8 @@ public class BossState : MonoBehaviour
 		Debug.Log("casting");
 		isCasting = true;
 		meleeBoss.canBossMove = false;
-		mirrorCastScript.CastMirrors();
+		//mirrorCastScript.CastMirrors();
+		mirrorCastScript.ActivateMirrors();
 		yield return new WaitForSeconds(6.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
