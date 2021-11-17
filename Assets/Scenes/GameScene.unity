@@ -314,6 +314,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 554183274}
   PausePanel: {fileID: 862044709}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &47470044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1032,6 +1044,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 554183274}
   PausePanel: {fileID: 862044709}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 1.5
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!4 &200436350
 Transform:
   m_ObjectHideFlags: 0
@@ -4805,6 +4829,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 986158206}
   PausePanel: {fileID: 862044709}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &1195845345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8363,6 +8399,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 518066028}
   PausePanel: {fileID: 862044709}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &1820099393
 MonoBehaviour:
   m_ObjectHideFlags: 0
