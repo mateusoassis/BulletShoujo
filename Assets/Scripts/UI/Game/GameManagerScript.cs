@@ -11,10 +11,43 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField]GameObject PausePanel;
 	public bool pausedGame;
 	
+	public float disclaimerTextDuration;
+	public float disclaimerTextFadeIn;
+	public float disclaimerBackgroundDuration;
+	public GameObject disclaimerBackGroundGameObject;
+	public TextMeshProUGUI disclaimerText;
+	public GameObject disclaimerTextGameObject;
+	public Image disclaimerBackground;
+	public bool gameStarted;
+	
+	void Awake()
+	{
+        //DontDestroyOnLoad(gameObject);
+		if(PlayerPrefs.HasKey("gameStarted"))
+		{
+			gameStarted = PlayerPrefs.GetInt("gameStarted") == 1? true: false;
+		}
+	}
+	
 	// iniciar com booleano falso para não pausar o jogo
 	void Start()
 	{
+		/*
+		var foo = true;
+		// Save boolean using PlayerPrefs
+		PlayerPrefs.SetInt("foo", foo?1:0);
+		// Get boolean using PlayerPrefs
+		foo = PlayerPrefs.GetInt("foo")==1?true:false;
+		
+		if(gameStarted)
+		{
+			StartCoroutine("FadeOut", 15f);
+		}
+		*/
+		
 		pausedGame = false;
+		StartCoroutine("FadeInFadeOutText");
+		StartCoroutine(FadeImgOut(disclaimerBackground, disclaimerBackgroundDuration, 0, 0, 0));
 	}
 	
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
@@ -22,6 +55,14 @@ public class GameManagerScript : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			PauseUnpauseGame();
+		}
+		if(disclaimerBackground.color.a == 0f)
+		{
+			disclaimerBackGroundGameObject.gameObject.SetActive(false);
+		}
+		if(disclaimerText.color.a <= 0f)
+		{
+			//disclaimerText
 		}
 	}
 	
@@ -32,7 +73,16 @@ public class GameManagerScript : MonoBehaviour
 	
 	public void GameScene()
 	{
+		gameStarted = true;
+		PlayerPrefs.SetInt("gameStarted", gameStarted?1:0);
 		SceneManager.LoadScene("GameScene");
+		TimeScaleNormal();
+	}
+	public void TutorialScene()
+	{
+		gameStarted = true;
+		PlayerPrefs.SetInt("gameStarted", gameStarted?1:0);
+		SceneManager.LoadScene("TutorialScene");
 		TimeScaleNormal();
 	}
 	public void Retry()
@@ -59,14 +109,68 @@ public class GameManagerScript : MonoBehaviour
 	{
 		if(!pausedGame){
 			Time.timeScale = 0f;
-			PauseButtonText.text = "Unpause";
+			//PauseButtonText.text = "Unpause";
 			PausePanel.SetActive(true);
 			pausedGame = true;
 		} else if(pausedGame){
 			Time.timeScale = 1f;
-			PauseButtonText.text = "Pause";
+			//PauseButtonText.text = "Pause";
 			PausePanel.SetActive(false);
 			pausedGame = false;
 		}		
-	}	
+	}
+	
+	public IEnumerator FadeImgOut(Image img, float i, int r, int g, int b)
+	{
+		for(float n = i; n >= 0; n -= Time.deltaTime/2)
+		{
+			img.color = new Color(r, g, b, n);
+			if(img.color.a <= 0.1f)
+			{
+				img.color = new Color(r,g,b,0);
+				yield break;
+			}
+			yield return null;
+		}
+	}
+	public IEnumerator FadeImgIn(Image img, float j, int r, int g, int b)
+	{
+		for(float m = 0; m <= j; m += Time.deltaTime/2)
+		{
+			img.color = new Color(r, g, b, m);
+			yield return null;
+		}
+	}
+	
+	public IEnumerator FadeTextOut(TextMeshProUGUI text, float i, int r, int g, int b)
+	{
+		for(float n = i; n >= 0; n -= Time.deltaTime/2)
+		{
+			text.color = new Color(r, g, b, n);
+			if(text.color.a <= 0.1f)
+			{
+				text.color = new Color(r,g,b,0);
+				yield break;
+			}
+			yield return null;
+		}
+	}
+	public IEnumerator FadeTextIn(TextMeshProUGUI text, float j, int r, int g, int b)
+	{
+		for(float m = 0; m <= j; m += Time.deltaTime/2)
+		{
+			text.color = new Color(r, g, b, m);	
+			yield return null;			
+		}	
+	}
+	
+	public IEnumerator FadeInFadeOutText()
+	{
+		yield return new WaitForSeconds(2f);
+		StartCoroutine(FadeTextIn(disclaimerText, disclaimerTextFadeIn, 1, 1, 1));
+		yield return new WaitForSeconds(2f);
+		StartCoroutine(FadeTextOut(disclaimerText, disclaimerTextDuration, 1, 1, 1));
+		yield return new WaitForSeconds(6f);
+		yield return null;
+	}
 }
