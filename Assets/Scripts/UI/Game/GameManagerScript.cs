@@ -18,14 +18,18 @@ public class GameManagerScript : MonoBehaviour
 	public TextMeshProUGUI disclaimerText;
 	public GameObject disclaimerTextGameObject;
 	public Image disclaimerBackground;
-	public bool gameStarted;
+	public bool noTutorial;
+	public Toggle tutorialToggle;
 	
 	void Awake()
 	{
         //DontDestroyOnLoad(gameObject);
-		if(PlayerPrefs.HasKey("gameStarted"))
+		if(PlayerPrefs.HasKey("noTutorial"))
 		{
-			gameStarted = PlayerPrefs.GetInt("gameStarted") == 1? true: false;
+			noTutorial = PlayerPrefs.GetInt("noTutorial") == 1? true: false;
+		} else
+		{
+			noTutorial = false;
 		}
 	}
 	
@@ -60,10 +64,20 @@ public class GameManagerScript : MonoBehaviour
 		{
 			disclaimerBackGroundGameObject.gameObject.SetActive(false);
 		}
-		if(disclaimerText.color.a <= 0f)
+	}
+	
+	public void ToggleTutorial()
+	{
+		if(tutorialToggle.isOn)
 		{
-			//disclaimerText
+			noTutorial = true;
+			PlayerPrefs.SetInt("noTutorial", noTutorial?1:0);
+		} else
+		{
+			noTutorial = false;
+			PlayerPrefs.SetInt("noTutorial", noTutorial?1:0);
 		}
+		return;
 	}
 	
 	public void MenuScene()
@@ -73,17 +87,21 @@ public class GameManagerScript : MonoBehaviour
 	
 	public void GameScene()
 	{
-		gameStarted = true;
-		PlayerPrefs.SetInt("gameStarted", gameStarted?1:0);
 		SceneManager.LoadScene("GameScene");
 		TimeScaleNormal();
 	}
 	public void TutorialScene()
 	{
-		gameStarted = true;
-		PlayerPrefs.SetInt("gameStarted", gameStarted?1:0);
-		SceneManager.LoadScene("TutorialScene");
-		TimeScaleNormal();
+		if(!noTutorial)
+		{
+			SceneManager.LoadScene("TutorialScene");
+			TimeScaleNormal();
+		} else
+		{
+			SceneManager.LoadScene("GameScene");
+			TimeScaleNormal();
+		}
+		
 	}
 	public void Retry()
 	{
