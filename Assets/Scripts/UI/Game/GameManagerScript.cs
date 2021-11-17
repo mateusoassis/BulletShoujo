@@ -21,8 +21,13 @@ public class GameManagerScript : MonoBehaviour
 	public bool noTutorial;
 	public Toggle tutorialToggle;
 	
+	public Scene currentScene;
+	public int sceneIndex;
+	
 	void Awake()
 	{
+		currentScene = SceneManager.GetActiveScene();
+		sceneIndex = currentScene.buildIndex;
         //DontDestroyOnLoad(gameObject);
 		if(PlayerPrefs.HasKey("noTutorial"))
 		{
@@ -48,10 +53,12 @@ public class GameManagerScript : MonoBehaviour
 			StartCoroutine("FadeOut", 15f);
 		}
 		*/
-		
 		pausedGame = false;
-		StartCoroutine("FadeInFadeOutText");
-		StartCoroutine(FadeImgOut(disclaimerBackground, disclaimerBackgroundDuration, 0, 0, 0));
+		
+		if(currentScene.buildIndex == 1)
+		{
+			StartCoroutine(FadeImgOut(disclaimerBackground, disclaimerBackgroundDuration, 0, 0, 0));
+		}	
 	}
 	
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
@@ -59,10 +66,6 @@ public class GameManagerScript : MonoBehaviour
 	{
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			PauseUnpauseGame();
-		}
-		if(disclaimerBackground.color.a == 0f)
-		{
-			disclaimerBackGroundGameObject.gameObject.SetActive(false);
 		}
 	}
 	
@@ -82,7 +85,8 @@ public class GameManagerScript : MonoBehaviour
 	
 	public void MenuScene()
 	{
-		 SceneManager.LoadScene("MenuScene");
+		SceneManager.LoadScene("MenuScene");
+		TimeScaleNormal();
 	}
 	
 	public void GameScene()
@@ -106,6 +110,7 @@ public class GameManagerScript : MonoBehaviour
 	public void Retry()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		TimeScaleNormal();
 	}
 	public void TimeScaleNormal()
 	{
@@ -115,11 +120,13 @@ public class GameManagerScript : MonoBehaviour
 	public void Boss2()
 	{
 		SceneManager.LoadScene("Boss2");
+		TimeScaleNormal();
 	}
 	
 	public void QuitGame()
 	{
 		Application.Quit();
+		TimeScaleNormal();
 	}
 	
 	// lógica para pausar e despausar no mesmo botão
@@ -140,15 +147,18 @@ public class GameManagerScript : MonoBehaviour
 	
 	public IEnumerator FadeImgOut(Image img, float i, int r, int g, int b)
 	{
+		Debug.Log("funciona");
 		for(float n = i; n >= 0; n -= Time.deltaTime/2)
 		{
 			img.color = new Color(r, g, b, n);
 			if(img.color.a <= 0.1f)
 			{
 				img.color = new Color(r,g,b,0);
+				disclaimerBackGroundGameObject.gameObject.SetActive(false);
+				img.color = new Color(r,g,b,1);
 				yield break;
 			}
-			yield return null;
+			yield return null;			
 		}
 	}
 	public IEnumerator FadeImgIn(Image img, float j, int r, int g, int b)

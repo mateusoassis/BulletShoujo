@@ -8421,15 +8421,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 0}
   PausePanel: {fileID: 0}
   pausedGame: 0
-  disclaimerTextDuration: 7
-  disclaimerTextFadeIn: 5
-  disclaimerBackgroundDuration: 9.8
+  disclaimerTextDuration: 1
+  disclaimerTextFadeIn: 1
+  disclaimerBackgroundDuration: 1
   disclaimerBackGroundGameObject: {fileID: 2087748956}
   disclaimerText: {fileID: 1452810731}
   disclaimerTextGameObject: {fileID: 1452810729}
   disclaimerBackground: {fileID: 2087748958}
   noTutorial: 0
   tutorialToggle: {fileID: 223103108}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!4 &1936280289
 Transform:
   m_ObjectHideFlags: 0
@@ -9143,7 +9146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2087748957
 RectTransform:
   m_ObjectHideFlags: 0
