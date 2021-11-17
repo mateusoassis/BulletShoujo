@@ -14,6 +14,7 @@ public class DisclaimerScript : MonoBehaviour
 	public TextMeshProUGUI disclaimerText;
 	public GameObject disclaimerTextGameObject;
 	public Image disclaimerBackground;
+	public Image jogosDigitaisImg;
 	
     // Start is called before the first frame update
     void Start()
@@ -82,8 +83,10 @@ public class DisclaimerScript : MonoBehaviour
 	{
 		yield return new WaitForSeconds(2f);
 		StartCoroutine(FadeTextIn(disclaimerText, disclaimerTextFadeIn, 1, 1, 1));
+		StartCoroutine(FadeImgIn(jogosDigitaisImg, disclaimerTextFadeIn, 1, 1, 1));
 		yield return new WaitForSeconds(2f);
 		StartCoroutine(FadeTextOut(disclaimerText, disclaimerTextDuration, 1, 1, 1));
+		StartCoroutine(FadeImgOut(jogosDigitaisImg, disclaimerTextDuration, 1, 1, 1));
 		yield return new WaitForSeconds(6f);
 		yield return null;
 	}

@@ -1326,6 +1326,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 1716850463}
   PausePanel: {fileID: 854238198}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &533305470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,6 +1487,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 838663415}
   PausePanel: {fileID: 854238198}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &558522525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,6 +1770,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 0}
   PausePanel: {fileID: 0}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &576595622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,6 +2791,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 838663415}
   PausePanel: {fileID: 854238198}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!4 &866387962
 Transform:
   m_ObjectHideFlags: 0
@@ -6188,10 +6236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7033,6 +7081,18 @@ MonoBehaviour:
   PauseButtonText: {fileID: 2084209232}
   PausePanel: {fileID: 854238198}
   pausedGame: 0
+  disclaimerTextDuration: 0
+  disclaimerTextFadeIn: 0
+  disclaimerBackgroundDuration: 0
+  disclaimerBackGroundGameObject: {fileID: 0}
+  disclaimerText: {fileID: 0}
+  disclaimerTextGameObject: {fileID: 0}
+  disclaimerBackground: {fileID: 0}
+  noTutorial: 0
+  tutorialToggle: {fileID: 0}
+  currentScene:
+    m_Handle: 0
+  sceneIndex: 0
 --- !u!114 &2143998615
 MonoBehaviour:
   m_ObjectHideFlags: 0

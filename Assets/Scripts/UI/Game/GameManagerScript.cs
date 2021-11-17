@@ -20,6 +20,7 @@ public class GameManagerScript : MonoBehaviour
 	public Image disclaimerBackground;
 	public bool noTutorial;
 	public Toggle tutorialToggle;
+	public GameObject tutorialPopup;
 	
 	public Scene currentScene;
 	public int sceneIndex;
@@ -94,9 +95,20 @@ public class GameManagerScript : MonoBehaviour
 		SceneManager.LoadScene("GameScene");
 		TimeScaleNormal();
 	}
-	public void TutorialScene()
+	public void OpenTutorialPopup()
 	{
 		if(!noTutorial)
+		{
+			tutorialPopup.SetActive(true);
+		} else
+		{
+			GameScene();
+		}
+	}
+	
+	public void TutorialScene()
+	{
+		if(!noTutorial && !tutorialToggle.isOn)
 		{
 			SceneManager.LoadScene("TutorialScene");
 			TimeScaleNormal();
