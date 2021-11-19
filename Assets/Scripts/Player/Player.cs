@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
 		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
 		{
 			playerAttributes.CastHeal();
+            FindObjectOfType<AudioManager>().PlayOneShot("HealSpell");
 		}
         if(Input.GetMouseButtonDown(1) && !gameManager.pausedGame){
             MeleeAttack();
@@ -121,6 +122,7 @@ public class Player : MonoBehaviour
             isShielded = true;
             shieldObject.SetActive(true);
 			playerAttributes.currentMana -= 20;
+            FindObjectOfType<AudioManager>().PlayOneShot("ShieldSpell");
         }
 		
     }

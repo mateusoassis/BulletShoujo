@@ -55,6 +55,7 @@ public class BossMirrorAttack : MonoBehaviour
 		mirror2.gameObject.SetActive(true);
 		//mirror2.transform.position = new Vector3(-1f, 0.2f, 0f);
 		mirrorsUp = 2;
+		FindObjectOfType<AudioManager>().PlayOneShot("AmayaMirrorShield");
 	}
 	
 	public void Mirror1Break()
