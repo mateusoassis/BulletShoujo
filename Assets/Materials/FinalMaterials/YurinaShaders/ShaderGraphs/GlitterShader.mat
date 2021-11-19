@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BulletMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 4e695d4276d7f7746b8fbf9389bc299c, type: 3}
+  m_Name: GlitterShader
+  m_Shader: {fileID: -6465566751694194690, guid: 5db378da83555a541b8168e62bb56435, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,8 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_8f3d4a67ccd540f0a041748b5398ff09:
-        m_Texture: {fileID: 0}
+    - Texture2D_e62a32c141fd4c8ea5b132797c2c3212:
+        m_Texture: {fileID: 2800000, guid: 16f294f84cdd56444a7cc55f86cbd0a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -36,15 +36,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - FresnelPower_: 3
-    - Vector1_1796b6c850374fd0a1b690badceca309: 25
-    - Vector1_611bdaec52404316b8fcb0c93fceef6a: 1
-    - Vector1_6616c2b9e4614b178959cc44a025cc78: 0
-    - Vector1_ec6e794574d64176afbf76d703be23b1: 5
-    - Vector1_fe35cd617f3d4256b8087b2fe804a695: 0.3
+    - Vector1_095c6052479a41b285626550aa989c70: 5
+    - Vector1_1043ced6485c4a0f8292ee6cca5ef5fb: 0.1
+    - Vector1_3e5e684547ee43b0b7c595a6eac2f681: 600
     m_Colors:
-    - Color_: {r: 0, g: 0.08237839, b: 1, a: 1}
-    - Color_edf5e677efae424aa4ad912c4a3100e9: {r: 0, g: 0, b: 0, a: 0}
-    - NoiseSpeed_: {r: -0.1, g: 0.1, b: 0, a: 0}
-    - VoronoiColor: {r: 0, g: 0.089894556, b: 0.98039216, a: 1}
+    - Color_: {r: 1, g: 0.8666667, b: 0.9686275, a: 1}
+    - Color_4ed09ceffa3143008a3e94bc53814e5f: {r: 0.019607844, g: 0.019607844, b: 0.019607844, a: 1}
+    - OuterColor_: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

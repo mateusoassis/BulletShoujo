@@ -3747,7 +3747,7 @@ MonoBehaviour:
   numberOfTimesShot: 8
   projectileSpeed: 10
   timeBetweenShots: 0.5
-  ProjectilePrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
+  ProjectilePrefab: {fileID: 5349050327569332216, guid: 5d63b260973475c49adf9feda0306d8d, type: 3}
   firePoint: {fileID: 1019489741}
 --- !u!114 &866273807
 MonoBehaviour:
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   shootQuantity: 88
   firePoint: {fileID: 1019489741}
   bulletForce: 20
-  bulletPrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
+  bulletPrefab: {fileID: 5349050327569332216, guid: 5d63b260973475c49adf9feda0306d8d, type: 3}
 --- !u!114 &866273808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9007,7 +9007,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926142974}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 999bfa393e82d0540ae4c2e2af9b6383, type: 3}
   m_Name: 
@@ -11159,7 +11159,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6d543518bf8709249a08b5c9df69a4c1, type: 2}
+  - {fileID: 2100000, guid: 2b98cdf90208c0a4ca88ef80dd50d236, type: 2}
   - {fileID: 2100000, guid: eecb6aba75adea34fa43d64ba99e1e79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

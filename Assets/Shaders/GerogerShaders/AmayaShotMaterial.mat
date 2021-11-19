@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BulletMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 4e695d4276d7f7746b8fbf9389bc299c, type: 3}
+  m_Name: AmayaShotMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 011424c2be4a9294c8048f140d79a2e6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,10 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_8f3d4a67ccd540f0a041748b5398ff09:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -36,15 +32,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - FresnelPower_: 3
-    - Vector1_1796b6c850374fd0a1b690badceca309: 25
-    - Vector1_611bdaec52404316b8fcb0c93fceef6a: 1
-    - Vector1_6616c2b9e4614b178959cc44a025cc78: 0
-    - Vector1_ec6e794574d64176afbf76d703be23b1: 5
-    - Vector1_fe35cd617f3d4256b8087b2fe804a695: 0.3
+    - FresnelPower_: 2
     m_Colors:
-    - Color_: {r: 0, g: 0.08237839, b: 1, a: 1}
-    - Color_edf5e677efae424aa4ad912c4a3100e9: {r: 0, g: 0, b: 0, a: 0}
-    - NoiseSpeed_: {r: -0.1, g: 0.1, b: 0, a: 0}
-    - VoronoiColor: {r: 0, g: 0.089894556, b: 0.98039216, a: 1}
+    - Color_: {r: 0, g: 0, b: 0, a: 1}
+    - FresnelColor_: {r: 0.4666667, g: 0, b: 1, a: 1}
   m_BuildTextureStacks: []

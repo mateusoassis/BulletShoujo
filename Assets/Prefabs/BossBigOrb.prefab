@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6927d0bf31bcd834490b3b8135d89332, type: 2}
+  - {fileID: 2100000, guid: 23d99e44b6b4c374e85a247515108155, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   numberOfSmallOrbs: 20
   projectileSpeed: 10
   destructionTimer: 8
-  projectilePrefab: {fileID: 5343705775056039160, guid: 6c2aacfe485a2f24ea7da20bf32efc1d, type: 3}
+  projectilePrefab: {fileID: 5349050327569332216, guid: 5d63b260973475c49adf9feda0306d8d, type: 3}
 --- !u!54 &-813979803996759488
 Rigidbody:
   m_ObjectHideFlags: 0
