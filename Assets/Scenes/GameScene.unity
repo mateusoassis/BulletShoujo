@@ -4709,6 +4709,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4929349760446144465, guid: 66650bf330cb80046ac3f998b0b1f5e7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 157f77e6693fb424ebe17b617800302a, type: 2}
+    - target: {fileID: -2114232815384691546, guid: 66650bf330cb80046ac3f998b0b1f5e7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 157f77e6693fb424ebe17b617800302a, type: 2}
+    - target: {fileID: -1146033693959399030, guid: 66650bf330cb80046ac3f998b0b1f5e7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 157f77e6693fb424ebe17b617800302a, type: 2}
     - target: {fileID: 919132149155446097, guid: 66650bf330cb80046ac3f998b0b1f5e7, type: 3}
       propertyPath: m_Name
       value: YURINA IDLE
