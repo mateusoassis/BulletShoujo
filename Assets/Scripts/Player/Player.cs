@@ -377,12 +377,14 @@ public class Player : MonoBehaviour
             {
 				Debug.Log("acertou mirror 1");
                 bossMirrorAttack.Mirror1Break();
+                FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
             }
 			
 			if(enemy.tag == "Mirror2"  && !gameManager.pausedGame)
 			{
 				Debug.Log("acertou mirror 2");
 				bossMirrorAttack.Mirror2Break();
+                FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
 			}
         }
     }
