@@ -8416,7 +8416,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   playerAttributes: {fileID: 0}
   firePoint: {fileID: 2026307128}
-  bulletPrefab: {fileID: 8166557441253211962, guid: 9337e91adf22cde469ab910c42e5eb6d, type: 3}
+  bulletPrefab: {fileID: 3711592136697656174, guid: a415b53081c2c114db23bd46e7a9a87f, type: 3}
   laserPrefab: {fileID: 8166557441253211962, guid: cf694c8b4a81e354b9a8516a5f52bdc5, type: 3}
   shieldObject: {fileID: 1663614035}
   gameManager: {fileID: 0}
@@ -13976,15 +13976,15 @@ PrefabInstance:
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 8e1da6b663531a846ab5901ac329ca62, type: 3}
+      objectReference: {fileID: 8300000, guid: 422f8e154304a434b91344e9e871b8d7, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[4].name
-      value: YurinaMeleeConnectA
+      value: YurinaMeleeConnect
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 8e1da6b663531a846ab5901ac329ca62, type: 3}
+      objectReference: {fileID: 8300000, guid: d80b65370a449a640a4d6d3a035f3c80, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[5].name
       value: YurinaMeleeSwoosh
