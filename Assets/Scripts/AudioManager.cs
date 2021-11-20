@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
         if(s == null){
-            Debug.LogWarning("Som "+ name+ " escrito errado");
+            Debug.LogWarning("Som "+ name + " escrito errado");
             return;
         }
         s.source.Play();
@@ -48,7 +48,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
          if(s == null){
-            Debug.Log("Nome do som escrito errado");
+            Debug.Log("Som "+ name + " escrito errado");
             return;
         }
         s.source.PlayOneShot(s.clip);

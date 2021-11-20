@@ -44,6 +44,7 @@ public class BossFirePattern2 : MonoBehaviour
             bul.GetComponent<BossBulletScript>().SetMoveDirection(bulDir);
 
             angle += angleStep;
+            FindObjectOfType<AudioManager>().PlayOneShot("AmayaShot");
         }
     }
 }

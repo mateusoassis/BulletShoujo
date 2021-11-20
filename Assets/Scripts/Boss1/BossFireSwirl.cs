@@ -31,6 +31,8 @@ public class BossFireSwirl : MonoBehaviour
 
             bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
 
+            FindObjectOfType<AudioManager>().PlayOneShot("AmayaShot");
+            
             yield return new WaitForSeconds(shootinterval);
 
         }

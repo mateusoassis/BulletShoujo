@@ -37,6 +37,7 @@ public class BossFullFire : MonoBehaviour
                     tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x,0,projectileMoveDirection.z);
 
                     angle += angleStep;
+                    FindObjectOfType<AudioManager>().PlayOneShot("AmayaShot");
                 } else{
                     float projectileDirXPosition = firePoint.position.x + Mathf.Sin(((angle+90f) * Mathf.PI/180)) * radius;
                     float projectileDirZPosition = firePoint.position.z + Mathf.Cos(((angle+90f) * Mathf.PI/180)) * radius;
@@ -48,7 +49,9 @@ public class BossFullFire : MonoBehaviour
                     tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x,0,projectileMoveDirection.z);
 
                     angle += angleStep;
+                    FindObjectOfType<AudioManager>().PlayOneShot("AmayaShot");
                 }
+                
             }
             yield return new WaitForSeconds(timeBetweenShots);
         }

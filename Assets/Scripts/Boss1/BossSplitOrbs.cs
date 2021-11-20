@@ -35,6 +35,8 @@ public class BossSplitOrbs : MonoBehaviour
             Vector3 projectileVector = new Vector3(projectileDirXPosition, 0, projectileDirZPosition);
             Vector3 projectileMoveDirection = (projectileVector- startPoint).normalized * projectileSpeed;
 
+            FindObjectOfType<AudioManager>().PlayOneShot("AmayaShot");
+
             GameObject tmpObj = Instantiate(projectilePrefab, startPoint, Quaternion.identity);
             tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x,0,projectileMoveDirection.z);
 

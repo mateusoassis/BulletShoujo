@@ -38,6 +38,9 @@ public class BossFirePattern : MonoBehaviour
 
             
             GameObject bul = BossBulletPool.bossBulletPoolInstanse.GetBullet();
+
+            FindObjectOfType<AudioManager>().PlayOneShot("AmayaShot");
+            
             //Utilizando o transform do firepoint para indicar de onde o tiro vai sair e para onde ele vai.
             bul.transform.position = firePoint.transform.position;
             bul.transform.rotation = firePoint.transform.rotation;
@@ -45,6 +48,7 @@ public class BossFirePattern : MonoBehaviour
             bul.GetComponent<BossBulletScript>().SetMoveDirection(bulDir);
 
             angle += angleStep;
+            
         }
     }
 }
