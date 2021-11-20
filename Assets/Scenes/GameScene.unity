@@ -7628,6 +7628,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335341791}
   m_CullTransparentMesh: 1
+--- !u!1 &1344330172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1835551756834499232, guid: 7562da01bc48e97419096efdafd15b77, type: 3}
+  m_PrefabInstance: {fileID: 1440400290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1362279257
 GameObject:
   m_ObjectHideFlags: 0
@@ -8454,11 +8459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a9ad7c051abf94d810e5aa475c7366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.5
-  bulletForce: 25
+  moveSpeed: 8
+  bulletForce: 35
   reflectionSpeed: 0
   fireRateTimer: 0
-  fireRate: 0.25
+  fireRate: 0.05
   dashForce: 50
   dashDuration: 0.3
   startDashTime: 0.25
@@ -8487,6 +8492,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 8166557441253211962, guid: cf694c8b4a81e354b9a8516a5f52bdc5, type: 3}
   shieldObject: {fileID: 1663614035}
   gameManager: {fileID: 0}
+  singleShield: {fileID: 1344330172}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -10582,6 +10588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1710928355}
+  - component: {fileID: 1710928356}
   m_Layer: 0
   m_Name: ShieldPoint
   m_TagString: Untagged
@@ -10605,6 +10612,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710928356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710928354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381c620bc2a4397499060821f8238019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 1389720247}
 --- !u!1 &1747158834
 GameObject:
   m_ObjectHideFlags: 0
@@ -11163,7 +11183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1803385612
 Transform:
   m_ObjectHideFlags: 0

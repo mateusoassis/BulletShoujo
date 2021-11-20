@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     public GameObject laserPrefab;
     public GameObject shieldObject;
 	public GameManagerScript gameManager;
+    public GameObject singleShield;
 	
 	private BossMirrorAttack bossMirrorAttack;
 	
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour
 		resetDashTimer = resetDashCooldown;
         isShielded = false;
 		gameManager.gameStarted = true;
+        singleShield.SetActive(false);
     }
 
     void Update()
@@ -129,9 +131,17 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded)
         {
             isShielded = true;
-            shieldObject.SetActive(true);
 			playerAttributes.currentMana -= 20;
+            shieldObject.SetActive(true);
             FindObjectOfType<AudioManager>().PlayOneShot("ShieldSpell");
+        }
+
+        if(isShielded)
+        {
+            singleShield.SetActive(true);
+        }else if(!isShielded)
+        {
+            singleShield.SetActive(false);
         }
 		
     }

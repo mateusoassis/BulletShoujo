@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShieldScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform playerTarget;
     void Start()
     {
         
@@ -13,6 +13,7 @@ public class ShieldScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 newPosition = new Vector3(playerTarget.position.x, transform.position.y, playerTarget.position.z);
+        transform.position = newPosition;
     }
 }
