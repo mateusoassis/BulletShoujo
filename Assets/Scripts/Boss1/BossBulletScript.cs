@@ -45,13 +45,15 @@ public class BossBulletScript : MonoBehaviour
 	// ao desativar com o Destroy(), para o invoke
     private void OnDisable()
     {
-        CancelInvoke();
+        //CancelInvoke();
+		Destroy(this.gameObject);
     }
 	void OnTriggerEnter (Collider col)
 	{
 		if(col.gameObject.tag == "Wall")
 		{
-			Invoke("Destroy", 0f);
+			//Invoke("Destroy", 0f);
+			Destroy(this.gameObject);
 		}
 		if(col.gameObject.tag == "Player")
 		{
@@ -62,10 +64,12 @@ public class BossBulletScript : MonoBehaviour
 				if(player.isShielded){
 				player.isShielded = false;
 				player.shieldObject.SetActive(false);
-				this.gameObject.SetActive(false);
+				//this.gameObject.SetActive(false);
+				Destroy(this.gameObject);
 				}else{
 				playerAttributes.currentLife--;
-				this.gameObject.SetActive(false);
+				//this.gameObject.SetActive(false);
+				Destroy(this.gameObject);
 			}
 		  }
 		}
