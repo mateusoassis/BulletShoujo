@@ -211,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[1].clip
@@ -262,6 +262,14 @@ PrefabInstance:
       value: YurinaMeleeMirrorBreak
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d6e28a3a6cf293747b063c99a8f0cd46, type: 3}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: AmayaSwordSoundHorizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[1].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -283,6 +291,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[6].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
@@ -311,6 +323,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[6].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[7].volume
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766328, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}

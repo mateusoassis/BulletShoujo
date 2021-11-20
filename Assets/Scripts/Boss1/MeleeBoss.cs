@@ -27,6 +27,7 @@ public class MeleeBoss : MonoBehaviour
 	public float verticalMultiplierZ;
 	public float horizontalMultiplierX;
 	public float horizontalMultiplierZ;
+	public bool isHor;
 	
 	[Header("Buff")]
 	public bool isBuffUp;
@@ -173,7 +174,9 @@ public class MeleeBoss : MonoBehaviour
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;
 				
+		FindObjectOfType<AudioManager>().PlayOneShot("AmayaSwordSoundHorizontal");		
 		yield return new WaitForSeconds(attackAntecipation);
+		
 		//bossMeleeCollider.enabled = true; //após um tempinho
 		
 		if(isPlayerOnArea) //&& !playerScript.isDashing && !isBuffUp
@@ -213,9 +216,11 @@ public class MeleeBoss : MonoBehaviour
 		int u = Random.Range(0,2);
 		if(u == 0)
 		{
+			isHor = true;
 			areaDamageParent.transform.localScale = new Vector3((extraRangeMultiplier * horizontalMultiplierX) * horizontalAttackScale.x, 1f * horizontalAttackScale.y, ((extraRangeMultiplier) * horizontalMultiplierZ) * horizontalAttackScale.z);
 		} else if(u == 1)
 		{
+			isHor = false;
 			areaDamageParent.transform.localScale = new Vector3(((extraRangeMultiplier) * verticalMultiplierX) * verticalAttackScale.y, 1f * verticalAttackScale.y, (extraRangeMultiplier * verticalMultiplierZ) * verticalAttackScale.z);
         
 		}
