@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
 		}
         if(Input.GetMouseButtonDown(1) && !gameManager.pausedGame){
             MeleeAttack();
+            FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeSwoosh");
         }
         if (Input.GetKey(KeyCode.Q))
 		{
@@ -369,6 +370,7 @@ public class Player : MonoBehaviour
             {
                 amayasHp = enemy.GetComponent<BossDamage>();
                 amayasHp.bossHPCurrent -=meleeAttackStrength;
+                FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeConnect");
             }
 
             if(enemy.tag == "Mirror1" && !gameManager.pausedGame)
