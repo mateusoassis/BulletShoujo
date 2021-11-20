@@ -21,6 +21,8 @@ public class RestartScript : MonoBehaviour
 	
 	public int indexRestartButtons;
 	
+	public PauseScript pauseScript;
+	
 	void Start()
     {
 		indexRestartButtons = 0;
@@ -29,35 +31,30 @@ public class RestartScript : MonoBehaviour
 	
 	void Update()
     {
-		if(Input.GetKeyDown(KeyCode.LeftArrow) && indexRestartButtons > 0)
+		if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
 			indexRestartButtons--;
 			UpdateRestartPositions();
-		} else if(Input.GetKeyDown(KeyCode.LeftArrow) && indexRestartButtons == 0)
-		{
-			indexRestartButtons = 1;
-			UpdateRestartPositions();
-		}
-		
-		if(Input.GetKeyDown(KeyCode.RightArrow) && indexRestartButtons < 1)
+		} else if(Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			indexRestartButtons++;
 			UpdateRestartPositions();
-		} else if(Input.GetKeyDown(KeyCode.RightArrow) && indexRestartButtons == 1)
-		{
-			indexRestartButtons = 0;
-			UpdateRestartPositions();
-		}
-		
+		}		
 		
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
 		{
+			Debug.Log("enter sai");
 			if(indexRestartButtons == 0)
 			{
 				gameManagerScript.GameScene();
 			} else if(indexRestartButtons == 1)
 			{
-				restartConfirmationPanel.SetActive(false);
+				//restartConfirmationPanel.SetActive(false);
+				//this.transform.parent.gameObject.SetActive(false);
+				pauseScript.restartConfirmationPanelIsUp = false;
+				this.transform.parent.gameObject.SetActive(false);
+				//pauseScript.CloseRestartConfirmation();
+				Debug.Log("fecha restart");
 			}		
 		}
 	}

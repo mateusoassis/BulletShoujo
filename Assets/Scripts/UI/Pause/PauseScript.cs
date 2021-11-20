@@ -37,28 +37,28 @@ public class PauseScript : MonoBehaviour
 
     void Update()
     {
-		if(Input.GetKeyDown(KeyCode.UpArrow) && indexButtons > 0)
+		if(Input.GetKeyDown(KeyCode.UpArrow) && indexButtons > 0 && !restartConfirmationPanelIsUp && !exitConfirmationPanelIsUp)
 		{
 			indexButtons--;
 			UpdatePositions();
-		} else if(Input.GetKeyDown(KeyCode.UpArrow) && indexButtons == 0)
+		} else if(Input.GetKeyDown(KeyCode.UpArrow) && indexButtons == 0 && !restartConfirmationPanelIsUp && !exitConfirmationPanelIsUp)
 		{
 			indexButtons = 2;
 			UpdatePositions();
 		}
 		
-		if(Input.GetKeyDown(KeyCode.DownArrow) && indexButtons < 2)
+		if(Input.GetKeyDown(KeyCode.DownArrow) && indexButtons < 2 && !restartConfirmationPanelIsUp && !exitConfirmationPanelIsUp)
 		{
 			indexButtons++;
 			UpdatePositions();
-		} else if(Input.GetKeyDown(KeyCode.DownArrow) && indexButtons == 2)
+		} else if(Input.GetKeyDown(KeyCode.DownArrow) && indexButtons == 2 && !restartConfirmationPanelIsUp && !exitConfirmationPanelIsUp)
 		{
 			indexButtons = 0;
 			UpdatePositions();
 		}
 		
 		
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) && !restartConfirmationPanelIsUp && !exitConfirmationPanelIsUp)
 		{
 			if(indexButtons == 0)
 			{
@@ -66,7 +66,6 @@ public class PauseScript : MonoBehaviour
 			} else if(indexButtons == 1)
 			{
 				OpenRestartConfirmation();
-				restartScript.indexRestartButtons = 0;
 			} else if(indexButtons == 2)
 			{
 				OpenExitConfirmation();
@@ -76,23 +75,23 @@ public class PauseScript : MonoBehaviour
 	
 	public void OpenRestartConfirmation()
 	{
-		restartConfirmationPanel.SetActive(true);
 		restartConfirmationPanelIsUp = true;
+		restartConfirmationPanel.SetActive(true);
 	}
 	public void CloseRestartConfirmation()
 	{
-		restartConfirmationPanel.SetActive(false);
 		restartConfirmationPanelIsUp = false;
+		restartConfirmationPanel.SetActive(false);	
 	}
 	public void OpenExitConfirmation()
 	{
-		exitConfirmationPanel.SetActive(true);
 		exitConfirmationPanelIsUp = true;
+		exitConfirmationPanel.SetActive(true);
 	}
 	public void CloseExitConfirmation()
 	{
-		exitConfirmationPanel.SetActive(false);
 		exitConfirmationPanelIsUp = false;
+		exitConfirmationPanel.SetActive(false);
 	}
     
 	public void SelectUnpause()

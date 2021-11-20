@@ -329,6 +329,8 @@ MonoBehaviour:
   tutorialToggle: {fileID: 0}
   tutorialPopup: {fileID: 0}
   isTutorialPopupUp: 0
+  gameSceneFadeOut: {fileID: 0}
+  fadingToMenu: 0
   currentScene:
     m_Handle: 0
   sceneIndex: 0
@@ -574,7 +576,7 @@ GameObject:
   - component: {fileID: 106925260}
   - component: {fileID: 106925263}
   m_Layer: 5
-  m_Name: ConfirmationYesButton
+  m_Name: ConfirmationYesExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +648,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 200436349}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
-        m_MethodName: MenuScene
+        m_MethodName: FromGameToMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -707,6 +709,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitTransformScript: {fileID: 1389616994}
+--- !u!1 &113281848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113281849}
+  - component: {fileID: 113281851}
+  - component: {fileID: 113281850}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &113281849
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113281848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 205777964}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2000, y: 1150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &113281850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113281848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &113281851
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113281848}
+  m_CullTransparentMesh: 1
 --- !u!1 &120507674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1423,8 @@ MonoBehaviour:
   tutorialToggle: {fileID: 0}
   tutorialPopup: {fileID: 0}
   isTutorialPopupUp: 0
+  gameSceneFadeOut: {fileID: 205777967}
+  fadingToMenu: 0
   currentScene:
     m_Handle: 0
   sceneIndex: 0
@@ -1374,6 +1453,7 @@ GameObject:
   - component: {fileID: 205777964}
   - component: {fileID: 205777966}
   - component: {fileID: 205777965}
+  - component: {fileID: 205777967}
   m_Layer: 5
   m_Name: ExitConfirmationPanel
   m_TagString: Untagged
@@ -1396,6 +1476,7 @@ RectTransform:
   - {fileID: 66245885}
   - {fileID: 106925259}
   - {fileID: 915057312}
+  - {fileID: 113281849}
   m_Father: {fileID: 862044712}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1442,6 +1523,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205777963}
   m_CullTransparentMesh: 1
+--- !u!114 &205777967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205777963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823144e9d29c56d48a4645126dda85ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerScript: {fileID: 200436349}
+  backgroundFadeOutDuration: 1.3
+  backgroundFadeOutImage: {fileID: 113281850}
+  backgroundFadeOutObject: {fileID: 113281848}
+  pauseMenu: {fileID: 862044709}
 --- !u!1 &231871339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1848,7 @@ GameObject:
   - component: {fileID: 262488889}
   - component: {fileID: 262488892}
   m_Layer: 5
-  m_Name: ConfirmationNoButton
+  m_Name: ConfirmationNoRestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1789,12 +1887,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 2092150374}
+    m_SelectOnRight: {fileID: 2092150374}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1820,10 +1918,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1056290337}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 630394240}
+        m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+        m_MethodName: CloseRestartConfirmation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3665,7 +3763,7 @@ GameObject:
   - component: {fileID: 630394238}
   - component: {fileID: 630394240}
   m_Layer: 5
-  m_Name: HeartOnButtons
+  m_Name: HeartPauseScriptHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4967,7 +5065,7 @@ GameObject:
   - component: {fileID: 915057313}
   - component: {fileID: 915057316}
   m_Layer: 5
-  m_Name: ConfirmationNoButton
+  m_Name: ConfirmationNoExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5037,10 +5135,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 205777963}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 630394240}
+        m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+        m_MethodName: CloseExitConfirmation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6210,6 +6308,8 @@ MonoBehaviour:
   tutorialToggle: {fileID: 0}
   tutorialPopup: {fileID: 0}
   isTutorialPopupUp: 0
+  gameSceneFadeOut: {fileID: 0}
+  fadingToMenu: 0
   currentScene:
     m_Handle: 0
   sceneIndex: 0
@@ -8168,7 +8268,9 @@ MonoBehaviour:
   exitConfirmationPanel: {fileID: 205777963}
   overrideMouse: 0
   gameManagerScript: {fileID: 200436349}
+  gameFadeOut: {fileID: 205777967}
   indexExitButtons: 0
+  pauseScript: {fileID: 630394240}
 --- !u!1 &1389720243
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,6 +9863,7 @@ MonoBehaviour:
   overrideMouse: 0
   gameManagerScript: {fileID: 200436349}
   indexRestartButtons: 0
+  pauseScript: {fileID: 630394240}
 --- !u!1 &1659237885
 GameObject:
   m_ObjectHideFlags: 0
@@ -11146,6 +11249,8 @@ MonoBehaviour:
   tutorialToggle: {fileID: 0}
   tutorialPopup: {fileID: 0}
   isTutorialPopupUp: 0
+  gameSceneFadeOut: {fileID: 0}
+  fadingToMenu: 0
   currentScene:
     m_Handle: 0
   sceneIndex: 0
@@ -13306,7 +13411,7 @@ GameObject:
   - component: {fileID: 2092150374}
   - component: {fileID: 2092150377}
   m_Layer: 5
-  m_Name: ConfirmationYesButton
+  m_Name: ConfirmationYesRestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13345,12 +13450,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 262488889}
+    m_SelectOnRight: {fileID: 262488889}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

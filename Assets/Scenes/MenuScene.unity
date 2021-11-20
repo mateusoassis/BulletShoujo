@@ -9175,6 +9175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseButtonText: {fileID: 0}
   PausePanel: {fileID: 0}
+  pauseScript: {fileID: 0}
   pausedGame: 0
   gameStarted: 0
   isOptionsPanelUp: 0
@@ -9190,6 +9191,7 @@ MonoBehaviour:
   tutorialToggle: {fileID: 223103108}
   tutorialPopup: {fileID: 283080976}
   isTutorialPopupUp: 0
+  gameSceneFadeOut: {fileID: 0}
   currentScene:
     m_Handle: 0
   sceneIndex: 0
@@ -10040,7 +10042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2087748957
 RectTransform:
   m_ObjectHideFlags: 0

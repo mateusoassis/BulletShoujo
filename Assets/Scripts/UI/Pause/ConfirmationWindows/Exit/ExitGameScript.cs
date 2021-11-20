@@ -18,8 +18,11 @@ public class ExitGameScript : MonoBehaviour
 	public bool overrideMouse;
 	
 	[SerializeField] private GameManagerScript gameManagerScript;
+	[SerializeField] private GameSceneFadeOut gameFadeOut;
 	
 	public int indexExitButtons;
+	
+	public PauseScript pauseScript;
 	
 	void Start()
     {
@@ -29,35 +32,27 @@ public class ExitGameScript : MonoBehaviour
 	
 	void Update()
     {
-		if(Input.GetKeyDown(KeyCode.LeftArrow) && indexExitButtons > 0)
+		if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
-			indexExitButtons--;
+			indexExitButtons = 0;
 			UpdateExitPositions();
-		} else if(Input.GetKeyDown(KeyCode.LeftArrow) && indexExitButtons == 0)
+		} else if(Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			indexExitButtons = 1;
 			UpdateExitPositions();
 		}
 		
-		if(Input.GetKeyDown(KeyCode.RightArrow) && indexExitButtons < 1)
-		{
-			indexExitButtons++;
-			UpdateExitPositions();
-		} else if(Input.GetKeyDown(KeyCode.RightArrow) && indexExitButtons == 1)
-		{
-			indexExitButtons = 0;
-			UpdateExitPositions();
-		}
-		
-		
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
 		{
 			if(indexExitButtons == 0)
 			{
-				gameManagerScript.MenuScene();
+				gameManagerScript.FromGameToMenuScene();
 			} else if(indexExitButtons == 1)
 			{
-				exitConfirmationPanel.SetActive(false);
+				//exitConfirmationPanel.SetActive(false);
+				pauseScript.exitConfirmationPanelIsUp = false;
+				this.transform.parent.gameObject.SetActive(false);
+				Debug.Log("fecha exit");
 			}		
 		}
 	}

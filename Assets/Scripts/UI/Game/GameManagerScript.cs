@@ -27,6 +27,9 @@ public class GameManagerScript : MonoBehaviour
 	public GameObject tutorialPopup;
 	public bool isTutorialPopupUp;
 	
+	public GameSceneFadeOut gameSceneFadeOut;
+	public bool fadingToMenu;
+	
 	public Scene currentScene;
 	public int sceneIndex;
 	
@@ -70,27 +73,32 @@ public class GameManagerScript : MonoBehaviour
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !pauseScript.restartConfirmationPanelIsUp && !pauseScript.exitConfirmationPanelIsUp){
+		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !pauseScript.restartConfirmationPanelIsUp && !pauseScript.exitConfirmationPanelIsUp && !fadingToMenu){
 			PauseUnpauseGame();
 		}
-		if(Input.GetKeyDown(KeyCode.Escape) && isOptionsPanelUp && !isTutorialPopupUp)
+		if(Input.GetKeyDown(KeyCode.Escape) && isOptionsPanelUp && !isTutorialPopupUp && !fadingToMenu)
 		{
 			CloseOptionsPanel();
 			isOptionsPanelUp = false;
 		}
-		if(Input.GetKeyDown(KeyCode.Escape) && isTutorialPopupUp && !isOptionsPanelUp)
+		if(Input.GetKeyDown(KeyCode.Escape) && isTutorialPopupUp && !isOptionsPanelUp && !fadingToMenu)
 		{
 			tutorialPopup.SetActive(false);
 			isTutorialPopupUp = false;
 		}
-		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.restartConfirmationPanelIsUp)
+		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.restartConfirmationPanelIsUp && !fadingToMenu)
 		{
 			pauseScript.CloseRestartConfirmation();
 		}
-		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.exitConfirmationPanelIsUp)
+		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.exitConfirmationPanelIsUp && !fadingToMenu)
 		{
 			pauseScript.CloseExitConfirmation();
 		}
+	}
+	
+	public void FromGameToMenuScene()
+	{
+		gameSceneFadeOut.FadeGameOut();
 	}
 	
 	public void ToggleTutorial()
