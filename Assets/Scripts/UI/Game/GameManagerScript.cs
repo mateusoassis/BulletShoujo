@@ -9,7 +9,11 @@ public class GameManagerScript : MonoBehaviour
 {
 	[SerializeField]TextMeshProUGUI PauseButtonText;
 	[SerializeField]GameObject PausePanel;
+	public PauseScript pauseScript;
 	public bool pausedGame;
+	public bool gameStarted;
+	public bool isOptionsPanelUp;
+	public GameObject optionsPanelObject;
 	
 	public float disclaimerTextDuration;
 	public float disclaimerTextFadeIn;
@@ -21,6 +25,7 @@ public class GameManagerScript : MonoBehaviour
 	public bool noTutorial;
 	public Toggle tutorialToggle;
 	public GameObject tutorialPopup;
+	public bool isTutorialPopupUp;
 	
 	public Scene currentScene;
 	public int sceneIndex;
@@ -65,8 +70,26 @@ public class GameManagerScript : MonoBehaviour
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape)){
+		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !pauseScript.restartConfirmationPanelIsUp && !pauseScript.exitConfirmationPanelIsUp){
 			PauseUnpauseGame();
+		}
+		if(Input.GetKeyDown(KeyCode.Escape) && isOptionsPanelUp && !isTutorialPopupUp)
+		{
+			CloseOptionsPanel();
+			isOptionsPanelUp = false;
+		}
+		if(Input.GetKeyDown(KeyCode.Escape) && isTutorialPopupUp && !isOptionsPanelUp)
+		{
+			tutorialPopup.SetActive(false);
+			isTutorialPopupUp = false;
+		}
+		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.restartConfirmationPanelIsUp)
+		{
+			pauseScript.CloseRestartConfirmation();
+		}
+		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.exitConfirmationPanelIsUp)
+		{
+			pauseScript.CloseExitConfirmation();
 		}
 	}
 	
@@ -100,8 +123,10 @@ public class GameManagerScript : MonoBehaviour
 		if(!noTutorial)
 		{
 			tutorialPopup.SetActive(true);
+			isTutorialPopupUp = true;
 		} else
 		{
+			isTutorialPopupUp = false;
 			GameScene();
 		}
 	}
@@ -139,6 +164,18 @@ public class GameManagerScript : MonoBehaviour
 	{
 		Application.Quit();
 		TimeScaleNormal();
+	}
+	
+	public void OpenOptionsPanel()
+	{
+		isOptionsPanelUp = true;
+		optionsPanelObject.SetActive(true);
+		tutorialPopup.SetActive(false);
+	}
+	public void CloseOptionsPanel()
+	{
+		isOptionsPanelUp = false;
+		optionsPanelObject.SetActive(false);
 	}
 	
 	// lógica para pausar e despausar no mesmo botão

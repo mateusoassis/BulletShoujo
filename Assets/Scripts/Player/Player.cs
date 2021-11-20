@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     public float bulletForce = 20f;
     public float reflectionSpeed;
+	[SerializeField] private float fireRateTimer;
+	public float fireRate; // a cada x segundos pode atirar
 
 	[Header("Dash")]
     public float dashForce = 10f;
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour
 		playerCollider = GetComponent<CapsuleCollider>();
 		resetDashTimer = resetDashCooldown;
         isShielded = false;
+		gameManager.gameStarted = true;
     }
 
     void Update()
@@ -99,11 +102,16 @@ public class Player : MonoBehaviour
 		//lembrar de checar esse imune nas balas depois
 		
         //Definindo o bot�o esquerdo do mouse para atirar.
-
-        if (Input.GetButtonDown("Fire1") && !gameManager.pausedGame)
+		if(fireRateTimer > 0)
+		{
+			fireRateTimer -= Time.deltaTime;
+		}
+		
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0)
         {
             Shoot();
             FindObjectOfType<AudioManager>().PlayOneShot("MagicShot");
+			fireRateTimer = fireRate;
         }
 		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
 		{
