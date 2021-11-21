@@ -360,10 +360,14 @@ public class Player : MonoBehaviour
 
     public IEnumerator Beam()
     {
+        FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell1");
+
         //Instanciamento de prefab do tiro de personagem.
         yield return new WaitForSeconds(0.5f);
         GameObject laser = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
         Rigidbody laserRb = laser.GetComponent<Rigidbody>();
+
+        FindObjectOfType<AudioManager>().Play("LaserSpell2");
 
         //Adicao de forca no tiro para impulsionar o prefab.
         
