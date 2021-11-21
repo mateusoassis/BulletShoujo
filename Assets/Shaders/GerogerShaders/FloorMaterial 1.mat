@@ -35,6 +35,6 @@ Material:
     - TransparencyControl_: 1
     - Vector1_c0b0c912bef54235ad27a6b2059caa2e: 0
     m_Colors:
-    - Color_: {r: 0.10060596, g: 0.016642937, b: 0.20754719, a: 1}
+    - Color_: {r: 0.29310748, g: 0.047659315, b: 0.5943396, a: 1}
     - FresnelColor_: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
