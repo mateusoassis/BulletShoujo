@@ -9,7 +9,6 @@ public class GameManagerScript : MonoBehaviour
 {
 	[SerializeField]TextMeshProUGUI PauseButtonText;
 	[SerializeField]GameObject PausePanel;
-	public PauseScript pauseScript;
 	public bool pausedGame;
 	public bool gameStarted;
 	public bool isOptionsPanelUp;
@@ -73,7 +72,7 @@ public class GameManagerScript : MonoBehaviour
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !pauseScript.restartConfirmationPanelIsUp && !pauseScript.exitConfirmationPanelIsUp && !fadingToMenu){
+		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !fadingToMenu){
 			PauseUnpauseGame();
 		}
 		if(Input.GetKeyDown(KeyCode.Escape) && isOptionsPanelUp && !isTutorialPopupUp && !fadingToMenu)
@@ -86,14 +85,14 @@ public class GameManagerScript : MonoBehaviour
 			tutorialPopup.SetActive(false);
 			isTutorialPopupUp = false;
 		}
-		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.restartConfirmationPanelIsUp && !fadingToMenu)
+		/*if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.restartConfirmationPanelIsUp && !fadingToMenu)
 		{
 			pauseScript.CloseRestartConfirmation();
 		}
 		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.exitConfirmationPanelIsUp && !fadingToMenu)
 		{
 			pauseScript.CloseExitConfirmation();
-		}
+		}*/
 	}
 	
 	public void FromGameToMenuScene()

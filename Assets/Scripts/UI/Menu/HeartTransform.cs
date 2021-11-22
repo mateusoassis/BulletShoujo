@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HeartTransform : MonoBehaviour
 {
-	public Transform startButtonTransform;
+	/*public Transform startButtonTransform;
 	public Button startButton;
 	
 	public Transform optionsButtonTransform;
@@ -97,5 +97,5 @@ public class HeartTransform : MonoBehaviour
 			transform.position = exitButtonTransform.position;
 			exitButton.Select();
 		}
-	}
+	}*/
 }

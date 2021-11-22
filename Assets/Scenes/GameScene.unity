@@ -313,7 +313,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseButtonText: {fileID: 554183274}
   PausePanel: {fileID: 862044709}
-  pauseScript: {fileID: 0}
   pausedGame: 0
   gameStarted: 0
   isOptionsPanelUp: 0
@@ -347,10 +346,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1820099393}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -574,7 +573,6 @@ GameObject:
   - component: {fileID: 106925262}
   - component: {fileID: 106925261}
   - component: {fileID: 106925260}
-  - component: {fileID: 106925263}
   m_Layer: 5
   m_Name: ConfirmationYesExitButton
   m_TagString: Untagged
@@ -615,12 +613,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 915057313}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -696,19 +694,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106925258}
   m_CullTransparentMesh: 1
---- !u!114 &106925263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106925258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644ed23a147592b48977f75fe9b91e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitTransformScript: {fileID: 1389616994}
 --- !u!1 &113281848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1392,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseButtonText: {fileID: 554183274}
   PausePanel: {fileID: 862044709}
-  pauseScript: {fileID: 630394240}
   pausedGame: 0
   gameStarted: 0
   isOptionsPanelUp: 0
@@ -1846,7 +1830,6 @@ GameObject:
   - component: {fileID: 262488891}
   - component: {fileID: 262488890}
   - component: {fileID: 262488889}
-  - component: {fileID: 262488892}
   m_Layer: 5
   m_Name: ConfirmationNoRestartButton
   m_TagString: Untagged
@@ -1892,7 +1875,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 2092150374}
-    m_SelectOnRight: {fileID: 2092150374}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1918,7 +1901,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630394240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: CloseRestartConfirmation
         m_Mode: 1
@@ -1968,19 +1951,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262488887}
   m_CullTransparentMesh: 1
---- !u!114 &262488892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262488887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43921f4b7a77a94bae483c2ae659dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restartTransformScript: {fileID: 1648030809}
 --- !u!1001 &265607827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4206,7 +4176,6 @@ GameObject:
   - component: {fileID: 630394237}
   - component: {fileID: 630394239}
   - component: {fileID: 630394238}
-  - component: {fileID: 630394240}
   m_Layer: 5
   m_Name: HeartPauseScriptHolder
   m_TagString: Untagged
@@ -4272,35 +4241,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630394236}
   m_CullTransparentMesh: 1
---- !u!114 &630394240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630394236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2d3a65afc567944ac6ceb062c83ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unpauseButtonTransform: {fileID: 1682583014}
-  unpauseButton: {fileID: 1875722798}
-  unpauseButtonImage: {fileID: 1875722799}
-  restartButtonTransform: {fileID: 1299405527}
-  restartButton: {fileID: 2053091998}
-  restartButtonImage: {fileID: 2053091999}
-  exitButtonTransform: {fileID: 1485585688}
-  exitButton: {fileID: 1768412968}
-  exitButtonImage: {fileID: 1768412969}
-  overrideMouse: 0
-  gameManagerScript: {fileID: 200436349}
-  restartConfirmationPanel: {fileID: 1056290337}
-  restartConfirmationPanelIsUp: 0
-  restartScript: {fileID: 1648030809}
-  exitConfirmationPanel: {fileID: 205777963}
-  exitConfirmationPanelIsUp: 0
-  indexButtons: 0
 --- !u!1 &700013354
 GameObject:
   m_ObjectHideFlags: 0
@@ -5557,7 +5497,6 @@ GameObject:
   - component: {fileID: 915057315}
   - component: {fileID: 915057314}
   - component: {fileID: 915057313}
-  - component: {fileID: 915057316}
   m_Layer: 5
   m_Name: ConfirmationNoExitButton
   m_TagString: Untagged
@@ -5598,11 +5537,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 106925260}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -5629,7 +5568,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630394240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: CloseExitConfirmation
         m_Mode: 1
@@ -5679,19 +5618,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915057311}
   m_CullTransparentMesh: 1
---- !u!114 &915057316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915057311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca1b23c52831e6e48894573ad87463ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitTransformScript: {fileID: 1389616994}
 --- !u!1001 &916236944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6933,7 +6859,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseButtonText: {fileID: 986158206}
   PausePanel: {fileID: 862044709}
-  pauseScript: {fileID: 0}
   pausedGame: 0
   gameStarted: 0
   isOptionsPanelUp: 0
@@ -6967,9 +6892,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1820099393}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -8916,7 +8841,7 @@ MonoBehaviour:
   gameManagerScript: {fileID: 200436349}
   gameFadeOut: {fileID: 205777967}
   indexExitButtons: 0
-  pauseScript: {fileID: 630394240}
+  pauseScript: {fileID: 0}
 --- !u!1 &1389720243
 GameObject:
   m_ObjectHideFlags: 0
@@ -10446,7 +10371,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1648030805}
-  - component: {fileID: 1648030809}
   - component: {fileID: 1648030808}
   - component: {fileID: 1648030807}
   - component: {fileID: 1648030806}
@@ -10558,29 +10482,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648030804}
   m_CullTransparentMesh: 1
---- !u!114 &1648030809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648030804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dee39b351f8e4f4c9145c0e3026c7f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yesButtonTransform: {fileID: 2092150373}
-  yesButton: {fileID: 2092150374}
-  yesButtonImage: {fileID: 2092150375}
-  noButtonTransform: {fileID: 262488888}
-  noButton: {fileID: 262488889}
-  noButtonImage: {fileID: 262488890}
-  restartConfirmationPanel: {fileID: 1056290337}
-  overrideMouse: 0
-  gameManagerScript: {fileID: 200436349}
-  indexRestartButtons: 0
-  pauseScript: {fileID: 630394240}
 --- !u!1 &1659237885
 GameObject:
   m_ObjectHideFlags: 0
@@ -11420,7 +11321,6 @@ GameObject:
   - component: {fileID: 1768412969}
   - component: {fileID: 1768412968}
   - component: {fileID: 1768412967}
-  - component: {fileID: 1768412966}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -11449,19 +11349,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4, y: 474}
   m_SizeDelta: {x: 97.6, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1768412966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768412964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5d3fbedba6b694ea8f87370493e47e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartPauseTransformScript: {fileID: 630394240}
 --- !u!61 &1768412967
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11532,7 +11419,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630394240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: OpenExitConfirmation
         m_Mode: 1
@@ -12077,7 +11964,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseButtonText: {fileID: 518066028}
   PausePanel: {fileID: 862044709}
-  pauseScript: {fileID: 0}
   pausedGame: 0
   gameStarted: 0
   isOptionsPanelUp: 0
@@ -12111,10 +11997,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 47470044}
+    m_SelectOnDown: {fileID: 1195845345}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -12414,7 +12300,6 @@ GameObject:
   - component: {fileID: 1875722799}
   - component: {fileID: 1875722798}
   - component: {fileID: 1875722797}
-  - component: {fileID: 1875722796}
   m_Layer: 5
   m_Name: UnpauseButton
   m_TagString: Untagged
@@ -12443,19 +12328,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4, y: 644}
   m_SizeDelta: {x: 97.6, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1875722796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875722794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcccc0996e2734643be89a190b696e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartPauseTransformScript: {fileID: 630394240}
 --- !u!61 &1875722797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18541,7 +18413,6 @@ GameObject:
   - component: {fileID: 2053091999}
   - component: {fileID: 2053091998}
   - component: {fileID: 2053091997}
-  - component: {fileID: 2053091996}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -18570,19 +18441,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4, y: 559}
   m_SizeDelta: {x: 97.6, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2053091996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053091994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46b00a7e0458b5a488a6461a1425a5cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartPauseTransformScript: {fileID: 630394240}
 --- !u!61 &2053091997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18653,7 +18511,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630394240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
         m_MethodName: OpenRestartConfirmation
         m_Mode: 1
@@ -19058,7 +18916,6 @@ GameObject:
   - component: {fileID: 2092150376}
   - component: {fileID: 2092150375}
   - component: {fileID: 2092150374}
-  - component: {fileID: 2092150377}
   m_Layer: 5
   m_Name: ConfirmationYesRestartButton
   m_TagString: Untagged
@@ -19103,7 +18960,7 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 262488889}
+    m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 262488889}
   m_Transition: 1
   m_Colors:
@@ -19180,19 +19037,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092150372}
   m_CullTransparentMesh: 1
---- !u!114 &2092150377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092150372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270351d7e0cdd9644b9753e176648ab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restartTransformScript: {fileID: 1648030809}
 --- !u!1 &2100153153
 GameObject:
   m_ObjectHideFlags: 0

@@ -2451,18 +2451,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1852377880}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607844, g: 0.34901962, b: 0.9058824, a: 0}
-    m_PressedColor: {r: 0.9607844, g: 0.654902, b: 0.9294118, a: 1}
-    m_SelectedColor: {r: 0.9607844, g: 0.34901962, b: 0.9058824, a: 0}
+    m_NormalColor: {r: 0.9529412, g: 0.53333336, b: 0.91764706, a: 0}
+    m_HighlightedColor: {r: 1, g: 0.3647059, b: 0.94509804, a: 0}
+    m_PressedColor: {r: 1, g: 0.68235296, b: 0.972549, a: 1}
+    m_SelectedColor: {r: 1, g: 0.76862746, b: 0.98039216, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2486,18 +2486,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2104376995}
-        m_TargetAssemblyTypeName: HeartTransform, Assembly-CSharp
-        m_MethodName: SelectExit
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6205,18 +6193,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1852377880}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 0.9528302, g: 0.5348434, b: 0.91670793, a: 0}
     m_HighlightedColor: {r: 1, g: 0.36320752, b: 0.94506127, a: 0}
     m_PressedColor: {r: 1, g: 0.68235296, b: 0.9725491, a: 1}
-    m_SelectedColor: {r: 1, g: 0.3647059, b: 0.9450981, a: 0}
+    m_SelectedColor: {r: 1, g: 0.7688679, b: 0.98002565, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -6239,18 +6227,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1936280288}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: OpenTutorialPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2104376995}
-        m_TargetAssemblyTypeName: HeartTransform, Assembly-CSharp
-        m_MethodName: SelectStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8589,7 +8565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1222853733}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1734321465
@@ -8811,18 +8787,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1222853735}
+    m_SelectOnDown: {fileID: 252034891}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607844, g: 0.34901962, b: 0.9058824, a: 0}
-    m_PressedColor: {r: 0.9607844, g: 0.654902, b: 0.9294118, a: 1}
-    m_SelectedColor: {r: 0.9607844, g: 0.34901962, b: 0.9058824, a: 0}
+    m_NormalColor: {r: 0.9529412, g: 0.53333336, b: 0.91764706, a: 0}
+    m_HighlightedColor: {r: 1, g: 0.3647059, b: 0.94509804, a: 0}
+    m_PressedColor: {r: 1, g: 0.68235296, b: 0.972549, a: 1}
+    m_SelectedColor: {r: 1, g: 0.76862746, b: 0.98039216, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8845,18 +8821,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1936280288}
         m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
         m_MethodName: OpenOptionsPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2104376995}
-        m_TargetAssemblyTypeName: HeartTransform, Assembly-CSharp
-        m_MethodName: SelectOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9359,7 +9323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseButtonText: {fileID: 0}
   PausePanel: {fileID: 0}
-  pauseScript: {fileID: 0}
   pausedGame: 0
   gameStarted: 0
   isOptionsPanelUp: 0
@@ -10337,16 +10300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b207b68ca1fcf4b9ca100179fe463b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButtonTransform: {fileID: 726762835}
-  startButton: {fileID: 1222853735}
-  optionsButtonTransform: {fileID: 789665598}
-  optionsButton: {fileID: 1852377880}
-  exitButtonTransform: {fileID: 538310299}
-  exitButton: {fileID: 252034891}
-  gameManagerScript: {fileID: 1936280288}
-  optionsPanel: {fileID: 936634278}
-  confirmationPanel: {fileID: 1170746958}
-  indexButtons: 0
 --- !u!114 &2104376996
 MonoBehaviour:
   m_ObjectHideFlags: 0
