@@ -14,6 +14,9 @@ public class GameManagerScript : MonoBehaviour
 	public bool isOptionsPanelUp;
 	public GameObject optionsPanelObject;
 	
+	public MenuNavigation menuNavigation;
+	public GameSceneFadeOut gameFadeOut;
+	
 	public float disclaimerTextDuration;
 	public float disclaimerTextFadeIn;
 	public float disclaimerBackgroundDuration;

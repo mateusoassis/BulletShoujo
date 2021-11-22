@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
 
 	[Header("Booleanos e Direcao")]
     public bool isOnCoolDown;
+	public bool isShooting;
     public bool isNotMoving;
 	public bool isDashing;
 	public bool recentlyDamaged;
@@ -109,12 +110,21 @@ public class Player : MonoBehaviour
 			fireRateTimer -= Time.deltaTime;
 		}
 		
-        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0)
+		if(Input.GetButtonDown("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0)
+        {
+			isShooting = true;
+		} else if(Input.GetButtonUp("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0)
+		{
+			isShooting = false;
+		}
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing)
         {
             Shoot();
+			isShooting = true;
             FindObjectOfType<AudioManager>().PlayOneShot("MagicShot");
 			fireRateTimer = fireRate;
         }
+		
 		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
 		{
 			playerAttributes.CastHeal();
@@ -215,6 +225,7 @@ public class Player : MonoBehaviour
 						isDashing = true;                    
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}					
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 2 && !isDashing)
@@ -225,6 +236,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 3 && !isDashing)
@@ -235,6 +247,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}			
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 4 && !isDashing)
@@ -245,6 +258,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}
 					
                 }
@@ -256,6 +270,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}				
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 6 && !isDashing)
@@ -266,6 +281,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}					
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 7 && !isDashing)
@@ -276,6 +292,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}					
                 }         
                 else if (Input.GetKey(KeyCode.Space) && direction == 8 && !isDashing)
@@ -286,6 +303,7 @@ public class Player : MonoBehaviour
 						isDashing = true;
 						direction = 0;
 						dashAmount++;
+						isShooting = false;
 					}
                 }
 				if(isDashing)

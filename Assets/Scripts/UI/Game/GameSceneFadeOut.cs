@@ -13,6 +13,14 @@ public class GameSceneFadeOut : MonoBehaviour
 	
 	public GameObject pauseMenu;
 	
+	void Start()
+	{
+		backgroundFadeOutObject.SetActive(true);
+		gameManagerScript.fadingToMenu = true;
+		StartCoroutine(gameManagerScript.FadeImgOut(backgroundFadeOutImage, (backgroundFadeOutDuration), 0, 0, 0));
+		StartCoroutine("StartGame");
+	}
+	
 	public void FadeGameOut()
 	{
 		
@@ -20,23 +28,32 @@ public class GameSceneFadeOut : MonoBehaviour
 		gameManagerScript.fadingToMenu = true;
 		gameManagerScript.TimeScaleNormal();
 		StartCoroutine(gameManagerScript.FadeImgIn(backgroundFadeOutImage, backgroundFadeOutDuration, 0, 0, 0));
-		Debug.Log("começou troca pra menu");
 		StartCoroutine("WaitToChangeScene");
-		Debug.Log("acabou");
 	}
-	
-	/*void Update()
+	public void FadeGameToRetry()
 	{
-		if(backgroundFadeOutImage.color.a >= 0.99f)
-		{
-			gameManagerScript.MenuScene();
-		}
-	}*/
+		backgroundFadeOutObject.SetActive(true);
+		gameManagerScript.fadingToMenu = true;
+		gameManagerScript.TimeScaleNormal();
+		StartCoroutine(gameManagerScript.FadeImgIn(backgroundFadeOutImage, backgroundFadeOutDuration, 0, 0, 0));
+		StartCoroutine("WaitToRetryScene");
+	}
 	
 	public IEnumerator WaitToChangeScene()
 	{
-		Debug.Log("esperando");
 		yield return new WaitForSeconds(backgroundFadeOutDuration * 1.7f);
 		gameManagerScript.MenuScene();
+	}
+	public IEnumerator WaitToRetryScene()
+	{
+		yield return new WaitForSeconds(backgroundFadeOutDuration * 1.7f);
+		gameManagerScript.Retry();
+	}
+	public IEnumerator StartGame()
+	{
+		yield return new WaitForSeconds(backgroundFadeOutDuration * 1.7f);
+		gameManagerScript.TimeScaleNormal();
+		backgroundFadeOutObject.SetActive(false);
+		gameManagerScript.fadingToMenu = false;
 	}
 }
