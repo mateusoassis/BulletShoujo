@@ -210,6 +210,30 @@ PrefabInstance:
       value: SoundManager
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: fxVolSlider
+      value: 
+      objectReference: {fileID: 179221247}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sgVolSlider
+      value: 
+      objectReference: {fileID: 45888717}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: fxMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: genVolSlider
+      value: 
+      objectReference: {fileID: 1613366218}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: songMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: generalMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -256,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 1dfbf568b75b8694081cb62050b71ec5, type: 3}
+      objectReference: {fileID: 8300000, guid: 0afcec3d1a2577446b86313d73a1d94d, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[6].name
       value: YurinaMeleeMirrorBreak
@@ -272,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 313abc58ba8c008408e3fa8b8cbef9d3, type: 3}
+      objectReference: {fileID: 8300000, guid: d3c045a5dcc012b4e92abb96a7c4f0d0, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].name
       value: AmayaShot
@@ -450,7 +474,7 @@ GameObject:
   - component: {fileID: 45888716}
   - component: {fileID: 45888717}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,13 +546,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1588702506}
   m_HandleRect: {fileID: 1446748960}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 94530875}
+        m_TargetAssemblyTypeName: SoundOptions, Assembly-CSharp
+        m_MethodName: SetSongVol
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &51376740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 94530874}
+  - component: {fileID: 94530875}
   m_Layer: 5
   m_Name: Volume
   m_TagString: Untagged
@@ -1044,6 +1081,22 @@ RectTransform:
   m_AnchoredPosition: {x: 252, y: -169}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &94530875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94530873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a023c44eb195f59428b62d07d26121a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volManager: {fileID: 0}
+  genVolSlider: {fileID: 1613366218}
+  fxVolSlider: {fileID: 179221247}
+  sgVolSlider: {fileID: 45888717}
 --- !u!1 &98990063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1635,7 @@ GameObject:
   - component: {fileID: 179221246}
   - component: {fileID: 179221247}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1654,13 +1707,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 766087973}
   m_HandleRect: {fileID: 1850410843}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 94530875}
+        m_TargetAssemblyTypeName: SoundOptions, Assembly-CSharp
+        m_MethodName: SetFXVol
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &181028754
 GameObject:
   m_ObjectHideFlags: 0
@@ -8239,7 +8304,7 @@ GameObject:
   - component: {fileID: 1613366217}
   - component: {fileID: 1613366218}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderMaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8311,13 +8376,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2009328993}
   m_HandleRect: {fileID: 1139737542}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 94530875}
+        m_TargetAssemblyTypeName: SoundOptions, Assembly-CSharp
+        m_MethodName: SetGeneralVol
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1670883981
 GameObject:
   m_ObjectHideFlags: 0

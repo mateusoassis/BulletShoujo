@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Unity.Audio;
 
@@ -7,6 +8,10 @@ using Unity.Audio;
 public class Sound
 {
 
+
+
+    [Range(0, 1)]
+    public int tag;
     public string name;
     public AudioClip clip;
     
@@ -17,6 +22,7 @@ public class Sound
     public float pitch;
 
     public bool loop;
+
 
      
     [HideInInspector]

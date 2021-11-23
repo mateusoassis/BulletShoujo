@@ -3170,6 +3170,18 @@ PrefabInstance:
       value: 'SoundManager '
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: fxMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: songMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: generalMultiplier
+      value: 0.449
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -3200,26 +3212,26 @@ PrefabInstance:
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 8e1da6b663531a846ab5901ac329ca62, type: 3}
+      objectReference: {fileID: 8300000, guid: 0afcec3d1a2577446b86313d73a1d94d, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[4].name
-      value: AmayaMirrorShield
+      value: YurinaMeleeMirrorBreak
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: d80b65370a449a640a4d6d3a035f3c80, type: 3}
+      objectReference: {fileID: 8300000, guid: 8e1da6b663531a846ab5901ac329ca62, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[5].name
-      value: YurinaMeleeSwoosh
+      value: AmayaMirrorShield
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 1dfbf568b75b8694081cb62050b71ec5, type: 3}
+      objectReference: {fileID: 8300000, guid: d80b65370a449a640a4d6d3a035f3c80, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[6].name
-      value: YurinaMeleeMirrorBreak
+      value: YurinaMeleeSwoosh
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[7].clip
@@ -3232,7 +3244,7 @@ PrefabInstance:
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 313abc58ba8c008408e3fa8b8cbef9d3, type: 3}
+      objectReference: {fileID: 8300000, guid: d3c045a5dcc012b4e92abb96a7c4f0d0, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].name
       value: AmayaShot
@@ -3339,7 +3351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].volume
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[9].volume

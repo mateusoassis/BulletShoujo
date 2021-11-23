@@ -170,7 +170,9 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
 		{
 			StartCoroutine("Beam");
-		}
+		} else if (Input.GetKeyUp(KeyCode.Q)){
+            FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell3");
+        }
 		
 		// shield
         if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded)
@@ -420,11 +422,12 @@ public class Player : MonoBehaviour
         GameObject laser = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
         Rigidbody laserRb = laser.GetComponent<Rigidbody>();
 
-        FindObjectOfType<AudioManager>().Play("LaserSpell2");
+        FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell2");
 
         //Adicao de forca no tiro para impulsionar o prefab.
         
         laserRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+
     }
 
     void MeleeAttack(){
