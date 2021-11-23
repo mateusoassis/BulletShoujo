@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     public GameObject singleShield;
     public GameObject yurinaHealing;
     public GameObject yurinaExplosions;
+    public GameObject yurinaDash;
 	private BossMirrorAttack bossMirrorAttack;
 	
 	//direcoes
@@ -169,12 +170,12 @@ public class Player : MonoBehaviour
         } 
 		
 		// raio
-        if (Input.GetKey(KeyCode.Q))
+        /*if (Input.GetKey(KeyCode.Q))
 		{
 			StartCoroutine("Beam");
 		} else if (Input.GetKeyUp(KeyCode.Q)){
             FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell3");
-        }
+        }*/
 		
 		// shield
         if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded)
@@ -260,6 +261,8 @@ public class Player : MonoBehaviour
                 {
 					if(dashAmount < maxDashAmount)
 					{
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce((Vector3.right + Vector3.forward) * ((dashForce)/Mathf.Sqrt(2f)), ForceMode.VelocityChange);
 						isDashing = true;                    
 						direction = 0;
@@ -271,6 +274,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{			
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce((Vector3.left + Vector3.back) * ((dashForce)/Mathf.Sqrt(2f)), ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;
@@ -282,6 +287,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce((Vector3.forward + Vector3.left) * ((dashForce)/Mathf.Sqrt(2f)), ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;
@@ -293,6 +300,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce((Vector3.back + Vector3.right) * ((dashForce)/Mathf.Sqrt(2f)), ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;
@@ -305,6 +314,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce(Vector3.forward * dashForce, ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;
@@ -316,6 +327,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce(Vector3.right * dashForce, ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;
@@ -327,6 +340,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{
+                        GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce(Vector3.left * dashForce, ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;

@@ -3208,7 +3208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274818, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8000001
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274818, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3216,11 +3216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274818, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.42
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274818, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5500002
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274818, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3252,11 +3252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274819, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4742585485264274819, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
       propertyPath: ShapeModule.radiusThickness
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06873f25358ff07429d772bc3a71f4cb, type: 3}
@@ -6905,6 +6905,7 @@ Transform:
   - {fileID: 1965678241}
   - {fileID: 2081423176}
   - {fileID: 718275879}
+  - {fileID: 1947451739}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6961,6 +6962,7 @@ MonoBehaviour:
   singleShield: {fileID: 1344330172}
   yurinaHealing: {fileID: 4015077426947171368, guid: 40227065ddc783942bd7b47096dcc304, type: 3}
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
+  yurinaDash: {fileID: 8905989008258022977, guid: a9a9862e3f6fa1d4bb99553f7880f2e7, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -10197,7 +10199,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   currentState: 0
   currentShotState: 0
-  idleDuration: 0
+  idleDuration: 1
   isBossIdle: 0
   isCasting: 0
 --- !u!65 &1926142976
@@ -10269,6 +10271,36 @@ MonoBehaviour:
   bossFillBar: 0
   playerAttributes: {fileID: 0}
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
+--- !u!1 &1947451738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1947451739}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1947451739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947451738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1389720247}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1955446636
 GameObject:
   m_ObjectHideFlags: 0
