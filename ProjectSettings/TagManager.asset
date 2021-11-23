@@ -13,6 +13,7 @@ TagManager:
   - Mirror
   - AreaDamage
   - DashCollider
+  - Colorblind
   layers:
   - Default
   - TransparentFX

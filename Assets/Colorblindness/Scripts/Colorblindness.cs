@@ -20,7 +20,7 @@ namespace SOHNE.Accessibility.Colorblindness
     }
 
     public class Colorblindness : MonoBehaviour
-    {
+    {		
         public KeyCode changeKey = KeyCode.F1;
 
         // TODO: Clear saved settings
@@ -71,6 +71,7 @@ namespace SOHNE.Accessibility.Colorblindness
             }
 
             maxType = (int) System.Enum.GetValues(typeof(ColorblindTypes)).Cast<ColorblindTypes>().Last();
+			StartCoroutine(ApplyFilter());
         }
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -118,6 +119,11 @@ namespace SOHNE.Accessibility.Colorblindness
             PlayerPrefs.SetInt("Accessibility.ColorblindType", currentType);
             currentType++;
         }
+		
+		public void ApplyThisFilter()
+		{
+			StartCoroutine(ApplyFilter());
+		}
 		
 		public void ChangeToNormal()
 		{

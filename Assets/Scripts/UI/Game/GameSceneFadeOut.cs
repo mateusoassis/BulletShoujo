@@ -43,6 +43,7 @@ public class GameSceneFadeOut : MonoBehaviour
 	{
 		yield return new WaitForSeconds(backgroundFadeOutDuration * 1.7f);
 		gameManagerScript.MenuScene();
+		Destroy (GameObject.FindWithTag("Colorblind"));
 	}
 	public IEnumerator WaitToRetryScene()
 	{
@@ -55,5 +56,7 @@ public class GameSceneFadeOut : MonoBehaviour
 		gameManagerScript.TimeScaleNormal();
 		backgroundFadeOutObject.SetActive(false);
 		gameManagerScript.fadingToMenu = false;
+		//Destroy(ColorVolumeController);
+		
 	}
 }
