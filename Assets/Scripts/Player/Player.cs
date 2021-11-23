@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+	public Animator yurinaAnimator;
+	
     //velocidade de movimento do player e do tiro, respectivamente.
 	[Header("Velocidade de Personagem e Bala")]
     public float moveSpeed = 10f;
@@ -12,6 +14,8 @@ public class Player : MonoBehaviour
     public float reflectionSpeed;
 	[SerializeField] private float fireRateTimer;
 	public float fireRate; // a cada x segundos pode atirar
+	[SerializeField] private float meleeRateTimer;
+	public float meleeRate;
 
 	[Header("Dash")]
     public float dashForce = 10f;
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
 
 	[Header("Booleanos e Direcao")]
     public bool isOnCoolDown;
+	public bool isAttacking;
 	public bool isShooting;
     public bool isNotMoving;
 	public bool isDashing;
@@ -105,19 +110,25 @@ public class Player : MonoBehaviour
 		//lembrar de checar esse imune nas balas depois
 		
         //Definindo o bot�o esquerdo do mouse para atirar.
+		
+		// check do tiro normal
 		if(fireRateTimer > 0)
 		{
 			fireRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetButtonDown("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0)
+		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking)
         {
 			isShooting = true;
-		} else if(Input.GetButtonUp("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0)
+			yurinaAnimator.SetBool("isShooting", true);		
+		} else if(Input.GetButtonUp("Fire1") && !gameManager.pausedGame)
 		{
 			isShooting = false;
+			yurinaAnimator.SetBool("isShooting", false);
 		}
-        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing)
+		
+		// tiro normal
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking)
         {
             Shoot();
 			isShooting = true;
@@ -125,19 +136,43 @@ public class Player : MonoBehaviour
 			fireRateTimer = fireRate;
         }
 		
+		// cura
 		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
 		{
 			playerAttributes.CastHeal();
             FindObjectOfType<AudioManager>().PlayOneShot("HealSpell");
 		}
-        if(Input.GetMouseButtonDown(1) && !gameManager.pausedGame){
+		
+		// check do golpe melee
+		if(meleeRateTimer > 0)
+		{
+			meleeRateTimer -= Time.deltaTime;
+		}
+		
+		if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking)
+		{
+			isAttacking = true;
+			yurinaAnimator.SetBool("isAttacking", true);
+		} else if(Input.GetMouseButtonUp(1) && !gameManager.pausedGame && !isShooting)
+		{
+			StartCoroutine("MeleeAttackCooldown");
+		}
+		
+		// golpe melee
+        if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting){
             MeleeAttack();
+			meleeRateTimer = meleeRate;
+			//isAttacking = true;
             FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeSwoosh");
-        }
+        } 
+		
+		// raio
         if (Input.GetKey(KeyCode.Q))
 		{
 			StartCoroutine("Beam");
 		}
+		
+		// shield
         if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded)
         {
             isShielded = true;
@@ -446,4 +481,11 @@ public class Player : MonoBehaviour
             shieldObject.SetActive(false);
         }
     }
+	
+	public IEnumerator MeleeAttackCooldown()
+	{
+		yield return new WaitForSeconds(meleeRate);
+		isAttacking = false;
+		yurinaAnimator.SetBool("isAttacking", false);
+	}
 }

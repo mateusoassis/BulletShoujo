@@ -8,6 +8,9 @@ public class BulletScript : MonoBehaviour
     private Transform mirror1;
     private Transform mirror2;
     private Player playerScript;
+	
+	[SerializeField] private BossDamage bossDamage;
+	[SerializeField] private PlayerAttributes playerAtt;
     
     private BossMirrorAttack bossMirror;
     void Start()
@@ -15,6 +18,8 @@ public class BulletScript : MonoBehaviour
         mirror1 = GameObject.Find("MirrorInside1").GetComponent<Transform>();
         mirror2 = GameObject.Find("MirrorInside2").GetComponent<Transform>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
+		playerAtt = GameObject.Find("PlayerAttributes").GetComponent<PlayerAttributes>();
+		bossDamage = GameObject.Find("Boss").GetComponent<BossDamage>();
         bossMirror = GameObject.Find("MirrorPoint").GetComponent<BossMirrorAttack>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine("TimeToDestroy");
@@ -28,7 +33,8 @@ public class BulletScript : MonoBehaviour
 	
 	void OnTriggerEnter (Collider col)
 	{
-		if(col.gameObject.tag == "Wall"){
+		if(col.gameObject.tag == "Wall")
+{
 			Destroy(this.gameObject);
 		}
 
@@ -43,5 +49,13 @@ public class BulletScript : MonoBehaviour
             Debug.Log("TiroBateu2");
             rb.AddForce(mirror2.right * playerScript.bulletForce * bossMirror.reflectionSpeed, ForceMode.Impulse);
         }
+		/*if(col.gameObject.tag == "Boss")
+        {
+            bossDamage.bossHPCurrent--;
+			if(playerAtt.currentMana < playerAtt.maxMana){
+				playerAtt.currentMana++;
+			}			
+            Destroy(this.gameObject);
+        }*/
 	}
 }

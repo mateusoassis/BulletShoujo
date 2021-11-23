@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BossDamage : MonoBehaviour
 {
-
+	public BoxCollider bossCollider;
 
     public float bossHP;
     public float bossHPCurrent;
@@ -55,6 +55,5 @@ public class BossDamage : MonoBehaviour
 			}			
             Destroy(col.gameObject);
         }
-    }
-       
+    }     
 }
