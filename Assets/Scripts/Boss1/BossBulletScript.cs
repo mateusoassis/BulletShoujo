@@ -10,6 +10,7 @@ public class BossBulletScript : MonoBehaviour
 	private Player player;
 	private PlayerAttributes playerAttributes;
 
+	public GameObject amayaExplosions;
     [SerializeField]
     Vector3 dir2;
 
@@ -53,6 +54,7 @@ public class BossBulletScript : MonoBehaviour
 		if(col.gameObject.tag == "Wall")
 		{
 			//Invoke("Destroy", 0f);
+			GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 			Destroy(this.gameObject);
 		}
 		if(col.gameObject.tag == "Player")
@@ -65,10 +67,12 @@ public class BossBulletScript : MonoBehaviour
 				player.isShielded = false;
 				player.shieldObject.SetActive(false);
 				//this.gameObject.SetActive(false);
+				GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 				Destroy(this.gameObject);
 				}else{
 				playerAttributes.currentLife--;
 				//this.gameObject.SetActive(false);
+				GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 				Destroy(this.gameObject);
 			}
 		  }

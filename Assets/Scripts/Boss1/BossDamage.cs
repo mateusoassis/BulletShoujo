@@ -21,6 +21,8 @@ public class BossDamage : MonoBehaviour
 	
 	public PlayerAttributes playerAttributes;
 
+    public GameObject yurinaExplosions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,7 @@ public class BossDamage : MonoBehaviour
 			if(playerAttributes.currentMana < playerAttributes.maxMana){
 				playerAttributes.currentMana++;
 			}			
+            GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);
         }
     }     

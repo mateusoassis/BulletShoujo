@@ -11,6 +11,8 @@ public class BulletScript : MonoBehaviour
 	
 	[SerializeField] private BossDamage bossDamage;
 	[SerializeField] private PlayerAttributes playerAtt;
+
+    public GameObject explosionPrefab;
     
     private BossMirrorAttack bossMirror;
     void Start()
@@ -34,7 +36,8 @@ public class BulletScript : MonoBehaviour
 	void OnTriggerEnter (Collider col)
 	{
 		if(col.gameObject.tag == "Wall")
-{
+        {   
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity) as GameObject;
 			Destroy(this.gameObject);
 		}
 

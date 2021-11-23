@@ -60,7 +60,8 @@ public class Player : MonoBehaviour
     public GameObject shieldObject;
 	public GameManagerScript gameManager;
     public GameObject singleShield;
-	
+    public GameObject yurinaHealing;
+    public GameObject yurinaExplosions;
 	private BossMirrorAttack bossMirrorAttack;
 	
 	//direcoes
@@ -139,6 +140,7 @@ public class Player : MonoBehaviour
 		// cura
 		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
 		{
+            GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
             FindObjectOfType<AudioManager>().PlayOneShot("HealSpell");
 		}
@@ -441,6 +443,7 @@ public class Player : MonoBehaviour
                 amayasHp = enemy.GetComponent<BossDamage>();
                 amayasHp.bossHPCurrent -=meleeAttackStrength;
                 FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeConnect");
+                GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
             }
 
             if(enemy.tag == "Mirror1" && !gameManager.pausedGame)
@@ -448,6 +451,7 @@ public class Player : MonoBehaviour
 				Debug.Log("acertou mirror 1");
                 bossMirrorAttack.Mirror1Break();
                 FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+                GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
             }
 			
 			if(enemy.tag == "Mirror2"  && !gameManager.pausedGame)
@@ -455,6 +459,7 @@ public class Player : MonoBehaviour
 				Debug.Log("acertou mirror 2");
 				bossMirrorAttack.Mirror2Break();
                 FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+                GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
 			}
         }
     }
