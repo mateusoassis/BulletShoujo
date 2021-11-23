@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfSmallOrbs: 20
-  projectileSpeed: 10
+  projectileSpeed: 20
   destructionTimer: 8
   projectilePrefab: {fileID: 5349050327569332216, guid: 5d63b260973475c49adf9feda0306d8d, type: 3}
 --- !u!54 &-813979803996759488
