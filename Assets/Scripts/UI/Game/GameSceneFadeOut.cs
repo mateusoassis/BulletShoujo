@@ -23,7 +23,6 @@ public class GameSceneFadeOut : MonoBehaviour
 	
 	public void FadeGameOut()
 	{
-		
 		backgroundFadeOutObject.SetActive(true);
 		gameManagerScript.fadingToMenu = true;
 		gameManagerScript.TimeScaleNormal();
@@ -55,8 +54,6 @@ public class GameSceneFadeOut : MonoBehaviour
 		yield return new WaitForSeconds(backgroundFadeOutDuration * 1.7f);
 		gameManagerScript.TimeScaleNormal();
 		backgroundFadeOutObject.SetActive(false);
-		gameManagerScript.fadingToMenu = false;
-		//Destroy(ColorVolumeController);
-		
+		gameManagerScript.fadingToMenu = false;		
 	}
 }
