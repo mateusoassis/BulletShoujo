@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 	public int maxDashAmount = 2;
 	public float resetDashCooldown;
 	public float resetDashTimer;
+    public float damageResetTimer;
 
     [Header("Melee Attack")]
     public Transform meleePoint;
@@ -44,6 +45,8 @@ public class Player : MonoBehaviour
     public int direction;
 	public bool isImmuneToDamage;
     public bool isShielded;
+
+    public bool canBeDamaged;
 	private CapsuleCollider playerCollider;
 
 	[Header("Rigidbody do Player")]
@@ -101,6 +104,7 @@ public class Player : MonoBehaviour
         isShielded = false;
 		gameManager.gameStarted = true;
         singleShield.SetActive(false);
+        canBeDamaged = true;
     }
 
     void Update()
@@ -511,4 +515,10 @@ public class Player : MonoBehaviour
 		isAttacking = false;
 		yurinaAnimator.SetBool("isAttacking", false);
 	}
+
+    public IEnumerator DamagedReset()
+    {
+        yield return new WaitForSeconds(damageResetTimer);
+        canBeDamaged = true;
+    }
 }
