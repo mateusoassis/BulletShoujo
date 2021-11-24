@@ -20,7 +20,7 @@ public class BulletScript : MonoBehaviour
     {
         Destroy(this.gameObject, 3f);
         playerScript = GameObject.Find("Player").GetComponent<Player>();
-		playerAtt = GameObject.Find("PlayerAttributes").GetComponent<PlayerAttributes>();
+		playerAtt = GameObject.Find("Player").GetComponent<PlayerAttributes>();
 		bossDamage = GameObject.Find("Boss").GetComponent<BossDamage>();
         bossMirror = GameObject.Find("MirrorPoint").GetComponent<BossMirrorAttack>();
         rb = GetComponent<Rigidbody>();

@@ -389,31 +389,25 @@ public class Player : MonoBehaviour
 	
     void Aim()
     {
-        //Utilizacao de Raycast para identificar a posicao do mouse na tela atrav�s da c�mera.
-
+        // Utilizacao de Raycast para identificar a posicao do mouse na tela atrav�s da c�mera.
         RaycastHit hit;
 
-        //Pegando o input de posicao do mouse com raycast.
-
+        // Pegando o input de posicao do mouse com raycast.
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if(Physics.Raycast(ray, out hit , float.MaxValue, layerMask))
         {
             position = new Vector3(hit.point.x, 0, hit.point.z);
-			Debug.Log(hit.collider.name);
         }
 
         //Criando quaternion que define a rotacao do player em relacao ao mouse.
-
         Quaternion newRotation = Quaternion.LookRotation(position - transform.position, Vector3.forward);
 
         //Zerando o quaternion de x e z para evitar que o player rode de formas estranhas...
-
         newRotation.x = 0f; 
         newRotation.z = 0f;
 
         //controle da velocidade da rota��o.
-
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 20);
     }
 	
@@ -448,8 +442,7 @@ public class Player : MonoBehaviour
 
         FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell2");
 
-        //Adicao de forca no tiro para impulsionar o prefab.
-        
+        //Adicao de forca no tiro para impulsionar o prefab.      
         laserRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
 
     }
