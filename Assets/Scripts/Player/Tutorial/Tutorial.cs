@@ -9,6 +9,11 @@ public class Tutorial : MonoBehaviour
 	public Transform playerTransform;
 	public Transform restartWaypoint;
 	public GameManagerScript gameManagerScript;
+	public PlayerAttributes playerAtt;
+	
+	public int manaRegenPerSecond;
+	public float manaRegenDelay;
+	public float manaRegenDelayTimer;
 	
 	public bool resetPlayerPos;
 	
@@ -33,8 +38,29 @@ public class Tutorial : MonoBehaviour
 		{
 			thisCollider.isTrigger = false;
 			resetPlayerPos = true;
-		}
+		}		
+		RegenMana();		
     }
+	
+	public void RegenMana()
+	{
+		if(playerAtt.currentMana < playerAtt.maxMana)
+		{
+			
+			if(manaRegenDelayTimer <= 0)
+			{
+				playerAtt.currentMana += manaRegenPerSecond;
+				manaRegenDelayTimer = manaRegenDelay;
+			} else
+			{
+				manaRegenDelayTimer -= Time.deltaTime;
+			}
+		} else
+		{
+			playerAtt.currentMana = playerAtt.maxMana;
+		}
+		
+	}
 	
 	void OnCollisionEnter(Collision col)
 	{
