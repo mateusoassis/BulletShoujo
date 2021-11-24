@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
 	[SerializeField]GameObject PausePanel;
 	public bool pausedGame;
 	public bool gameStarted;
+	public bool tutorialStarted;
 	public bool isOptionsPanelUp;
 	public GameObject optionsPanelObject;
 	
@@ -88,7 +89,11 @@ public class GameManagerScript : MonoBehaviour
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !fadingToMenu){
+		if(Input.GetKeyDown(KeyCode.Escape) && gameStarted && !fadingToMenu)
+		{
+			PauseUnpauseGame();
+		} else if(Input.GetKeyDown(KeyCode.Escape) && tutorialStarted && !fadingToMenu)
+		{
 			PauseUnpauseGame();
 		}
 		if(Input.GetKeyDown(KeyCode.Escape) && isOptionsPanelUp && !isTutorialPopupUp && !fadingToMenu)
