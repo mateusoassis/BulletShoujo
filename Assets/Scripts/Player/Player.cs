@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
 	public bool isImmuneToDamage;
     public bool isShielded;
     public bool canBeDamaged;
+	public bool castingLaser;
 	private CapsuleCollider playerCollider;
 
 	[Header("Rigidbody do Player")]
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+		castingLaser = false;
 		gameManager.TimeScaleNormal();
 		playerAttributes = GetComponent<PlayerAttributes>();
         spawnedLaser = Instantiate(laserPrefab, laserFirePoint.transform) as GameObject;
@@ -143,7 +145,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// tiro normal
-        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu)
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu && !castingLaser)
         {
             Shoot();
 			isShooting = true;
@@ -165,7 +167,7 @@ public class Player : MonoBehaviour
 			meleeRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing)
+		if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser)
 		{
 			isAttacking = true;
 			yurinaAnimator.SetBool("isAttacking", true);
@@ -175,7 +177,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// golpe melee
-        if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu){
+        if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu && !castingLaser){
             MeleeAttack();
 			meleeRateTimer = meleeRate;
 			//isAttacking = true;
@@ -185,9 +187,11 @@ public class Player : MonoBehaviour
 		// raio que vai ser no NÚMERO/LETRA R
         if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
 		{
+			castingLaser = true;
             EnableLaser();
         }else if(Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana < 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
+			castingLaser = false;
             DisableLaser();
         }
 
@@ -198,6 +202,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.R) && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
+			castingLaser = false;
             DisableLaser();
         }
 		
@@ -281,7 +286,7 @@ public class Player : MonoBehaviour
             {
                 
 				//FORÇA ADICIONADA EM CADA DIREÇÃO, os que tem /mathf.sqrt(2f) são por que são em diagonal, aí precisa dividir por raiz de 2 para ter o dash na mesma distância que os nas direções normais
-                if (Input.GetKey(KeyCode.Space) && direction == 1 && !isDashing)
+                if (Input.GetKey(KeyCode.Space) && direction == 1 && !isDashing && !castingLaser)
                 {
 					if(dashAmount < maxDashAmount)
 					{
@@ -294,7 +299,7 @@ public class Player : MonoBehaviour
 						isShooting = false;
 					}					
                 }
-                else if (Input.GetKey(KeyCode.Space) && direction == 2 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 2 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{			
@@ -307,7 +312,7 @@ public class Player : MonoBehaviour
 						isShooting = false;
 					}
                 }
-                else if (Input.GetKey(KeyCode.Space) && direction == 3 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 3 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{
@@ -320,7 +325,7 @@ public class Player : MonoBehaviour
 						isShooting = false;
 					}			
                 }
-                else if (Input.GetKey(KeyCode.Space) && direction == 4 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 4 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{
@@ -334,7 +339,7 @@ public class Player : MonoBehaviour
 					}
 					
                 }
-                else if (Input.GetKey(KeyCode.Space) && direction == 5 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 5 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{
@@ -347,7 +352,7 @@ public class Player : MonoBehaviour
 						isShooting = false;
 					}				
                 }
-                else if (Input.GetKey(KeyCode.Space) && direction == 6 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 6 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{
@@ -360,7 +365,7 @@ public class Player : MonoBehaviour
 						isShooting = false;
 					}					
                 }
-                else if (Input.GetKey(KeyCode.Space) && direction == 7 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 7 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{
@@ -373,7 +378,7 @@ public class Player : MonoBehaviour
 						isShooting = false;
 					}					
                 }         
-                else if (Input.GetKey(KeyCode.Space) && direction == 8 && !isDashing)
+                else if (Input.GetKey(KeyCode.Space) && direction == 8 && !isDashing && !castingLaser)
                 {     
 					if(dashAmount < maxDashAmount)
 					{
