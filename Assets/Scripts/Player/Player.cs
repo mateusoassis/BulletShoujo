@@ -400,6 +400,7 @@ public class Player : MonoBehaviour
         if(Physics.Raycast(ray, out hit , float.MaxValue, layerMask))
         {
             position = new Vector3(hit.point.x, 0, hit.point.z);
+			Debug.Log(hit.collider.name);
         }
 
         //Criando quaternion que define a rotacao do player em relacao ao mouse.

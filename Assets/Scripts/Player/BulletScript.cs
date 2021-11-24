@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour
 	}
     void Start()
     {
-        Destroy(this.gameObject, 5f);
+        Destroy(this.gameObject, 3f);
         playerScript = GameObject.Find("Player").GetComponent<Player>();
 		playerAtt = GameObject.Find("PlayerAttributes").GetComponent<PlayerAttributes>();
 		bossDamage = GameObject.Find("Boss").GetComponent<BossDamage>();
