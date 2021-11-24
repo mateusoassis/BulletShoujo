@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame)
+		if (Input.GetKey(KeyCode.Q) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
@@ -173,8 +173,8 @@ public class Player : MonoBehaviour
             FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeSwoosh");
         } 
 		
-		// raio
-        /*if (Input.GetKey(KeyCode.Q))
+		// raio que vai ser no NÚMERO/LETRA R
+        /*if (Input.GetKey(KeyCode.R))
 		{
 			StartCoroutine("Beam");
 		} else if (Input.GetKeyUp(KeyCode.Q)){
@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
         }*/
 		
 		// shield
-        if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu)
+        if(Input.GetKey(KeyCode.E) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu)
         {
             isShielded = true;
 			playerAttributes.currentMana -= 20;
