@@ -15,23 +15,29 @@ public class BulletScript : MonoBehaviour
     public GameObject explosionPrefab;
     
     private BossMirrorAttack bossMirror;
+	
+	void Awake()
+	{
+		
+	}
     void Start()
     {
-        mirror1 = GameObject.Find("MirrorInside1").GetComponent<Transform>();
-        mirror2 = GameObject.Find("MirrorInside2").GetComponent<Transform>();
+        Destroy(this.gameObject, 5f);
         playerScript = GameObject.Find("Player").GetComponent<Player>();
 		playerAtt = GameObject.Find("PlayerAttributes").GetComponent<PlayerAttributes>();
 		bossDamage = GameObject.Find("Boss").GetComponent<BossDamage>();
         bossMirror = GameObject.Find("MirrorPoint").GetComponent<BossMirrorAttack>();
         rb = GetComponent<Rigidbody>();
-        StartCoroutine("TimeToDestroy");
+		mirror1 = GameObject.Find("MirrorInside1").GetComponent<Transform>();
+        mirror2 = GameObject.Find("MirrorInside2").GetComponent<Transform>();
+        //StartCoroutine("TimeToDestroy");
     }
 
-    public IEnumerator TimeToDestroy()
+    /*public IEnumerator TimeToDestroy()
     {
         yield return new WaitForSeconds(1.8f);
         Destroy(this.gameObject);
-    }
+    }*/
 	
 	void OnTriggerEnter (Collider col)
 	{

@@ -357,6 +357,8 @@ public class Player : MonoBehaviour
                 {     
 					if(dashAmount < maxDashAmount)
 					{
+						GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
+                        dashTrail.transform.parent = gameObject.transform;
 						rb.AddForce(Vector3.back * dashForce, ForceMode.VelocityChange);
 						isDashing = true;
 						direction = 0;

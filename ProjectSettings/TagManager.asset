@@ -14,6 +14,7 @@ TagManager:
   - AreaDamage
   - DashCollider
   - Colorblind
+  - TutorialWalls
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Amaya
-  - 
+  - LayerMip
   - 
   - 
   - 

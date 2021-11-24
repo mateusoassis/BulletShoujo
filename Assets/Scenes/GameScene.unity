@@ -1208,6 +1208,7 @@ MonoBehaviour:
   PausePanel: {fileID: 862044709}
   pausedGame: 0
   gameStarted: 0
+  tutorialStarted: 0
   isOptionsPanelUp: 0
   optionsPanelObject: {fileID: 0}
   screenBorders: {fileID: 1879105314}
