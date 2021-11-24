@@ -23,10 +23,14 @@ public class BossDamage : MonoBehaviour
     public Player playerScript;
 
     public GameObject yurinaExplosions;
+	
+	public BossState bossStateScript;
+	public Transform secondPhaseTransform;
 
     // Start is called before the first frame update
     void Start()
     {
+		bossStateScript.secondPhase = false;
         bossHPCurrent = bossHP;
         bossIsDead = false;
 		BossHPBar.value = bossHPCurrent/bossHP;
@@ -35,17 +39,21 @@ public class BossDamage : MonoBehaviour
         pauseMenuInvk = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(bossHPCurrent <= 0)
+        if(bossHPCurrent <= 10 && !bossStateScript.secondPhase)
         {
-            Destroy(this.gameObject);
-            bossIsDead = true;
-			winPanelObject.SetActive(true);
+			bossHPCurrent = bossHP;
+			transform.position = secondPhaseTransform.position;
+			bossStateScript.secondPhase = true;
+        } else if(bossHPCurrent <= 0 && bossStateScript.secondPhase)
+		{
+			// era pra ter "destroy this gameobject" aqui
+			bossIsDead = true;
 			Time.timeScale = 0f;
             pauseMenuInvk.pausedGame = true;
-        }
+			winPanelObject.SetActive(true);
+		}
 		BossHPBar.value = bossHPCurrent/bossHP;
     }
     

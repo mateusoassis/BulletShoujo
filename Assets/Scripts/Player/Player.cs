@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 	public Animator yurinaAnimator;
+	public GameObject characterModel;
 	
     //velocidade de movimento do player e do tiro, respectivamente.
 	[Header("Velocidade de Personagem e Bala")]
@@ -115,8 +116,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Definindo a mira para ficar funcionando 100% do tempo no update.
-
-        Aim();
+		if(!gameManager.fadingToMenu)
+		{
+			Aim();
+		}
+        
 		//DashImmune();
 		//lembrar de checar esse imune nas balas depois
 		
@@ -161,7 +165,7 @@ public class Player : MonoBehaviour
 			meleeRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking)
+		if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing)
 		{
 			isAttacking = true;
 			yurinaAnimator.SetBool("isAttacking", true);
@@ -179,20 +183,20 @@ public class Player : MonoBehaviour
         } 
 		
 		// raio que vai ser no NÚMERO/LETRA R
-        if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana >=5)
+        if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
 		{
             EnableLaser();
-        }else if(Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana <5)
+        }else if(Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana < 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
             DisableLaser();
         }
 
-        if(Input.GetKey(KeyCode.R) && playerAttributes.currentMana >=5)
+        if(Input.GetKey(KeyCode.R) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
             UpdateLaser();
         }
 
-        if(Input.GetKeyUp(KeyCode.R))
+        if(Input.GetKeyUp(KeyCode.R) && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
             DisableLaser();
         }
@@ -449,19 +453,26 @@ public class Player : MonoBehaviour
 
     public void EnableLaser()
     {
-        FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell1");
-        spawnedLaser.SetActive(true); 
-        FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell2");
+        if(playerAttributes.currentMana >= 5f)
+		{
+			FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell1");
+			spawnedLaser.SetActive(true); 
+			FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell2");
+		}
     }
 
     public void UpdateLaser()
     {
         spawnedLaser.transform.position = laserFirePoint.transform.position;
         playerAttributes.currentMana = playerAttributes.currentMana - Time.deltaTime * 8;
+		if(playerAttributes.currentMana < 5f)
+		{
+			DisableLaser();
+		}
     }
     public void DisableLaser()
     {
-        FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell3");
+        FindObjectOfType<AudioManager>().Play("LaserSpell3");
         spawnedLaser.SetActive(false);
     }
 
@@ -532,7 +543,64 @@ public class Player : MonoBehaviour
 
     public IEnumerator DamagedReset()
     {
+		StartCoroutine("CharacterBlinking");
         yield return new WaitForSeconds(damageResetTimer);
         canBeDamaged = true;
     }
+	
+	public IEnumerator CharacterBlinking()
+	{
+		yield return new WaitForSeconds(0.150f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.140f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.130f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.120f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.110f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.110f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.100f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.100f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.090f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.090f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.080f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.080f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.070f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.070f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.060f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.060f);
+		characterModel.SetActive(true);
+		/*yield return new WaitForSeconds(0.050f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.050f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.050f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.050f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.050f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.050f);*/
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.050f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.040f);
+		characterModel.SetActive(true);
+		yield return new WaitForSeconds(0.030f);
+		characterModel.SetActive(false);
+		yield return new WaitForSeconds(0.030f);
+		characterModel.SetActive(true);
+	}
 }

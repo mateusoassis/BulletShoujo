@@ -29,6 +29,7 @@ public class BossState : MonoBehaviour
 	public int currentShotState;
 	public int idleDuration;
 	public bool isBossIdle;
+	public bool secondPhase;
 	
 	[Header("Boss")]
 	private Rigidbody bossRb;
@@ -104,7 +105,7 @@ public class BossState : MonoBehaviour
 	public IEnumerator StartBoss()
 	{
 		yield return new WaitForSeconds(3f);
-		ChangeState(MOVE_STATE);
+		ChangeState(IDLE_STATE);
 	}
 	
 	/*private IEnumerator ResetIsDashOnCollider()
@@ -165,7 +166,6 @@ public class BossState : MonoBehaviour
 				break;
 			case 4:
 			    StartCoroutine("CastBigOrbs");
-				//state = MOVE_STATE;
 				break;
 			case 5:
 				StartCoroutine("CastFireSwirl");
@@ -205,18 +205,15 @@ public class BossState : MonoBehaviour
 		}else if(randomNextAttack == 4 && mirrorCastScript.canUseMirror)
 		{
 			isBossIdle = false;
-			Debug.Log("pode usar");
 			ChangeState(MIRROR_CAST); // state 7
 		} else if(randomNextAttack == 4 && !mirrorCastScript.canUseMirror)
 		{
-			Debug.Log("n pode usar");
 			ChangeState(MOVE_STATE); // state 1
 		}
 	}
 
 	public IEnumerator CastBigOrbs()
 	{
-		Debug.Log("casting");
 		isCasting = true;
 		meleeBoss.canBossMove = false;
 		yield return new WaitForSeconds(1.0f);
@@ -229,7 +226,6 @@ public class BossState : MonoBehaviour
 
 	public IEnumerator CastFirePattern()
 	{
-		Debug.Log("casting");
 		isCasting = true;
 		meleeBoss.canBossMove = false;
 		yield return new WaitForSeconds(2.0f);
@@ -242,7 +238,6 @@ public class BossState : MonoBehaviour
 
 	public IEnumerator CastFireSwirl()
 	{
-		Debug.Log("casting");
 		isCasting = true;
 		meleeBoss.canBossMove = false;
 		bossFireSwirlScript.Swirl();
@@ -253,7 +248,6 @@ public class BossState : MonoBehaviour
 	}
 	public IEnumerator CastFullFire()
 	{
-		Debug.Log("casting");
 		isCasting = true;
 		meleeBoss.canBossMove = false;
 		fullFireScript.StartCoroutine("Shoot");
@@ -265,10 +259,8 @@ public class BossState : MonoBehaviour
 
 	public IEnumerator CastMirrors()
 	{
-		Debug.Log("casting");
 		isCasting = true;
 		meleeBoss.canBossMove = false;
-		//mirrorCastScript.CastMirrors();
 		FindObjectOfType<AudioManager>().PlayOneShot("AmayaMirrorShield");
 		yield return new WaitForSeconds(0.8f);
 		mirrorCastScript.ActivateMirrors();
