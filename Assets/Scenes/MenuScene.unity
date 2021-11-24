@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].clip
       value: 
-      objectReference: {fileID: 8300000, guid: d3c045a5dcc012b4e92abb96a7c4f0d0, type: 3}
+      objectReference: {fileID: 8300000, guid: 6146225bc8f23884582b83b37d8977d3, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[8].name
       value: AmayaShot
