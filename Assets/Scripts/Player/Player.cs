@@ -514,7 +514,7 @@ public class Player : MonoBehaviour
 	
 	public IEnumerator MeleeAttackCooldown()
 	{
-		yield return new WaitForSeconds(meleeRate);
+		yield return new WaitForSeconds(0.3f);
 		isAttacking = false;
 		yurinaAnimator.SetBool("isAttacking", false);
 	}

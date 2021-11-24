@@ -9,10 +9,22 @@ public class BossBulletScript : MonoBehaviour
 	private SphereCollider bulletCollider;
 	private Player player;
 	private PlayerAttributes playerAttributes;
+	[SerializeField] private Tutorial tutorialScript;
+	
+	public GameManagerScript gameManager;
 
 	public GameObject amayaExplosions;
     [SerializeField]
     Vector3 dir2;
+
+	void Awake()
+	{
+		gameManager = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
+		if(gameManager.tutorialStarted)
+		{
+			tutorialScript = GameObject.Find("dashColliderForHole").GetComponent<Tutorial>();
+		}
+	}
 
     void Start()
     {
@@ -51,31 +63,42 @@ public class BossBulletScript : MonoBehaviour
     }
 	void OnTriggerEnter (Collider col)
 	{
-		if(col.gameObject.tag == "Wall")
+		if(col.gameObject.tag == "Wall" || col.gameObject.tag == "ExplosionWalls")
 		{
+			Debug.Log("eu");
 			//Invoke("Destroy", 0f);
 			GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 			Destroy(this.gameObject);
 		}
 		if(col.gameObject.tag == "Player")
 		{
-			if(player.isDashing){
-				bulletCollider.enabled = false;
-			}else if(!player.isDashing)
+			if(!gameManager.tutorialStarted)
 			{
-				if(player.isShielded){
-				player.isShielded = false;
-				player.shieldObject.SetActive(false);
-				//this.gameObject.SetActive(false);
-				GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
-				Destroy(this.gameObject);
-				}else{
-				playerAttributes.currentLife--;
-				//this.gameObject.SetActive(false);
-				GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
+				if(player.isDashing)
+				{
+					bulletCollider.enabled = false;
+				}else if(!player.isDashing)
+				{
+					if(player.isShielded){
+						player.isShielded = false;
+						player.shieldObject.SetActive(false);
+						//this.gameObject.SetActive(false);
+						GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
+						Destroy(this.gameObject);
+					} else
+					{
+						playerAttributes.currentLife--;
+						//this.gameObject.SetActive(false);
+						GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
+						Destroy(this.gameObject);
+					}
+				}
+			
+			} else if(!player.isDashing)
+			{
+				tutorialScript.SendPlayerToStart();
 				Destroy(this.gameObject);
 			}
-		  }
 		}
 	}	
 	void OnTriggerExit(Collider col)
