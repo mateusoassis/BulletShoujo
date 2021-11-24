@@ -174,17 +174,21 @@ public class MeleeBoss : MonoBehaviour
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;
 				
-		FindObjectOfType<AudioManager>().PlayOneShot("AmayaSwordSoundHorizontal");		
+		FindObjectOfType<AudioManager>().PlayOneShot("AmayaSwordSoundHorizontal");
 		yield return new WaitForSeconds(attackAntecipation);
 		
 		//bossMeleeCollider.enabled = true; //após um tempinho
 		
-		if(isPlayerOnArea) //&& !playerScript.isDashing && !isBuffUp
+		if(isPlayerOnArea&&playerScript.canBeDamaged) //&& !playerScript.isDashing && !isBuffUp
 		{
+			playerScript.canBeDamaged = false;
 			playerAttributesScript.currentLife--;		
-		} else if(isPlayerOnArea && isBuffUp)
+			playerScript.StartCoroutine("DamagedReset");
+		} else if(isPlayerOnArea && isBuffUp && playerScript.canBeDamaged)
 		{
+			playerScript.canBeDamaged = false;
 			playerAttributesScript.currentLife -= 2;
+			playerScript.StartCoroutine("DamagedReset");
 		}
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;

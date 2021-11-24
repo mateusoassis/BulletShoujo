@@ -6743,6 +6743,7 @@ Transform:
   - {fileID: 2081423176}
   - {fileID: 718275879}
   - {fileID: 1947451739}
+  - {fileID: 2089678258}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6773,7 +6774,8 @@ MonoBehaviour:
   maxDashAmount: 1
   resetDashCooldown: 1
   resetDashTimer: 0
-  damageResetTimer: 0
+  damageResetTimer: 2
+  laserDPS: 10
   meleePoint: {fileID: 1965678241}
   attackRange: 2
   meleeAttackStrength: 5
@@ -6794,14 +6796,16 @@ MonoBehaviour:
   rb: {fileID: 0}
   playerAttributes: {fileID: 0}
   firePoint: {fileID: 2026307128}
+  laserFirePoint: {fileID: 2089678258}
   bulletPrefab: {fileID: 3711592136697656174, guid: a415b53081c2c114db23bd46e7a9a87f, type: 3}
-  laserPrefab: {fileID: 8166557441253211962, guid: cf694c8b4a81e354b9a8516a5f52bdc5, type: 3}
+  laserPrefab: {fileID: 8937231397013157746, guid: 9428e712abbee354aa9b6b96bdee2cf4, type: 3}
   shieldObject: {fileID: 1663614035}
   gameManager: {fileID: 0}
   singleShield: {fileID: 1344330172}
   yurinaHealing: {fileID: 4015077426947171368, guid: 40227065ddc783942bd7b47096dcc304, type: 3}
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
   yurinaDash: {fileID: 8905989008258022977, guid: a9a9862e3f6fa1d4bb99553f7880f2e7, type: 3}
+  spawnedLaser: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -6834,7 +6838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 0
-  maxLife: 3
+  maxLife: 100
   heartAmount:
   - {fileID: 1837374146}
   - {fileID: 701794442}
@@ -9589,6 +9593,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2647d39d8d09e7349814bbadc23dc8f3, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[9].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[9].name
       value: LaserSpell2
       objectReference: {fileID: 0}
@@ -10292,6 +10300,7 @@ MonoBehaviour:
   BossHPBar: {fileID: 1362279259}
   bossFillBar: 0
   playerAttributes: {fileID: 0}
+  playerScript: {fileID: 0}
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
 --- !u!1 &1947451738
 GameObject:
@@ -16195,6 +16204,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2089678257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2089678258}
+  m_Layer: 0
+  m_Name: LaserFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2089678258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089678257}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13, y: 1.02, z: 1.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1389720247}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2089906342
 GameObject:
   m_ObjectHideFlags: 0

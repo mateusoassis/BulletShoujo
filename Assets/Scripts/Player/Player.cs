@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 	public float resetDashCooldown;
 	public float resetDashTimer;
     public float damageResetTimer;
+    public float laserDPS;
 
     [Header("Melee Attack")]
     public Transform meleePoint;
@@ -45,7 +46,6 @@ public class Player : MonoBehaviour
     public int direction;
 	public bool isImmuneToDamage;
     public bool isShielded;
-
     public bool canBeDamaged;
 	private CapsuleCollider playerCollider;
 
@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
     [Header("Transform do firePoint da bala")]
 
     public Transform firePoint;
+
+    public Transform laserFirePoint;
     public GameObject bulletPrefab;
     public GameObject laserPrefab;
     public GameObject shieldObject;
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
     public GameObject yurinaHealing;
     public GameObject yurinaExplosions;
     public GameObject yurinaDash;
+    public GameObject spawnedLaser;
 	private BossMirrorAttack bossMirrorAttack;
 	
 	//direcoes
@@ -95,6 +98,8 @@ public class Player : MonoBehaviour
     {
 		gameManager.TimeScaleNormal();
 		playerAttributes = GetComponent<PlayerAttributes>();
+        spawnedLaser = Instantiate(laserPrefab, laserFirePoint.transform) as GameObject;
+        DisableLaser();
         rb = GetComponent<Rigidbody>();
 		recentlyDamaged = false;
         dashDuration = startDashTime;
@@ -174,12 +179,23 @@ public class Player : MonoBehaviour
         } 
 		
 		// raio que vai ser no NÚMERO/LETRA R
-        /*if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana >=5)
 		{
-			StartCoroutine("Beam");
-		} else if (Input.GetKeyUp(KeyCode.Q)){
-            FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell3");
-        }*/
+            EnableLaser();
+        }else if(Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana <5)
+        {
+            DisableLaser();
+        }
+
+        if(Input.GetKey(KeyCode.R) && playerAttributes.currentMana >=5)
+        {
+            UpdateLaser();
+        }
+
+        if(Input.GetKeyUp(KeyCode.R))
+        {
+            DisableLaser();
+        }
 		
 		// shield
         if(Input.GetKey(KeyCode.E) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu)
@@ -431,20 +447,22 @@ public class Player : MonoBehaviour
         bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
     }
 
-    public IEnumerator Beam()
+    public void EnableLaser()
     {
         FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell1");
-
-        //Instanciamento de prefab do tiro de personagem.
-        yield return new WaitForSeconds(0.5f);
-        GameObject laser = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody laserRb = laser.GetComponent<Rigidbody>();
-
+        spawnedLaser.SetActive(true); 
         FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell2");
+    }
 
-        //Adicao de forca no tiro para impulsionar o prefab.      
-        laserRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
-
+    public void UpdateLaser()
+    {
+        spawnedLaser.transform.position = laserFirePoint.transform.position;
+        playerAttributes.currentMana = playerAttributes.currentMana - Time.deltaTime * 8;
+    }
+    public void DisableLaser()
+    {
+        FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell3");
+        spawnedLaser.SetActive(false);
     }
 
     void MeleeAttack(){

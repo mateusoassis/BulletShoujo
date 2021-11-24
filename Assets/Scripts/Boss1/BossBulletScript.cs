@@ -80,17 +80,24 @@ public class BossBulletScript : MonoBehaviour
 					bulletCollider.enabled = false;
 				}else if(!player.isDashing)
 				{
-					if(player.isShielded){
+					if(player.isShielded && player.canBeDamaged){
 						player.isShielded = false;
 						player.shieldObject.SetActive(false);
+						player.canBeDamaged = false;
 						//this.gameObject.SetActive(false);
 						GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 						Destroy(this.gameObject);
-					} else
+						player.StartCoroutine("DamagedReset");
+					} else if(player.canBeDamaged)
 					{
+						player.canBeDamaged = false;
 						playerAttributes.currentLife--;
 						//this.gameObject.SetActive(false);
 						GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
+						Destroy(this.gameObject);
+						player.StartCoroutine("DamagedReset");
+					}else if(!player.canBeDamaged)
+					{
 						Destroy(this.gameObject);
 					}
 				}

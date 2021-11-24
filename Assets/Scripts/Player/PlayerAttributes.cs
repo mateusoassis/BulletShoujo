@@ -14,9 +14,8 @@ public class PlayerAttributes : MonoBehaviour
 	public Image[] heartAmount;
 	public Sprite filledHeart;
 	public Sprite emptyHeart;
-	
-	public int currentMana;
-	public int maxMana = 100;
+	public float currentMana;
+	public float maxMana = 100;
 	public Image[] manaAmount;
 	
 	public GameObject[] canUseOrNot;

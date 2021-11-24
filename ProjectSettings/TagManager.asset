@@ -16,6 +16,7 @@ TagManager:
   - Colorblind
   - TutorialWalls
   - ExplosionWalls
+  - PlayerLaser
   layers:
   - Default
   - TransparentFX

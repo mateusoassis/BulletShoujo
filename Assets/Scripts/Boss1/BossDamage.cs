@@ -20,6 +20,7 @@ public class BossDamage : MonoBehaviour
 	public float bossFillBar;
 	
 	public PlayerAttributes playerAttributes;
+    public Player playerScript;
 
     public GameObject yurinaExplosions;
 
@@ -30,6 +31,7 @@ public class BossDamage : MonoBehaviour
         bossIsDead = false;
 		BossHPBar.value = bossHPCurrent/bossHP;
 		playerAttributes = GameObject.Find("Player").GetComponent<PlayerAttributes>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
         pauseMenuInvk = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
     }
 
@@ -58,5 +60,13 @@ public class BossDamage : MonoBehaviour
             GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);
         }
-    }     
+    }    
+
+    void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "PlayerLaser")
+        {
+            bossHPCurrent = bossHPCurrent - Time.deltaTime * playerScript.laserDPS;
+        }
+    } 
 }
