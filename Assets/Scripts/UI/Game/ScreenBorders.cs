@@ -16,6 +16,21 @@ public class ScreenBorders : MonoBehaviour
 	
 	public PlayerAttributes playerAtt;
 	
+	public BossDamage bossDamage;
+	
+	public GameManagerScript gameManagerScript;
+	
+	void Start()
+	{
+		if(gameManagerScript.screenBordersOff)
+		{
+			this.gameObject.SetActive(false);
+		} else
+		{
+			this.gameObject.SetActive(true);
+		}
+	}
+	
 	void Update()
     {
         if(playerAtt.currentLife == 1)
@@ -38,6 +53,11 @@ public class ScreenBorders : MonoBehaviour
 		} else if(transform.localScale.x <= minScaleVector.x && transform.localScale.y <= minScaleVector.y)
 		{
 			scaleUp = true;
+		}
+		
+		if(playerAtt.currentLife == 0 || bossDamage.bossHPCurrent == 0)
+		{
+			this.gameObject.SetActive(false);
 		}
     }
 }

@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
 			fireRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking)
+		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking && !gameManager.fadingToMenu)
         {
 			isShooting = true;
 			yurinaAnimator.SetBool("isShooting", true);		
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// tiro normal
-        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking)
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu)
         {
             Shoot();
 			isShooting = true;
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana)
+		if (Input.GetKey(KeyCode.E) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// golpe melee
-        if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting){
+        if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu){
             MeleeAttack();
 			meleeRateTimer = meleeRate;
 			//isAttacking = true;
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
         }*/
 		
 		// shield
-        if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded)
+        if(Input.GetKey(KeyCode.F) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu)
         {
             isShielded = true;
 			playerAttributes.currentMana -= 20;
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
     {
         //Inputs de WASD para movimentacao em 8 direcoes utilizando a multiplicacao de velocidade por tempo.
 
-        if (!recentlyDamaged && !isDashing)
+        if (!recentlyDamaged && !isDashing && !gameManager.fadingToMenu && !gameManager.pausedGame)
         {
 
             if (Input.GetKey(KeyCode.W))

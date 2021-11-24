@@ -12,7 +12,7 @@ public class WinPanel : MonoBehaviour
 	void OnEnable()
 	{
 		Debug.Log("ganhou man");
-		int u = Random.Range(0, (stringsNow.winStrings.Length)+1);
+		int u = Random.Range(0, (stringsNow.winStrings.Length));
 		winText.text = stringsNow.winStrings[u];
 	}
 }

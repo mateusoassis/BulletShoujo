@@ -12,7 +12,7 @@ public class LosePanel : MonoBehaviour
 	void OnEnable()
 	{
 		Debug.Log("perdeu man");
-		int u = Random.Range(0, (stringsNow.loseStrings.Length)+1);
+		int u = Random.Range(0, (stringsNow.loseStrings.Length));
 		loseText.text = stringsNow.loseStrings[u];
 	}
 }

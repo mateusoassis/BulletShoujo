@@ -14,6 +14,11 @@ public class GameManagerScript : MonoBehaviour
 	public bool isOptionsPanelUp;
 	public GameObject optionsPanelObject;
 	
+	// toggle da imagem nas bordas
+	public GameObject screenBorders;
+	public Toggle screenBordersToggle;
+	public bool screenBordersOff;
+	
 	public MenuNavigation menuNavigation;
 	public GameSceneFadeOut gameFadeOut;
 	
@@ -39,7 +44,6 @@ public class GameManagerScript : MonoBehaviour
 	{
 		currentScene = SceneManager.GetActiveScene();
 		sceneIndex = currentScene.buildIndex;
-        //DontDestroyOnLoad(gameObject);
 		if(PlayerPrefs.HasKey("noTutorial"))
 		{
 			noTutorial = PlayerPrefs.GetInt("noTutorial") == 1? true: false;
@@ -47,6 +51,14 @@ public class GameManagerScript : MonoBehaviour
 		} else
 		{
 			noTutorial = false;
+		}
+		
+		if(PlayerPrefs.HasKey("screenBordersOff"))
+		{
+			screenBordersOff = PlayerPrefs.GetInt("screenBordersOff") == 1? true: false;
+		} else
+		{
+			screenBordersOff = false;
 		}
 	}
 	
@@ -70,7 +82,7 @@ public class GameManagerScript : MonoBehaviour
 		if(currentScene.buildIndex == 1)
 		{
 			StartCoroutine(FadeImgOut(disclaimerBackground, disclaimerBackgroundDuration, 0, 0, 0));
-		}	
+		}
 	}
 	
 	// apertou esc = pausa o jogo, ele pausa e despausa no mesmo botão também
@@ -89,14 +101,6 @@ public class GameManagerScript : MonoBehaviour
 			tutorialPopup.SetActive(false);
 			isTutorialPopupUp = false;
 		}
-		/*if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.restartConfirmationPanelIsUp && !fadingToMenu)
-		{
-			pauseScript.CloseRestartConfirmation();
-		}
-		if(Input.GetKeyDown(KeyCode.Escape) && pauseScript.exitConfirmationPanelIsUp && !fadingToMenu)
-		{
-			pauseScript.CloseExitConfirmation();
-		}*/
 	}
 	
 	public void FromGameToMenuScene()
@@ -116,6 +120,19 @@ public class GameManagerScript : MonoBehaviour
 			PlayerPrefs.SetInt("noTutorial", noTutorial?1:0);
 		}
 		return;
+	}
+	
+	public void ToggleScreenBorder()
+	{
+		if(screenBordersToggle.isOn)
+		{
+			screenBordersOff = true;
+			PlayerPrefs.SetInt("screenBordersOff", screenBordersOff?1:0);
+		} else
+		{
+			screenBordersOff = false;
+			PlayerPrefs.SetInt("screenBordersOff", screenBordersOff?1:0);
+		}
 	}
 	
 	public void MenuScene()
