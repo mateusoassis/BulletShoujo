@@ -592,7 +592,7 @@ Transform:
   - {fileID: 1580832302}
   - {fileID: 117414684}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &121113096
 MonoBehaviour:
@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yurinaAnimator: {fileID: 796361933}
+  characterModel: {fileID: 121113094}
   moveSpeed: 8
   bulletForce: 30
   reflectionSpeed: 0
@@ -684,7 +685,7 @@ MonoBehaviour:
   isImmuneToDamage: 0
   isShielded: 0
   canBeDamaged: 0
-  rb: {fileID: 0}
+  rb: {fileID: 121113098}
   playerAttributes: {fileID: 0}
   firePoint: {fileID: 1132255073}
   laserFirePoint: {fileID: 0}
@@ -3275,7 +3276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606602068
 GameObject:
@@ -5545,7 +5546,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &905518894
 GameObject:
@@ -20543,7 +20544,7 @@ Transform:
   m_LocalScale: {x: 17.689526, y: 1, z: 87.29859}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1617760043
 GameObject:
@@ -21821,7 +21822,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!1 &1796729882
 GameObject:
@@ -22609,6 +22610,8 @@ MonoBehaviour:
   playerAttributes: {fileID: 0}
   playerScript: {fileID: 0}
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
+  bossStateScript: {fileID: 0}
+  secondPhaseTransform: {fileID: 0}
 --- !u!114 &1882803115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22639,6 +22642,7 @@ MonoBehaviour:
   currentShotState: 0
   idleDuration: 1
   isBossIdle: 0
+  secondPhase: 0
   isCasting: 0
 --- !u!4 &1882803116
 Transform:
@@ -22657,7 +22661,7 @@ Transform:
   - {fileID: 33738988}
   - {fileID: 220782184}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1902207042
 GameObject:
