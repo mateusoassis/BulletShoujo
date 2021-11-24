@@ -137,15 +137,17 @@ public class GameManagerScript : MonoBehaviour
 	public void GameScene()
 	{
 		SceneManager.LoadScene("GameScene");
+		tutorialStarted = false;
+		gameStarted = true;
 		TimeScaleNormal();
 	}
+	
 	public void OpenTutorialPopup()
 	{
 		if(noTutorial == true)
 		{
 			isTutorialPopupUp = false;
-			GameScene();
-			
+			GameScene();		
 		} else
 		{
 			tutorialPopup.SetActive(true);
@@ -163,14 +165,15 @@ public class GameManagerScript : MonoBehaviour
 		{
 			SceneManager.LoadScene("GameScene");
 			TimeScaleNormal();
-		}
-		
+		}		
 	}
+	
 	public void Retry()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		TimeScaleNormal();
 	}
+	
 	public void TimeScaleNormal()
 	{
 		Time.timeScale = 1f;
@@ -194,6 +197,7 @@ public class GameManagerScript : MonoBehaviour
 		optionsPanelObject.SetActive(true);
 		tutorialPopup.SetActive(false);
 	}
+	
 	public void CloseOptionsPanel()
 	{
 		isOptionsPanelUp = false;
@@ -229,6 +233,7 @@ public class GameManagerScript : MonoBehaviour
 			yield return null;			
 		}
 	}
+	
 	public IEnumerator FadeImgIn(Image img, float j, int r, int g, int b)
 	{
 		for(float m = 0; m <= j; m += Time.deltaTime/2)
@@ -251,6 +256,7 @@ public class GameManagerScript : MonoBehaviour
 			yield return null;
 		}
 	}
+	
 	public IEnumerator FadeTextIn(TextMeshProUGUI text, float j, int r, int g, int b)
 	{
 		for(float m = 0; m <= j; m += Time.deltaTime/2)
