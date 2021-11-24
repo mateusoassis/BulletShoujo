@@ -33,6 +33,7 @@ public class BossBulletScript : MonoBehaviour
 		bulletCollider = GetComponent<SphereCollider>();
 		player = GameObject.Find("Player").GetComponent<Player>();
 		playerAttributes = GameObject.Find("Player").GetComponent<PlayerAttributes>();
+		
         //destruir o tiro ap�s 8 segundos
 		Invoke("Destroy", 8f);
     }
@@ -49,9 +50,9 @@ public class BossBulletScript : MonoBehaviour
         dir2 = moveDirection;
     }
 
+	//Desativa as balas da pool do boss em vez de utilizar um destroy normal para n�o bugar na hora de chamar as variaveis
     private void Destroy()
-    {
-        //Desativa as balas da pool do boss em vez de utilizar um destroy normal para n�o bugar na hora de chamar as variaveis
+    {       
         gameObject.SetActive(false);
     }
 	

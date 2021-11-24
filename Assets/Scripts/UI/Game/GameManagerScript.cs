@@ -66,18 +66,6 @@ public class GameManagerScript : MonoBehaviour
 	// iniciar com booleano falso para não pausar o jogo
 	void Start()
 	{
-		/*
-		var foo = true;
-		// Save boolean using PlayerPrefs
-		PlayerPrefs.SetInt("foo", foo?1:0);
-		// Get boolean using PlayerPrefs
-		foo = PlayerPrefs.GetInt("foo")==1?true:false;
-		
-		if(gameStarted)
-		{
-			StartCoroutine("FadeOut", 15f);
-		}
-		*/
 		pausedGame = false;
 		
 		if(currentScene.buildIndex == 1)
@@ -217,12 +205,10 @@ public class GameManagerScript : MonoBehaviour
 	{
 		if(!pausedGame){
 			Time.timeScale = 0f;
-			//PauseButtonText.text = "Unpause";
 			PausePanel.SetActive(true);
 			pausedGame = true;
 		} else if(pausedGame){
 			Time.timeScale = 1f;
-			//PauseButtonText.text = "Pause";
 			PausePanel.SetActive(false);
 			pausedGame = false;
 		}		
@@ -230,7 +216,6 @@ public class GameManagerScript : MonoBehaviour
 	
 	public IEnumerator FadeImgOut(Image img, float i, int r, int g, int b)
 	{
-		Debug.Log("funciona");
 		for(float n = i; n >= 0; n -= Time.deltaTime/2)
 		{
 			img.color = new Color(r, g, b, n);

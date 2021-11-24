@@ -10189,11 +10189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb61007d1d193404d89acfbd738ab5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingRate: 0.5
+  shootingRate: 0.3
   shootingRateTimer: 0
   shootingDirection: {x: -1, y: 0, z: 0}
-  bossBulletPrefab: {fileID: 6805533218570100132, guid: 00889002013772f4d824ad64a0fe86c0, type: 3}
-  bulletForce: 10
+  bossBulletPrefab: {fileID: 5349050327569332216, guid: 5d63b260973475c49adf9feda0306d8d, type: 3}
+  bulletForce: 20
 --- !u!1 &959759912
 GameObject:
   m_ObjectHideFlags: 0

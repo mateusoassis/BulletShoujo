@@ -107,14 +107,6 @@ public class BossState : MonoBehaviour
 		ChangeState(MOVE_STATE);
 	}
 	
-	/*private IEnumerator CancelInvoke4(){
-		yield return new WaitForSeconds(golpe4Duration);
-		if(!isSpinning){
-			golpe4.CancelInvoke("FireSwirl");
-			ChangeState(1);
-		}
-	}*/
-	
 	/*private IEnumerator ResetIsDashOnCollider()
 	{
 		yield return new WaitForSeconds(0.1f);
@@ -167,8 +159,6 @@ public class BossState : MonoBehaviour
 				break;
 			case 2:
 				meleeBoss.StartCoroutine("MeleeAttack");
-				//golpe2.InvokeRepeating("Fire", 1f, golpe2Delay);
-				//StartCoroutine("CancelInvoke2");
 				break;
 			case 3:
 				StartCoroutine(meleeBoss.Dash(bossTransform, playerTransform.position));

@@ -16,10 +16,6 @@ public class BulletScript : MonoBehaviour
     
     private BossMirrorAttack bossMirror;
 	
-	void Awake()
-	{
-		
-	}
     void Start()
     {
         Destroy(this.gameObject, 3f);
@@ -30,15 +26,8 @@ public class BulletScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 		mirror1 = GameObject.Find("MirrorInside1").GetComponent<Transform>();
         mirror2 = GameObject.Find("MirrorInside2").GetComponent<Transform>();
-        //StartCoroutine("TimeToDestroy");
     }
 
-    /*public IEnumerator TimeToDestroy()
-    {
-        yield return new WaitForSeconds(1.8f);
-        Destroy(this.gameObject);
-    }*/
-	
 	void OnTriggerEnter (Collider col)
 	{
 		if(col.gameObject.tag == "Wall")
@@ -58,13 +47,5 @@ public class BulletScript : MonoBehaviour
             Debug.Log("TiroBateu2");
             rb.AddForce(mirror2.right * playerScript.bulletForce * bossMirror.reflectionSpeed, ForceMode.Impulse);
         }
-		/*if(col.gameObject.tag == "Boss")
-        {
-            bossDamage.bossHPCurrent--;
-			if(playerAtt.currentMana < playerAtt.maxMana){
-				playerAtt.currentMana++;
-			}			
-            Destroy(this.gameObject);
-        }*/
 	}
 }

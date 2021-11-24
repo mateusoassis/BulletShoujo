@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 		//DashImmune();
 		//lembrar de checar esse imune nas balas depois
 		
-        //Definindo o bot�o esquerdo do mouse para atirar.
+        //Definindo o botao esquerdo do mouse para atirar.
 		
 		// check do tiro normal
 		if(fireRateTimer > 0)
