@@ -153,7 +153,7 @@ public class PlayerAttributes : MonoBehaviour
 	
 	public void CastHeal()
 	{
-		if(currentMana == maxMana)
+		if(currentMana >= maxMana)
 		{
 			currentMana = 0;
 			currentLife = maxLife;
