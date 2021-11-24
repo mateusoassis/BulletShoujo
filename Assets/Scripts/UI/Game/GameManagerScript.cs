@@ -43,6 +43,7 @@ public class GameManagerScript : MonoBehaviour
 		if(PlayerPrefs.HasKey("noTutorial"))
 		{
 			noTutorial = PlayerPrefs.GetInt("noTutorial") == 1? true: false;
+			//tutorialToggle.isOn = true;
 		} else
 		{
 			noTutorial = false;
@@ -130,14 +131,15 @@ public class GameManagerScript : MonoBehaviour
 	}
 	public void OpenTutorialPopup()
 	{
-		if(!noTutorial)
-		{
-			tutorialPopup.SetActive(true);
-			isTutorialPopupUp = true;
-		} else
+		if(noTutorial == true)
 		{
 			isTutorialPopupUp = false;
 			GameScene();
+			
+		} else
+		{
+			tutorialPopup.SetActive(true);
+			isTutorialPopupUp = true;
 		}
 	}
 	
