@@ -15,6 +15,8 @@ public class TUTORIALMirror : MonoBehaviour
 	
 	public GameObject mirror1;
 	public GameObject mirror2;
+	public GameObject mirror3;
+	public GameObject mirror4;
 	public GameObject mirrorInside1;
 	public GameObject mirrorInside2;
 	
@@ -32,9 +34,9 @@ public class TUTORIALMirror : MonoBehaviour
     {
         transform.Rotate(0, rotationSpeed * Time.deltaTime,0);
 		Vector3 newPosition = new Vector3(bossTarget.position.x, transform.position.y, bossTarget.position.z);
-        transform.position = newPosition;
+        //transform.position = newPosition;
 		
-		if (mirrorsUp < 2)
+		if (mirrorsUp < 4)
 		{
 			timeToReactivateTimer -= Time.deltaTime;
 			if(timeToReactivateTimer <= 0)
@@ -49,7 +51,9 @@ public class TUTORIALMirror : MonoBehaviour
 	{
 		mirror1.gameObject.SetActive(true);
 		mirror2.gameObject.SetActive(true);
-		mirrorsUp = 2;		
+		mirror3.gameObject.SetActive(true);
+		mirror4.gameObject.SetActive(true);
+		mirrorsUp = 4;		
 	}
 	
 	public void Mirror1Break()
@@ -67,5 +71,21 @@ public class TUTORIALMirror : MonoBehaviour
 			mirrorsUp--;
 		}
 		mirror2.gameObject.SetActive(false);
+	}
+	public void Mirror3Break()
+	{
+		if (mirrorsUp >= 1)
+		{
+			mirrorsUp--;
+		}
+		mirror3.gameObject.SetActive(false);
+	}
+	public void Mirror4Break()
+	{
+		if (mirrorsUp >= 1)
+		{
+			mirrorsUp--;
+		}
+		mirror4.gameObject.SetActive(false);
 	}
 }

@@ -18,6 +18,8 @@ TagManager:
   - ExplosionWalls
   - PlayerLaser
   - PlayerTransformReset
+  - Mirror3
+  - Mirror4
   layers:
   - Default
   - TransparentFX
