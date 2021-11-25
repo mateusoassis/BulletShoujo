@@ -2015,7 +2015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &335750903
 Transform:
   m_ObjectHideFlags: 0
@@ -4252,6 +4252,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 6942d2dcfe7951d4d82f98e09c991847, type: 2}
+    - target: {fileID: -6585283445577383793, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6155821230875508080, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4929349760446144465, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4929349760446144465, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4260,6 +4272,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6c2cb26da6bc038408bd08e50b3a252f, type: 2}
+    - target: {fileID: -2771249810493347087, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2771249810493347087, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4309,13 +4325,25 @@ PrefabInstance:
       value: 0.054
       objectReference: {fileID: 0}
     - target: {fileID: -2114232815384691546, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2114232815384691546, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 62b9d606a68759942a869f289fe060cd, type: 2}
     - target: {fileID: -1146033693959399030, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1146033693959399030, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 62b9d606a68759942a869f289fe060cd, type: 2}
+    - target: {fileID: 21679659460438277, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 21679659460438277, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4324,10 +4352,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: YURINA IDLE WIGGLE
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1451015856737799103, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 62b9d606a68759942a869f289fe060cd, type: 2}
+    - target: {fileID: 2812787436681122840, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2812787436681122840, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4347,6 +4383,14 @@ PrefabInstance:
     - target: {fileID: 3060027925200159790, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336154016831953425, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280415688546089554, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a0676aa0ba647a439af1799e05b5b5e, type: 3}
@@ -5566,7 +5610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1245485252
 Transform:
   m_ObjectHideFlags: 0
@@ -6843,7 +6887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 0
-  maxLife: 3
+  maxLife: 100
   heartAmount:
   - {fileID: 1837374146}
   - {fileID: 701794442}
@@ -10213,7 +10257,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926142974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 999bfa393e82d0540ae4c2e2af9b6383, type: 3}
   m_Name: 
@@ -10302,7 +10346,7 @@ MonoBehaviour:
   hpToChangeToPhase2: 11
   canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
-  bossHP: 20
+  bossHP: 250
   bossHPCurrent: 0
   pauseMenuInvk: {fileID: 0}
   winPanelObject: {fileID: 1283836870}
