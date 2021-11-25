@@ -531,7 +531,33 @@ public class Player : MonoBehaviour
                 //MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
                 //GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
 			}
-        }
+
+			if (enemy.tag == "Mirror3" && !gameManager.pausedGame)
+			{
+				Debug.Log("acertou mirror 3");
+				
+				if (gameManager.tutorialStarted)
+				{
+					tutorialMirror.Mirror3Break();
+				}
+				StartCoroutine(WaitMeleeMirrorSound(0.1f));
+				//MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+				//GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+			}
+
+			if (enemy.tag == "Mirror4" && !gameManager.pausedGame)
+			{
+				Debug.Log("acertou mirror 4");
+
+				if (gameManager.tutorialStarted)
+				{
+					tutorialMirror.Mirror4Break();
+				}
+				StartCoroutine(WaitMeleeMirrorSound(0.1f));
+				//MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+				//GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+			}
+		}
     }
 	
 	public void MeleeBossSound()
