@@ -2708,7 +2708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &283080977
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7352,7 +7352,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 283080976}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9542,6 +9542,7 @@ MonoBehaviour:
   pausedGame: 0
   gameStarted: 0
   tutorialStarted: 0
+  tutorialMirror: {fileID: 0}
   isOptionsPanelUp: 0
   optionsPanelObject: {fileID: 936634278}
   screenBorders: {fileID: 0}
