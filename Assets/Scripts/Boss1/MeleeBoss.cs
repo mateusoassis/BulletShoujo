@@ -180,10 +180,12 @@ public class MeleeBoss : MonoBehaviour
 
 		if(isHor)
 		{
+			amayaAnimator.SetBool("isHorizontalSlash", true);
 			//instanciar horizontal
 			GameObject slash = Instantiate(horizontalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
 		} else if(!isHor)
 		{
+			amayaAnimator.SetBool("isVerticalSlash", true);
 			//instanciar vertical
 			GameObject slash = Instantiate(verticalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
 		}
@@ -241,7 +243,9 @@ public class MeleeBoss : MonoBehaviour
 		
 		bossLookingAtPlayer = true;
 		isBossAttacking = false;
-		amayaAnimator.SetBool("isMelee", false);
+		//amayaAnimator.SetBool("isMelee", false);
+		amayaAnimator.SetBool("isHorizontalSlash", false);
+		amayaAnimator.SetBool("isVerticalSlash", false);
 		bossState.ChangeState(bossState.IDLE_STATE);
 	}
 	

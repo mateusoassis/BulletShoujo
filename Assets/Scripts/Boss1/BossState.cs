@@ -168,8 +168,7 @@ public class BossState : MonoBehaviour
 				
 				break;
 			case 2:
-				meleeBoss.StartCoroutine("MeleeAttack");
-				amayaAnimator.SetBool("isMelee", true);
+				meleeBoss.StartCoroutine("MeleeAttack");			
 				break;
 			case 3:
 				StartCoroutine(meleeBoss.Dash(bossTransform, playerTransform.position));
@@ -198,35 +197,43 @@ public class BossState : MonoBehaviour
 	{
 		Debug.Log("idle");
 		isBossIdle = true;
+		amayaAnimator.SetBool("isIdle", true);		
 		yield return new WaitForSeconds(idleDuration);
 		
 		int randomNextAttack = Random.Range(0,5);
 		if(randomNextAttack == 0)
 		{
 			isBossIdle = false;
+			amayaAnimator.SetBool("isIdle", false);
 			ChangeState(ORBS_STATE);
 			Debug.Log("troca pra orb");			// state 4
 		}else if(randomNextAttack == 1)
 		{
 			isBossIdle = false;
+			amayaAnimator.SetBool("isIdle", false);
 			ChangeState(FIRE_SWIRL_STATE);
 			Debug.Log("troca pra fire swirl");// state 5
 		}else if(randomNextAttack == 2)
 		{
 			isBossIdle = false;
+			amayaAnimator.SetBool("isIdle", false);
 			ChangeState(MOVE_STATE);
 			Debug.Log("troca pra move");// state 1		
 		}else if(randomNextAttack == 3){
 			isBossIdle = false;
+			amayaAnimator.SetBool("isIdle", false);
 			ChangeState(FULL_FIRE_STATE);
 			Debug.Log("troca pra full fire");// state 6
 		}else if(randomNextAttack == 4 && mirrorCastScript.canUseMirror)
 		{
 			isBossIdle = false;
+			amayaAnimator.SetBool("isIdle", false);
 			ChangeState(MIRROR_CAST);
 			Debug.Log("troca pra espelho");// state 7
 		} else if(randomNextAttack == 4 && !mirrorCastScript.canUseMirror)
 		{
+			isBossIdle = false;
+			amayaAnimator.SetBool("isIdle", false);
 			ChangeState(MOVE_STATE);
 			Debug.Log("troca pra move state");			// state 1
 		}
@@ -236,12 +243,14 @@ public class BossState : MonoBehaviour
 	{	
 		Debug.Log("cast big orbs");
 		isCasting = true;
+		amayaAnimator.SetBool("isShooting", true);
 		meleeBoss.canBossMove = false;
 		yield return new WaitForSeconds(1.0f);
 		bossOrbsScript.BigOrbs(bossOrbsScript.numberOfProjectiles);
 		yield return new WaitForSeconds(1.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
+		amayaAnimator.SetBool("isShooting", false);
 		ChangeState(MOVE_STATE);	
 	}
 
@@ -249,12 +258,14 @@ public class BossState : MonoBehaviour
 	{
 		Debug.Log("cast fire pattern");
 		isCasting = true;
+		amayaAnimator.SetBool("isShooting", true);
 		meleeBoss.canBossMove = false;
 		yield return new WaitForSeconds(2.0f);
 		bossOrbsScript.BigOrbs(8);
 		yield return new WaitForSeconds(2.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
+		amayaAnimator.SetBool("isShooting", false);
 		ChangeState(MOVE_STATE);
 	}
 
@@ -262,22 +273,26 @@ public class BossState : MonoBehaviour
 	{
 		Debug.Log("fire swirl");
 		isCasting = true;
+		amayaAnimator.SetBool("isShooting", true);
 		meleeBoss.canBossMove = false;
 		bossFireSwirlScript.Swirl();
 		yield return new WaitForSeconds(6.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
+		amayaAnimator.SetBool("isShooting", false);
 		ChangeState(MOVE_STATE);
 	}
 	public IEnumerator CastFullFire()
 	{
 		Debug.Log("full fire");
 		isCasting = true;
+		amayaAnimator.SetBool("isShooting", true);
 		meleeBoss.canBossMove = false;
 		fullFireScript.StartCoroutine("Shoot");
 		yield return new WaitForSeconds(6.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
+		amayaAnimator.SetBool("isShooting", false);
 		ChangeState(MOVE_STATE);
 	}
 
@@ -285,6 +300,7 @@ public class BossState : MonoBehaviour
 	{
 		Debug.Log("espelhos");
 		isCasting = true;
+		amayaAnimator.SetBool("isMirror", true);
 		meleeBoss.canBossMove = false;
 		FindObjectOfType<AudioManager>().PlayOneShot("AmayaMirrorShield");
 		yield return new WaitForSeconds(0.8f);
@@ -292,6 +308,7 @@ public class BossState : MonoBehaviour
 		yield return new WaitForSeconds(6.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
+		amayaAnimator.SetBool("isMirror", false);
 		ChangeState(MOVE_STATE);
 	}
 	/*public IEnumerator ChangePhase()
