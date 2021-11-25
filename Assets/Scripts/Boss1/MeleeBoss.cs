@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeleeBoss : MonoBehaviour
 {
+	public Animator amayaAnimator;
+	
 	[Header("Variáveis da Segunda Fase")]
 	public bool a;
 	
@@ -205,6 +207,7 @@ public class MeleeBoss : MonoBehaviour
 		
 		bossLookingAtPlayer = true;
 		isBossAttacking = false;
+		amayaAnimator.SetBool("isMelee", false);
 		bossState.ChangeState(bossState.IDLE_STATE);
 	}
 	

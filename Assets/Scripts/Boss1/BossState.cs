@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class BossState : MonoBehaviour
 {
+	public Animator amayaAnimator;
+	[Header("Variáveis da Primeira Fase")]
+	public float a1;
 	[Header("Variáveis da Segunda Fase")]
+	public float a2;
 	
 	[Header("States")]
 	public int IDLE_STATE = 0;
@@ -33,6 +37,7 @@ public class BossState : MonoBehaviour
 	public int idleDuration;
 	public bool isBossIdle;
 	public bool secondPhase;
+	public GameObject secondPhaseShader;
 	
 	[Header("Boss")]
 	private Rigidbody bossRb;
@@ -96,6 +101,10 @@ public class BossState : MonoBehaviour
 		if(currentState == FIRE_SWIRL_STATE){
             transform.Rotate(0, rotSpeed*Time.deltaTime, 0);
         }
+		if(secondPhase)
+		{
+			secondPhaseShader.SetActive(true);
+		}
 	}
 	
 	
@@ -160,6 +169,7 @@ public class BossState : MonoBehaviour
 				break;
 			case 2:
 				meleeBoss.StartCoroutine("MeleeAttack");
+				amayaAnimator.SetBool("isMelee", true);
 				break;
 			case 3:
 				StartCoroutine(meleeBoss.Dash(bossTransform, playerTransform.position));
@@ -223,75 +233,66 @@ public class BossState : MonoBehaviour
 	}
 
 	public IEnumerator CastBigOrbs()
-	{
-		
-			Debug.Log("cast big orbs");
-			isCasting = true;
-			meleeBoss.canBossMove = false;
-			yield return new WaitForSeconds(1.0f);
-			bossOrbsScript.BigOrbs(bossOrbsScript.numberOfProjectiles);
-			yield return new WaitForSeconds(1.0f);
-			meleeBoss.canBossMove = true;
-			isCasting = false;
-			ChangeState(MOVE_STATE);
-		
+	{	
+		Debug.Log("cast big orbs");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		yield return new WaitForSeconds(1.0f);
+		bossOrbsScript.BigOrbs(bossOrbsScript.numberOfProjectiles);
+		yield return new WaitForSeconds(1.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+		ChangeState(MOVE_STATE);	
 	}
 
 	public IEnumerator CastFirePattern()
 	{
-		
-			Debug.Log("cast fire pattern");
-			isCasting = true;
-			meleeBoss.canBossMove = false;
-			yield return new WaitForSeconds(2.0f);
-			bossOrbsScript.BigOrbs(8);
-			yield return new WaitForSeconds(2.0f);
-			meleeBoss.canBossMove = true;
-			isCasting = false;
-			ChangeState(MOVE_STATE);
-		
+		Debug.Log("cast fire pattern");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		yield return new WaitForSeconds(2.0f);
+		bossOrbsScript.BigOrbs(8);
+		yield return new WaitForSeconds(2.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+		ChangeState(MOVE_STATE);
 	}
 
 	public IEnumerator CastFireSwirl()
 	{
-		
-			Debug.Log("fire swirl");
-			isCasting = true;
-			meleeBoss.canBossMove = false;
-			bossFireSwirlScript.Swirl();
-			yield return new WaitForSeconds(6.0f);
-			meleeBoss.canBossMove = true;
-			isCasting = false;
-			ChangeState(MOVE_STATE);
-		
+		Debug.Log("fire swirl");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		bossFireSwirlScript.Swirl();
+		yield return new WaitForSeconds(6.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+		ChangeState(MOVE_STATE);
 	}
 	public IEnumerator CastFullFire()
 	{
-		
-			Debug.Log("full fire");
-			isCasting = true;
-			meleeBoss.canBossMove = false;
-			fullFireScript.StartCoroutine("Shoot");
-			yield return new WaitForSeconds(6.0f);
-			meleeBoss.canBossMove = true;
-			isCasting = false;
-			ChangeState(MOVE_STATE);
-		
+		Debug.Log("full fire");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		fullFireScript.StartCoroutine("Shoot");
+		yield return new WaitForSeconds(6.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+		ChangeState(MOVE_STATE);
 	}
 
 	public IEnumerator CastMirrors()
 	{
-			Debug.Log("espelhos");
-			isCasting = true;
-			meleeBoss.canBossMove = false;
-			FindObjectOfType<AudioManager>().PlayOneShot("AmayaMirrorShield");
-			yield return new WaitForSeconds(0.8f);
-			mirrorCastScript.ActivateMirrors();
-			yield return new WaitForSeconds(6.0f);
-			meleeBoss.canBossMove = true;
-			isCasting = false;
-			ChangeState(MOVE_STATE);
-		
+		Debug.Log("espelhos");
+		isCasting = true;
+		meleeBoss.canBossMove = false;
+		FindObjectOfType<AudioManager>().PlayOneShot("AmayaMirrorShield");
+		yield return new WaitForSeconds(0.8f);
+		mirrorCastScript.ActivateMirrors();
+		yield return new WaitForSeconds(6.0f);
+		meleeBoss.canBossMove = true;
+		isCasting = false;
+		ChangeState(MOVE_STATE);
 	}
 	/*public IEnumerator ChangePhase()
 	{
