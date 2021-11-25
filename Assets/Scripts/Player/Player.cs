@@ -492,8 +492,9 @@ public class Player : MonoBehaviour
             {
                 amayasHp = enemy.GetComponent<BossDamage>();
                 amayasHp.bossHPCurrent -=meleeAttackStrength;
-                FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeConnect");
-                GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+				StartCoroutine(WaitMeleeBossSound(0.3f));
+                //MeleeBossSound();FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeConnect");
+                //GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
             }
 
             if(enemy.tag == "Mirror1" && !gameManager.pausedGame)
@@ -506,8 +507,9 @@ public class Player : MonoBehaviour
 				{
 					tutorialMirror.Mirror1Break();
 				}
-                FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
-                GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+				StartCoroutine(WaitMeleeMirrorSound(0.1f));
+                //MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+                //GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
             }
 			
 			if(enemy.tag == "Mirror2"  && !gameManager.pausedGame)
@@ -520,12 +522,33 @@ public class Player : MonoBehaviour
 				{
 					tutorialMirror.Mirror2Break();
 				}
-                FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
-                GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+				StartCoroutine(WaitMeleeMirrorSound(0.1f));
+                //MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+                //GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
 			}
         }
     }
-
+	
+	public void MeleeBossSound()
+	{
+		FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeConnect");
+		GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+	}
+	public void MirrorBreakSound()
+	{
+		FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+		GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+	}
+	public IEnumerator WaitMeleeBossSound(float n)
+	{
+		yield return new WaitForSeconds(n);
+		MeleeBossSound();
+	}
+	public IEnumerator WaitMeleeMirrorSound(float n)
+	{
+		yield return new WaitForSeconds(n);
+		MirrorBreakSound();
+	}
     void OnDrawGizmosSelected() {
         if(meleePoint == null)
             return;
@@ -551,6 +574,11 @@ public class Player : MonoBehaviour
             shieldObject.SetActive(false);
         }
     }
+	
+	void OnDestroy()
+	{
+		Debug.Log("destruído");
+	}
 	
 	public IEnumerator MeleeAttackCooldown()
 	{
@@ -611,7 +639,6 @@ public class Player : MonoBehaviour
 		yield return new WaitForSeconds(0.050f);
 		characterModel.SetActive(false);
 		yield return new WaitForSeconds(0.050f);*/
-		characterModel.SetActive(true);
 		yield return new WaitForSeconds(0.050f);
 		characterModel.SetActive(false);
 		yield return new WaitForSeconds(0.040f);

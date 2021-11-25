@@ -138,7 +138,7 @@ public class MeleeBoss : MonoBehaviour
 		// cálculo de distância até player
 		distanceFromPlayer = Vector3.Distance(bossTransform.position, playerTransform.position);
 		
-		if(distanceFromPlayer > 10f && !isBossDashing && !bossState.isCasting)
+		if(distanceFromPlayer > 10f && !isBossDashing && !bossState.isCasting && bossDamage.canTakeDamage)
 		// checar se o player está no ALCANCE para continuar se aproximando dele antes de ataca-lo
 		{
 			bossState.ChangeState(bossState.DASH_STATE);

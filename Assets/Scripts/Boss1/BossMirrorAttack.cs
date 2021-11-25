@@ -65,7 +65,8 @@ public class BossMirrorAttack : MonoBehaviour
 		{
 			mirrorsUp--;
 		}	
-		mirror1.gameObject.SetActive(false);
+		//mirror1.gameObject.SetActive(false);
+		StartCoroutine(DestroyMirror1(0.3f));
 	}
 	public void Mirror2Break()
 	{
@@ -74,6 +75,17 @@ public class BossMirrorAttack : MonoBehaviour
 		{
 			mirrorsUp--;
 		}
+		//mirror2.gameObject.SetActive(false);
+		StartCoroutine(DestroyMirror2(0.3f));
+	}
+	public IEnumerator DestroyMirror1(float n)
+	{
+		yield return new WaitForSeconds(n);
+		mirror1.gameObject.SetActive(false);	
+	}
+	public IEnumerator DestroyMirror2(float n)
+	{
+		yield return new WaitForSeconds(n);
 		mirror2.gameObject.SetActive(false);
 	}
 

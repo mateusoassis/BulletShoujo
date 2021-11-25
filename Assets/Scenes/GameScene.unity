@@ -6785,7 +6785,7 @@ MonoBehaviour:
   amayaLayer:
     serializedVersion: 2
     m_Bits: 64
-  amayasHp: {fileID: 0}
+  amayasHp: {fileID: 1926142981}
   isOnCoolDown: 0
   isAttacking: 0
   isShooting: 0
@@ -10227,12 +10227,12 @@ MonoBehaviour:
   FULL_FIRE_STATE: 6
   MIRROR_CAST: 7
   PHASE_CHANGE: 8
-  golpe4: {fileID: 0}
+  golpe4: {fileID: 866273807}
   rotSpeed: 180
   golpe4Duration: 0
   golpe4Delay: 0
   isSpinning: 0
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 1019489741}
   currentState: 0
   currentShotState: 0
   idleDuration: 1
@@ -10299,10 +10299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bf8269b8834774185a4b798445f50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpToChangeToPhase2: 0
+  hpToChangeToPhase2: 11
   canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
-  bossHP: 200
+  bossHP: 20
   bossHPCurrent: 0
   pauseMenuInvk: {fileID: 0}
   winPanelObject: {fileID: 1283836870}

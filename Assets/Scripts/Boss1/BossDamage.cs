@@ -53,6 +53,7 @@ public class BossDamage : MonoBehaviour
 		playerAttributes = GameObject.Find("Player").GetComponent<PlayerAttributes>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         pauseMenuInvk = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
+		canTakeDamage = true;
     }
 
     void Update()
@@ -60,9 +61,10 @@ public class BossDamage : MonoBehaviour
         if(bossHPCurrent <= hpToChangeToPhase2 && !bossStateScript.secondPhase)
         {
 			bossHPCurrent = bossHP;
+			//canTakeDamage = false;
 			bossStateScript.secondPhase = true;
-			bossStateScript.ChangeState(PHASE_CHANGE);
-        } else if(bossHPCurrent <= 0 && bossStateScript.secondPhase)
+			//bossStateScript.ChangeState(PHASE_CHANGE);
+        } else if(bossHPCurrent <= 0/* && bossStateScript.secondPhase*/)
 		{
 			// era pra ter "destroy this gameobject" aqui
 			bossIsDead = true;
@@ -75,23 +77,32 @@ public class BossDamage : MonoBehaviour
     
     void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "PlayerAttack" && !canTakeDamage)
+        if(col.gameObject.tag == "PlayerAttack" && canTakeDamage)
         {
-			Debug.Log("acertei");
+			Debug.Log("acertei tiro");
             bossHPCurrent--;
 			if(playerAttributes.currentMana < playerAttributes.maxMana){
 				playerAttributes.currentMana++;
 			}			
             GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);
-        }
+        } else if(!canTakeDamage)
+		{
+			GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
+			Destroy(col.gameObject);
+			Debug.Log("imune ao tiro");
+		}
     }    
 
     void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "PlayerLaser")
+        if(other.gameObject.tag == "PlayerLaser" && canTakeDamage)
         {
+			Debug.Log("acertei raio");
             bossHPCurrent = bossHPCurrent - Time.deltaTime * playerScript.laserDPS;
-        }
+        } else if(!canTakeDamage)
+		{
+			Debug.Log("imune ao raio");
+		}
     } 
 }
