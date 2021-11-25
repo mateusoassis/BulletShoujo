@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKey(KeyCode.Q) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame)
+		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
@@ -168,17 +168,17 @@ public class Player : MonoBehaviour
 			meleeRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser)
+		if(Input.GetKeyDown(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser)
 		{
 			isAttacking = true;
 			yurinaAnimator.SetBool("isAttacking", true);
-		} else if(Input.GetMouseButtonUp(1) && !gameManager.pausedGame && !isShooting)
+		} else if(Input.GetKeyUp(KeyCode.Q) && !gameManager.pausedGame && !isShooting)
 		{
 			StartCoroutine("MeleeAttackCooldown");
 		}
 		
 		// golpe melee
-        if(Input.GetMouseButton(1) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu && !castingLaser){
+        if(Input.GetKeyUp(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu && !castingLaser){
             MeleeAttack();
 			meleeRateTimer = meleeRate;
 			//isAttacking = true;
@@ -186,22 +186,22 @@ public class Player : MonoBehaviour
         } 
 		
 		// raio que vai ser no NÚMERO/LETRA R
-        if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
+        if (Input.GetMouseButtonDown(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
 		{
 			castingLaser = true;
             EnableLaser();
-        }else if(Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana < 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
+        }else if(Input.GetMouseButtonDown(1) && playerAttributes.currentMana < 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
 			castingLaser = false;
             DisableLaser();
         }
 
-        if(Input.GetKey(KeyCode.R) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
+        if(Input.GetMouseButton(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
             UpdateLaser();
         }
 
-        if(Input.GetKeyUp(KeyCode.R) && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
+        if(Input.GetMouseButtonUp(1) && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
 			castingLaser = false;
             DisableLaser();
