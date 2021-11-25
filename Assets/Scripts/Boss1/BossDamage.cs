@@ -90,7 +90,7 @@ public class BossDamage : MonoBehaviour
 			Debug.Log("acertei tiro");
             bossHPCurrent--;
 			if(playerAttributes.currentMana < playerAttributes.maxMana){
-				playerAttributes.currentMana++;
+				playerAttributes.currentMana += 2;
 			}			
             GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);

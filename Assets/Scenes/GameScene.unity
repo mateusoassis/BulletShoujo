@@ -11414,10 +11414,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amayaAnimator: {fileID: 1393471781}
-  hpToChangeToPhase2: 11
+  hpToChangeToPhase2: 10
   canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
-  bossHP: 15
+  bossHP: 100
   bossHPCurrent: 0
   pauseMenuInvk: {fileID: 0}
   winPanelObject: {fileID: 1283836870}
