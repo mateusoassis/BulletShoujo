@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame)
+		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
@@ -423,7 +423,7 @@ public class Player : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit , float.MaxValue, layerMask))
         {
-            position = new Vector3(hit.point.x, 0, hit.point.z);
+            position = new Vector3(hit.point.x, 0f, hit.point.z);
         }
 
         //Criando quaternion que define a rotacao do player em relacao ao mouse.

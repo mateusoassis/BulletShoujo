@@ -202,14 +202,32 @@ public class MeleeBoss : MonoBehaviour
 		
 		if(isPlayerOnArea && playerScript.canBeDamaged) //&& !playerScript.isDashing && !isBuffUp
 		{
-			playerScript.canBeDamaged = false;
-			playerAttributesScript.currentLife-=2;		
-			playerScript.StartCoroutine("DamagedReset");
+			if(playerScript.isShielded)
+			{
+				playerScript.canBeDamaged = false;
+				playerScript.isShielded = false;
+				playerAttributesScript.currentLife -= 1;
+				playerScript.StartCoroutine("DamagedReset");
+			} else if(!playerScript.isShielded)
+			{
+				playerScript.canBeDamaged = false;
+				playerAttributesScript.currentLife -= 2;		
+				playerScript.StartCoroutine("DamagedReset");
+			}	
 		} else if(isPlayerOnArea && isBuffUp && playerScript.canBeDamaged)
 		{
-			playerScript.canBeDamaged = false;
-			playerAttributesScript.currentLife -= 3;
-			playerScript.StartCoroutine("DamagedReset");
+			if(playerScript.isShielded)
+			{
+				playerScript.canBeDamaged = false;
+				playerScript.isShielded = false;
+				playerAttributesScript.currentLife -= 2;
+				playerScript.StartCoroutine("DamagedReset");
+			} else if(!playerScript.isShielded)
+			{
+				playerScript.canBeDamaged = false;
+				playerAttributesScript.currentLife -= 3;
+				playerScript.StartCoroutine("DamagedReset");
+			}	
 		}
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;

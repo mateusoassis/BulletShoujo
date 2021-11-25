@@ -17,6 +17,7 @@ TagManager:
   - TutorialWalls
   - ExplosionWalls
   - PlayerLaser
+  - PlayerTransformReset
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - UI
   - Amaya
   - LayerMip
-  - 
+  - Cursorzinho
   - 
   - 
   - 

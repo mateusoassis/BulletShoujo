@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+	public GameObject cursorLayerMap;
+	
 	public BoxCollider thisCollider;
 	public Player playerScript;
 	public Transform playerTransform;
@@ -25,7 +27,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         gameManagerScript.tutorialStarted = true;
-		gameManagerScript.gameStarted = false;
+		gameManagerScript.gameStarted = false;		
     }
 
     void Update()

@@ -86,7 +86,7 @@ public class BossDamage : MonoBehaviour
 			}			
             GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);
-        } else if(!canTakeDamage)
+        } else if(col.gameObject.tag == "PlayerAttack" && !canTakeDamage)
 		{
 			GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
 			Destroy(col.gameObject);

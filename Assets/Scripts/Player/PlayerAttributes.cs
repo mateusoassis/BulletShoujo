@@ -10,10 +10,12 @@ public class PlayerAttributes : MonoBehaviour
 
 	[Header("Player Stats")]
     public int currentLife;
-	public int maxLife = 3;
+	public int maxLife = 6;
 	public Image[] heartAmount;
-	public Sprite filledHeart;
-	public Sprite emptyHeart;
+	public Sprite leftFilledHeart;
+	public Sprite rightFilledHeart;
+	public Sprite leftEmptyHeart;
+	public Sprite rightEmptyHeart;
 	public float currentMana;
 	public float maxMana = 100;
 	public Image[] manaAmount;
@@ -81,26 +83,63 @@ public class PlayerAttributes : MonoBehaviour
 	public void UpdateHealth()
 	{
 		PlayerHealth.SetText("HP: " + currentLife.ToString());
-		if(currentLife == 3)
+		if(currentLife == 6)
 		{
-			heartAmount[0].sprite = filledHeart;
-			heartAmount[1].sprite = filledHeart;
-			heartAmount[2].sprite = filledHeart;
+			heartAmount[0].sprite = leftFilledHeart;
+			heartAmount[1].sprite = rightFilledHeart;
+			heartAmount[2].sprite = leftFilledHeart;
+			heartAmount[3].sprite = rightFilledHeart;
+			heartAmount[4].sprite = leftFilledHeart;
+			heartAmount[5].sprite = rightFilledHeart;
+		} else if(currentLife == 5)
+		{
+			heartAmount[0].sprite = leftFilledHeart;
+			heartAmount[1].sprite = rightFilledHeart;
+			heartAmount[2].sprite = leftFilledHeart;
+			heartAmount[3].sprite = rightFilledHeart;
+			heartAmount[4].sprite = leftFilledHeart;
+			heartAmount[5].sprite = rightEmptyHeart;
+		} else if(currentLife == 4)
+		{
+			heartAmount[0].sprite = leftFilledHeart;
+			heartAmount[1].sprite = rightFilledHeart;
+			heartAmount[2].sprite = leftFilledHeart;
+			heartAmount[3].sprite = rightFilledHeart;
+			heartAmount[4].sprite = leftEmptyHeart;
+			heartAmount[5].sprite = rightEmptyHeart;
+		} else if(currentLife == 3)
+		{
+			heartAmount[0].sprite = leftFilledHeart;
+			heartAmount[1].sprite = rightFilledHeart;
+			heartAmount[2].sprite = leftFilledHeart;
+			heartAmount[3].sprite = rightEmptyHeart;
+			heartAmount[4].sprite = leftEmptyHeart;
+			heartAmount[5].sprite = rightEmptyHeart;
 		} else if (currentLife == 2)
 		{
-			heartAmount[0].sprite = filledHeart;
-			heartAmount[1].sprite = filledHeart;
-			heartAmount[2].sprite = emptyHeart;
+			heartAmount[0].sprite = leftFilledHeart;
+			heartAmount[1].sprite = rightFilledHeart;
+			heartAmount[2].sprite = leftEmptyHeart;
+			heartAmount[3].sprite = rightEmptyHeart;
+			heartAmount[4].sprite = leftEmptyHeart;
+			heartAmount[5].sprite = rightEmptyHeart;
 		} else if(currentLife == 1)
 		{
-			heartAmount[0].sprite = filledHeart;
-			heartAmount[1].sprite = emptyHeart;
-			heartAmount[2].sprite = emptyHeart;
+			heartAmount[0].sprite = leftFilledHeart;
+			heartAmount[1].sprite = rightEmptyHeart;
+			heartAmount[2].sprite = leftEmptyHeart;
+			heartAmount[3].sprite = rightEmptyHeart;
+			heartAmount[4].sprite = leftEmptyHeart;
+			heartAmount[5].sprite = rightEmptyHeart;
 		} else if(currentLife == 0)
 		{
-			heartAmount[0].sprite = emptyHeart;
-			heartAmount[1].sprite = emptyHeart;
-			heartAmount[2].sprite = emptyHeart;
+			heartAmount[0].sprite = leftEmptyHeart;
+			heartAmount[1].sprite = rightEmptyHeart;
+			heartAmount[2].sprite = leftEmptyHeart;
+			heartAmount[3].sprite = rightEmptyHeart;
+			heartAmount[4].sprite = leftEmptyHeart;
+			heartAmount[5].sprite = rightEmptyHeart;
+			
 		}
 	}
 	public void UpdateMana()
