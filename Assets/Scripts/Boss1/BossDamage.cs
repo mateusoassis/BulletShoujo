@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BossDamage : MonoBehaviour
 {
+	public Animator amayaAnimator;
+	
 	[Header("Variáveis da Segunda Fase")]
 	public float hpToChangeToPhase2;
 	public bool canTakeDamage;
@@ -68,6 +70,12 @@ public class BossDamage : MonoBehaviour
 		{
 			// era pra ter "destroy this gameobject" aqui
 			bossIsDead = true;
+			amayaAnimator.SetBool("isDead", true);
+			amayaAnimator.SetBool("isIdle", false);
+			amayaAnimator.SetBool("isShooting", false);
+			amayaAnimator.SetBool("isMirror", false);
+			amayaAnimator.SetBool("isHorizontalSlash", false);
+			amayaAnimator.SetBool("isVerticalSlash", false);
 			Time.timeScale = 0f;
             pauseMenuInvk.pausedGame = true;
 			winPanelObject.SetActive(true);

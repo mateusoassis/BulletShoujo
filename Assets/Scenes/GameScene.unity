@@ -4036,7 +4036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbace2560415cc499cea610c05d724c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amayaAnimator: {fileID: 1866946672}
+  amayaAnimator: {fileID: 1393471781}
   horizontalCutShader: {fileID: 2189314023654068760, guid: f28f08909df0d78438e64d9f638dddab, type: 3}
   verticalCutShader: {fileID: 8413164919753617078, guid: 3cc426ed755f74d40b2d3bc0a88d8d38, type: 3}
   amayaSword: {fileID: 233181203}
@@ -7443,6 +7443,35 @@ MonoBehaviour:
   PlayerMana: {fileID: 1413811757}
   BossHealth: {fileID: 1365093062}
   TimeStamp: {fileID: 1224710800}
+--- !u!1 &1393471779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+  m_PrefabInstance: {fileID: 1647399324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1393471780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+  m_PrefabInstance: {fileID: 1647399324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1393471781
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393471779}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 323205d084aeb9d4b96f72798bff9563, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1395736593
 GameObject:
   m_ObjectHideFlags: 0
@@ -8842,6 +8871,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637792038}
   m_CullTransparentMesh: 1
+--- !u!1001 &1647399324
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1926142979}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.33333337
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.33333337
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.162
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.25333333
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.216
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.17364807
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
+      propertyPath: m_Name
+      value: AMAYA ATAQUE HORIZONTAL (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
 --- !u!1 &1648030804
 GameObject:
   m_ObjectHideFlags: 0
@@ -10565,7 +10663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e142b0d4b6531034fac4f9eb68367b46, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.028
+      value: -1.067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e142b0d4b6531034fac4f9eb68367b46, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10603,6 +10701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AMAYA FODA SEEEEEEEEE
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e142b0d4b6531034fac4f9eb68367b46, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: e142b0d4b6531034fac4f9eb68367b46, type: 3}
       propertyPath: m_Controller
       value: 
@@ -10612,11 +10714,6 @@ PrefabInstance:
 --- !u!4 &1866946671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e142b0d4b6531034fac4f9eb68367b46, type: 3}
-  m_PrefabInstance: {fileID: 1866946670}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1866946672 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: e142b0d4b6531034fac4f9eb68367b46, type: 3}
   m_PrefabInstance: {fileID: 1866946670}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1875722794
@@ -11081,7 +11178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999bfa393e82d0540ae4c2e2af9b6383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amayaAnimator: {fileID: 1866946672}
+  amayaAnimator: {fileID: 1393471781}
   a1: 0
   a2: 0
   IDLE_STATE: 0
@@ -11136,6 +11233,7 @@ Transform:
   - {fileID: 233181203}
   - {fileID: 1426101586184369989}
   - {fileID: 1866946671}
+  - {fileID: 1393471780}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -11167,6 +11265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bf8269b8834774185a4b798445f50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amayaAnimator: {fileID: 1393471781}
   hpToChangeToPhase2: 11
   canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
@@ -22682,7 +22781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1426101586184369989
 Transform:
   m_ObjectHideFlags: 0
