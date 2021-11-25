@@ -77,6 +77,7 @@ public class BossDamage : MonoBehaviour
     {
         if(col.gameObject.tag == "PlayerAttack" && !canTakeDamage)
         {
+			Debug.Log("acertei");
             bossHPCurrent--;
 			if(playerAttributes.currentMana < playerAttributes.maxMana){
 				playerAttributes.currentMana++;

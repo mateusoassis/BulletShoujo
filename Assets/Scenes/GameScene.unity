@@ -1209,6 +1209,7 @@ MonoBehaviour:
   pausedGame: 0
   gameStarted: 0
   tutorialStarted: 0
+  tutorialMirror: {fileID: 0}
   isOptionsPanelUp: 0
   optionsPanelObject: {fileID: 0}
   screenBorders: {fileID: 1879105314}
@@ -6796,7 +6797,7 @@ MonoBehaviour:
   isShielded: 0
   canBeDamaged: 0
   castingLaser: 0
-  rb: {fileID: 0}
+  rb: {fileID: 1389720249}
   playerAttributes: {fileID: 0}
   firePoint: {fileID: 2026307128}
   laserFirePoint: {fileID: 2089678258}
@@ -6809,6 +6810,7 @@ MonoBehaviour:
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
   yurinaDash: {fileID: 8905989008258022977, guid: a9a9862e3f6fa1d4bb99553f7880f2e7, type: 3}
   spawnedLaser: {fileID: 0}
+  tutorialMirror: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 128

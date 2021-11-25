@@ -66,7 +66,6 @@ public class BossBulletScript : MonoBehaviour
 	{
 		if(col.gameObject.tag == "Wall" || col.gameObject.tag == "ExplosionWalls")
 		{
-			Debug.Log("eu");
 			//Invoke("Destroy", 0f);
 			GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 			Destroy(this.gameObject);
