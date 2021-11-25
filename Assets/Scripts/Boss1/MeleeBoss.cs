@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MeleeBoss : MonoBehaviour
 {
+	[Header("Variáveis da Segunda Fase")]
+	public bool a;
+	
 	[Header("Comportamento do boss")]
 	private Vector3 targetPosition;
 	[SerializeField] private bool playerPositionSaved;

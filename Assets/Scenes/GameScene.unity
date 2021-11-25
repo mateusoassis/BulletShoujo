@@ -3784,6 +3784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbace2560415cc499cea610c05d724c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: 0
   playerPositionSaved: 0
   moveSpeed: 5
   isBossMoving: 0
@@ -10223,6 +10224,7 @@ MonoBehaviour:
   FIRE_SWIRL_STATE: 5
   FULL_FIRE_STATE: 6
   MIRROR_CAST: 7
+  PHASE_CHANGE: 8
   golpe4: {fileID: 0}
   rotSpeed: 180
   golpe4Duration: 0
@@ -10295,6 +10297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bf8269b8834774185a4b798445f50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpToChangeToPhase2: 0
+  canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
   bossHP: 200
   bossHPCurrent: 0
@@ -10307,6 +10311,15 @@ MonoBehaviour:
   yurinaExplosions: {fileID: 457644442238022743, guid: c50875a06e06d93418d3f9f0177aa274, type: 3}
   bossStateScript: {fileID: 1926142975}
   secondPhaseTransform: {fileID: 2103132487}
+  IDLE_STATE: 0
+  MOVE_STATE: 1
+  MELEE_STATE: 2
+  DASH_STATE: 3
+  ORBS_STATE: 4
+  FIRE_SWIRL_STATE: 5
+  FULL_FIRE_STATE: 6
+  MIRROR_CAST: 7
+  PHASE_CHANGE: 8
 --- !u!1 &1947451738
 GameObject:
   m_ObjectHideFlags: 0

@@ -104,7 +104,16 @@ public class BossBulletScript : MonoBehaviour
 			
 			} else if(!player.isDashing)
 			{
+				player.canBeDamaged = false;
+				playerAttributes.currentLife--;
+				//this.gameObject.SetActive(false);
+				GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
+				Destroy(this.gameObject);
+				player.StartCoroutine("DamagedReset");
+			} else if(playerAttributes.currentLife == 1)
+			{
 				tutorialScript.SendPlayerToStart();
+				playerAttributes.currentLife = 3;
 				Destroy(this.gameObject);
 			}
 		}

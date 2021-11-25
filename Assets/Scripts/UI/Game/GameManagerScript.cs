@@ -12,6 +12,7 @@ public class GameManagerScript : MonoBehaviour
 	public bool pausedGame;
 	public bool gameStarted;
 	public bool tutorialStarted;
+	public TUTORIALMirror tutorialMirror;
 	public bool isOptionsPanelUp;
 	public GameObject optionsPanelObject;
 	
@@ -67,10 +68,15 @@ public class GameManagerScript : MonoBehaviour
 	void Start()
 	{
 		pausedGame = false;
+		TimeScaleNormal();
 		
 		if(currentScene.buildIndex == 1)
 		{
 			StartCoroutine(FadeImgOut(disclaimerBackground, disclaimerBackgroundDuration, 0, 0, 0));
+		}
+		if(tutorialStarted)
+		{
+			tutorialMirror = GameObject.Find("MirrorAttackTutorial").GetComponent<TUTORIALMirror>();
 		}
 	}
 	
@@ -130,16 +136,18 @@ public class GameManagerScript : MonoBehaviour
 	
 	public void MenuScene()
 	{
-		SceneManager.LoadScene("MenuScene");
 		TimeScaleNormal();
+		SceneManager.LoadScene("MenuScene");
+		tutorialStarted = false;
+		gameStarted = false;
 	}
 	
 	public void GameScene()
 	{
+		TimeScaleNormal();
 		SceneManager.LoadScene("GameScene");
 		tutorialStarted = false;
 		gameStarted = true;
-		TimeScaleNormal();
 	}
 	
 	public void OpenTutorialPopup()

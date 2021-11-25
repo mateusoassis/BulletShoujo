@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
     public GameObject yurinaDash;
     public GameObject spawnedLaser;
 	private BossMirrorAttack bossMirrorAttack;
+	[SerializeField] private TUTORIALMirror tutorialMirror;
 	
 	//direcoes
 	// 1 cima
@@ -498,7 +499,13 @@ public class Player : MonoBehaviour
             if(enemy.tag == "Mirror1" && !gameManager.pausedGame)
             {
 				Debug.Log("acertou mirror 1");
-                bossMirrorAttack.Mirror1Break();
+                if(gameManager.gameStarted)
+				{
+					bossMirrorAttack.Mirror1Break();
+				} else if(gameManager.tutorialStarted)
+				{
+					tutorialMirror.Mirror1Break();
+				}
                 FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
                 GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
             }
@@ -506,7 +513,13 @@ public class Player : MonoBehaviour
 			if(enemy.tag == "Mirror2"  && !gameManager.pausedGame)
 			{
 				Debug.Log("acertou mirror 2");
-				bossMirrorAttack.Mirror2Break();
+				if(gameManager.gameStarted)
+				{
+					bossMirrorAttack.Mirror2Break();
+				} else if(gameManager.tutorialStarted)
+				{
+					tutorialMirror.Mirror2Break();
+				}
                 FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
                 GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
 			}

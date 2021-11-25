@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BossState : MonoBehaviour
 {
+	[Header("Variáveis da Segunda Fase")]
+	
+	[Header("States")]
 	public int IDLE_STATE = 0;
 	public int MOVE_STATE = 1;
 	public int MELEE_STATE = 2;
@@ -12,7 +15,7 @@ public class BossState : MonoBehaviour
 	public int FIRE_SWIRL_STATE = 5;
 	public int FULL_FIRE_STATE = 6;
 	public int MIRROR_CAST = 7;
-	//public int FRONTAL_ORBS_STATE = 6;
+	public int PHASE_CHANGE = 8;
 
 	[Header("Swirl Attack")]
 	public BossFireSwirl golpe4;
@@ -105,7 +108,7 @@ public class BossState : MonoBehaviour
 	public IEnumerator StartBoss()
 	{
 		yield return new WaitForSeconds(3f);
-		ChangeState(IDLE_STATE);
+		ChangeState(ORBS_STATE);
 	}
 	
 	/*private IEnumerator ResetIsDashOnCollider()
@@ -147,6 +150,8 @@ public class BossState : MonoBehaviour
 	//public int ORBS_STATE = 4;
 	//public int FIRE_SWIRL_STATE = 5;
 	//public int FRONTAL_ORBS_STATE = 6;
+	//public int MIRROR_CAST = 7;
+	//public int PHASE_CHANGE = 8;
 	
 	public void ChangeState(int state)
 	{
@@ -175,6 +180,9 @@ public class BossState : MonoBehaviour
 				break;
 			case 7:
 				StartCoroutine("CastMirrors");
+				break;
+			case 8: //PHASE_CHANGE = 8
+				StartCoroutine("ChangePhase");
 				break;
 		}
 		currentState = state;
@@ -268,6 +276,15 @@ public class BossState : MonoBehaviour
 		meleeBoss.canBossMove = true;
 		isCasting = false;
 		ChangeState(MOVE_STATE);
+	}
+	public IEnumerator ChangePhase()
+	{
+		transform.position = bossDamage.secondPhaseTransform.position;
+		bossDamage.canTakeDamage = false;
+		// aplicar shaders aqui já já
+		yield return new WaitForSeconds(3f);
+		bossDamage.canTakeDamage = true;
+		ChangeState(DASH_STATE);
 	}
 }
 
