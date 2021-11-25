@@ -7,6 +7,7 @@ public class MeleeBoss : MonoBehaviour
 	public Animator amayaAnimator;
 	public GameObject horizontalCutShader;
 	public GameObject verticalCutShader;
+	public Transform amayaSword;
 	
 	[Header("Variáveis da Segunda Fase")]
 	public bool a;
@@ -174,17 +175,23 @@ public class MeleeBoss : MonoBehaviour
 	
 	public IEnumerator MeleeAttack()
 	{
+		Vector3 horSlash = new Vector3(transform.rotation.x,transform.rotation.y,transform.rotation.z);
+		Vector3 verSlash = new Vector3(transform.rotation.x,transform.rotation.y,transform.rotation.z);
+
 		if(isHor)
 		{
 			//instanciar horizontal
-		} else
+			GameObject slash = Instantiate(horizontalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
+		} else if(!isHor)
 		{
 			//instanciar vertical
+			GameObject slash = Instantiate(verticalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
 		}
+		
 		canBossMove = false;
 		isBossAttacking = true;
 		bossLookingAtPlayer = false;
-		areaDamageRenderer.enabled = true;
+		//areaDamageRenderer.enabled = true;
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;
 				
@@ -193,7 +200,7 @@ public class MeleeBoss : MonoBehaviour
 		
 		//bossMeleeCollider.enabled = true; //após um tempinho
 		
-		if(isPlayerOnArea&&playerScript.canBeDamaged) //&& !playerScript.isDashing && !isBuffUp
+		if(isPlayerOnArea && playerScript.canBeDamaged) //&& !playerScript.isDashing && !isBuffUp
 		{
 			playerScript.canBeDamaged = false;
 			playerAttributesScript.currentLife--;		
@@ -207,7 +214,7 @@ public class MeleeBoss : MonoBehaviour
 		bossRb.velocity = Vector3.zero;
 		bossRb.angularVelocity = Vector3.zero;
 		
-		areaDamageRenderer.enabled = false;
+		//areaDamageRenderer.enabled = false;
 		SwitchMeleeAttack();
 		canBossMove = true;
 		timeMoving = 0f;
@@ -241,7 +248,6 @@ public class MeleeBoss : MonoBehaviour
 		{
 			isHor = false;
 			areaDamageParent.transform.localScale = new Vector3(((extraRangeMultiplier) * verticalMultiplierX) * verticalAttackScale.y, 1f * verticalAttackScale.y, (extraRangeMultiplier * verticalMultiplierZ) * verticalAttackScale.z);
-        
 		}
 	
 	}

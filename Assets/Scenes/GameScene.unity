@@ -3739,8 +3739,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amayaAnimator: {fileID: 1866946672}
-  horizontalCutShader: {fileID: 4535478149142054145, guid: f28f08909df0d78438e64d9f638dddab, type: 3}
+  horizontalCutShader: {fileID: 2189314023654068760, guid: f28f08909df0d78438e64d9f638dddab, type: 3}
   verticalCutShader: {fileID: 8413164919753617078, guid: 3cc426ed755f74d40b2d3bc0a88d8d38, type: 3}
+  amayaSword: {fileID: 233181203}
   a: 0
   playerPositionSaved: 0
   moveSpeed: 5
@@ -3758,11 +3759,11 @@ MonoBehaviour:
   verticalMultiplierZ: 1
   horizontalMultiplierX: 1
   horizontalMultiplierZ: 1
-  isHor: 0
+  isHor: 1
   isBuffUp: 0
   extraRange: 1.6
   extraRangeMultiplier: 1
-  verticalAttackScale: {x: 1.5, y: 1, z: 1}
+  verticalAttackScale: {x: 0.6, y: 1, z: 0.4}
   horizontalAttackScale: {x: 3, y: 1, z: 0.5}
 --- !u!114 &866273809
 MonoBehaviour:
