@@ -95,6 +95,8 @@ public class Player : MonoBehaviour
 	{
 		gameManager = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
 		bossMirrorAttack = GameObject.Find("MirrorPoint").GetComponent<BossMirrorAttack>();
+		spawnedLaser = Instantiate(laserPrefab, laserFirePoint.transform) as GameObject;
+		DisableLaserOnAwake();
 	}
 
     void Start()
@@ -102,8 +104,6 @@ public class Player : MonoBehaviour
 		castingLaser = false;
 		gameManager.TimeScaleNormal();
 		playerAttributes = GetComponent<PlayerAttributes>();
-        spawnedLaser = Instantiate(laserPrefab, laserFirePoint.transform) as GameObject;
-        DisableLaser();
         rb = GetComponent<Rigidbody>();
 		recentlyDamaged = false;
         dashDuration = startDashTime;
@@ -479,6 +479,11 @@ public class Player : MonoBehaviour
     public void DisableLaser()
     {
         FindObjectOfType<AudioManager>().Play("LaserSpell3");
+        spawnedLaser.SetActive(false);
+    }
+
+	public void DisableLaserOnAwake()
+    {
         spawnedLaser.SetActive(false);
     }
 
