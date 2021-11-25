@@ -5,6 +5,8 @@ using UnityEngine;
 public class MeleeBoss : MonoBehaviour
 {
 	public Animator amayaAnimator;
+	public GameObject horizontalCutShader;
+	public GameObject verticalCutShader;
 	
 	[Header("Variáveis da Segunda Fase")]
 	public bool a;
@@ -172,6 +174,13 @@ public class MeleeBoss : MonoBehaviour
 	
 	public IEnumerator MeleeAttack()
 	{
+		if(isHor)
+		{
+			//instanciar horizontal
+		} else
+		{
+			//instanciar vertical
+		}
 		canBossMove = false;
 		isBossAttacking = true;
 		bossLookingAtPlayer = false;

@@ -3739,6 +3739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amayaAnimator: {fileID: 1866946672}
+  horizontalCutShader: {fileID: 4535478149142054145, guid: f28f08909df0d78438e64d9f638dddab, type: 3}
+  verticalCutShader: {fileID: 8413164919753617078, guid: 3cc426ed755f74d40b2d3bc0a88d8d38, type: 3}
   a: 0
   playerPositionSaved: 0
   moveSpeed: 5
