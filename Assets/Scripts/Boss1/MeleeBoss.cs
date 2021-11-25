@@ -203,12 +203,12 @@ public class MeleeBoss : MonoBehaviour
 		if(isPlayerOnArea && playerScript.canBeDamaged) //&& !playerScript.isDashing && !isBuffUp
 		{
 			playerScript.canBeDamaged = false;
-			playerAttributesScript.currentLife--;		
+			playerAttributesScript.currentLife-=2;		
 			playerScript.StartCoroutine("DamagedReset");
 		} else if(isPlayerOnArea && isBuffUp && playerScript.canBeDamaged)
 		{
 			playerScript.canBeDamaged = false;
-			playerAttributesScript.currentLife -= 2;
+			playerAttributesScript.currentLife -= 3;
 			playerScript.StartCoroutine("DamagedReset");
 		}
 		bossRb.velocity = Vector3.zero;
