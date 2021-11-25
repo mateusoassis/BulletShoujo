@@ -235,7 +235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.size
-      value: 14
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[14].tag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[1].clip
@@ -342,6 +346,18 @@ PrefabInstance:
       value: SkillReady
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c709573c9e87ed47be0877279b5a575, type: 3}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[14].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: Song
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[1].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -398,6 +414,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[14].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[1].volume
       value: 0.5
       objectReference: {fileID: 0}
@@ -447,6 +467,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[13].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[14].volume
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 694546241551766328, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
@@ -7303,7 +7327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -165, y: 58.3}
+  m_AnchoredPosition: {x: -165, y: 58.300003}
   m_SizeDelta: {x: 300, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1406683805
