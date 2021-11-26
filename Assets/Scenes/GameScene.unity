@@ -4206,9 +4206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 200436349}
-        m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
-        m_MethodName: MenuScene
+      - m_Target: {fileID: 1570125627}
+        m_TargetAssemblyTypeName: GameSceneFadeOut, Assembly-CSharp
+        m_MethodName: FadeGameOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9754,9 +9754,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 200436349}
-        m_TargetAssemblyTypeName: GameManagerScript, Assembly-CSharp
-        m_MethodName: MenuScene
+      - m_Target: {fileID: 1570125627}
+        m_TargetAssemblyTypeName: GameSceneFadeOut, Assembly-CSharp
+        m_MethodName: FadeGameOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
