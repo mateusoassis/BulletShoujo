@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6)
+		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6 && playerAttributes.currentMana >= 100)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();

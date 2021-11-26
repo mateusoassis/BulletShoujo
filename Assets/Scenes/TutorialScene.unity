@@ -786,7 +786,7 @@ MonoBehaviour:
   laserFirePoint: {fileID: 1623628703}
   bulletPrefab: {fileID: 3711592136697656174, guid: a415b53081c2c114db23bd46e7a9a87f, type: 3}
   laserPrefab: {fileID: 8937231397013157746, guid: 9428e712abbee354aa9b6b96bdee2cf4, type: 3}
-  shieldObject: {fileID: 0}
+  shieldObject: {fileID: 1621414816}
   gameManager: {fileID: 0}
   singleShield: {fileID: 847054645}
   yurinaHealing: {fileID: 4015077426947171368, guid: 40227065ddc783942bd7b47096dcc304, type: 3}
@@ -24472,6 +24472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bf8269b8834774185a4b798445f50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amayaAnimator: {fileID: 0}
   hpToChangeToPhase2: 0
   canTakeDamage: 0
   bossCollider: {fileID: 1882803113}
