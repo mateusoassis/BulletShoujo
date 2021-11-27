@@ -73,13 +73,24 @@ public class PlayerAttributes : MonoBehaviour
 		
 		TimeStamp.SetText(min.ToString() + "m " + Mathf.Floor(sec).ToString() + "s");
 
-        if (currentLife <= 0)
+        
+		if (currentLife <= 0)
         {
+			/*
             losePanelObject.SetActive(true);
 			pauseMenuInvk.pausedGame = true;
 			Time.timeScale = 0f;
-        }		
+			*/
+			PlayerLost();
+        }
     }
+	
+	public void PlayerLost()
+	{
+		losePanelObject.SetActive(true);
+		playerScript.canBeDamaged = false;
+	}
+	
 	public void UpdateHealth()
 	{
 		PlayerHealth.SetText("HP: " + currentLife.ToString());

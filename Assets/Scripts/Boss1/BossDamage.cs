@@ -17,7 +17,7 @@ public class BossDamage : MonoBehaviour
     public float bossHP;
     public float bossHPCurrent;
 
-    public static bool bossIsDead;
+    [SerializeField] public static bool bossIsDead;
     public GameManagerScript pauseMenuInvk;
 	
 	public GameObject winPanelObject;
@@ -76,12 +76,20 @@ public class BossDamage : MonoBehaviour
 			amayaAnimator.SetBool("isMirror", false);
 			amayaAnimator.SetBool("isHorizontalSlash", false);
 			amayaAnimator.SetBool("isVerticalSlash", false);
+			/*
 			Time.timeScale = 0f;
             pauseMenuInvk.pausedGame = true;
 			winPanelObject.SetActive(true);
+			*/
 		}
 		BossHPBar.value = bossHPCurrent/bossHP;
     }
+	
+	public void PlayerWon()
+	{
+		winPanelObject.SetActive(true);
+		playerScript.canBeDamaged = false;
+	}
     
     void OnTriggerEnter(Collider col)
     {
@@ -94,6 +102,10 @@ public class BossDamage : MonoBehaviour
 			}			
             GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);
+			if(bossHPCurrent == 0)
+			{
+				PlayerWon();
+			}
         } else if(col.gameObject.tag == "PlayerAttack" && !canTakeDamage)
 		{
 			GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;

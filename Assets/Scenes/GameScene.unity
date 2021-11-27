@@ -11088,6 +11088,7 @@ MonoBehaviour:
   isBossIdle: 0
   secondPhase: 0
   secondPhaseShader: {fileID: 1426101585940428872}
+  mirrorsObject: {fileID: 1572924511}
   isCasting: 0
 --- !u!65 &1926142976
 BoxCollider:
@@ -11155,7 +11156,7 @@ MonoBehaviour:
   hpToChangeToPhase2: 10
   canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
-  bossHP: 100
+  bossHP: 20
   bossHPCurrent: 0
   pauseMenuInvk: {fileID: 0}
   winPanelObject: {fileID: 1283836870}

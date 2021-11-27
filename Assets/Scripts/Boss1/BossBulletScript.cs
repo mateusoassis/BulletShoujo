@@ -94,8 +94,14 @@ public class BossBulletScript : MonoBehaviour
 						//this.gameObject.SetActive(false);
 						GameObject explosion = Instantiate(amayaExplosions, transform.position, Quaternion.identity) as GameObject;
 						Destroy(this.gameObject);
-						player.StartCoroutine("DamagedReset");
-					}else if(!player.canBeDamaged)
+						if(playerAttributes.currentLife == 0)
+						{
+							playerAttributes.PlayerLost();
+						} else if(playerAttributes.currentLife > 0)
+						{
+							player.StartCoroutine("DamagedReset");
+						}						
+					} else if(!player.canBeDamaged)
 					{
 						Destroy(this.gameObject);
 					}

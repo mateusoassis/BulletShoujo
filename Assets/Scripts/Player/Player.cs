@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Definindo a mira para ficar funcionando 100% do tempo no update.
-		if(!gameManager.fadingToMenu)
+		if(!gameManager.fadingToMenu && !BossDamage.bossIsDead)
 		{
 			Aim();
 		}
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
 			fireRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking && !gameManager.fadingToMenu)
+		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking && !gameManager.fadingToMenu && !BossDamage.bossIsDead)
         {
 			isShooting = true;
 			yurinaAnimator.SetBool("isShooting", true);		
@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// tiro normal
-        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu && !castingLaser)
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu && !castingLaser && !BossDamage.bossIsDead)
         {
             Shoot();
 			isShooting = true;
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6 && playerAttributes.currentMana >= 100)
+		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6 && playerAttributes.currentMana >= 100 && !BossDamage.bossIsDead)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
 			meleeRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetKeyDown(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser)
+		if(Input.GetKeyDown(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser && !BossDamage.bossIsDead)
 		{
 			isAttacking = true;
 			yurinaAnimator.SetBool("isAttacking", true);
@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
         } 
 		
 		// raio que vai ser no NÚMERO/LETRA R
-        if (Input.GetMouseButtonDown(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
+        if (Input.GetMouseButtonDown(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead)
 		{
 			castingLaser = true;
             EnableLaser();
@@ -196,7 +196,7 @@ public class Player : MonoBehaviour
             DisableLaser();
         }
 
-        if(Input.GetMouseButton(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
+        if(Input.GetMouseButton(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead)
         {
             UpdateLaser();
         }
@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
         }
 		
 		// shield
-        if(Input.GetKey(KeyCode.E) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu)
+        if(Input.GetKey(KeyCode.E) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu && !BossDamage.bossIsDead)
         {
             isShielded = true;
 			playerAttributes.currentMana -= 20;
@@ -230,7 +230,7 @@ public class Player : MonoBehaviour
     {
         //Inputs de WASD para movimentacao em 8 direcoes utilizando a multiplicacao de velocidade por tempo.
 
-        if (!recentlyDamaged && !isDashing && !gameManager.fadingToMenu && !gameManager.pausedGame)
+        if (!recentlyDamaged && !isDashing && !gameManager.fadingToMenu && !gameManager.pausedGame && !BossDamage.bossIsDead)
         {
 
             if (Input.GetKey(KeyCode.W))
@@ -622,7 +622,13 @@ public class Player : MonoBehaviour
     {
 		StartCoroutine("CharacterBlinking");
         yield return new WaitForSeconds(damageResetTimer);
-        canBeDamaged = true;
+		if(BossDamage.bossIsDead)
+		{
+			canBeDamaged = false;
+		} else if(!BossDamage.bossIsDead)
+		{
+			canBeDamaged = true;
+		}
     }
 	
 	public IEnumerator CharacterBlinking()

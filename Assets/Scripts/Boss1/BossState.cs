@@ -5,8 +5,10 @@ using UnityEngine;
 public class BossState : MonoBehaviour
 {
 	public Animator amayaAnimator;
+	
 	[Header("Variáveis da Primeira Fase")]
 	public float a1;
+	
 	[Header("Variáveis da Segunda Fase")]
 	public float a2;
 	
@@ -44,6 +46,8 @@ public class BossState : MonoBehaviour
 	private Transform bossTransform;
 	private Transform areaDamage;
 	private Transform areaDamageParent;
+	
+	[SerializeField] private GameObject mirrorsObject;
 	
 	private Transform bossFirePoint;
 	private GameObject areaDamageObject;
@@ -105,6 +109,30 @@ public class BossState : MonoBehaviour
 		{
 			secondPhaseShader.SetActive(true);
 		}
+		if(BossDamage.bossIsDead)
+		{
+			this.GetComponent<BossState>().enabled = false;
+			mirrorsObject.SetActive(false);
+			/*
+			StopCoroutine("StartIdleState");
+			StopCoroutine("CastBigOrbs");
+			StopCoroutine("CastFirePattern");
+			StopCoroutine("CastFireSwirl");
+			StopCoroutine("CastFullFire");
+			StopCoroutine("CastMirrors");
+			*/
+			ZaWarudo();
+		}
+	}
+	
+	public void ZaWarudo() // wtf
+	{
+		StopAllCoroutines();
+		bossFrontalShotsScript.StopAllCoroutines();
+		bossOrbsScript.StopAllCoroutines();
+		bossFireSwirlScript.StopAllCoroutines();
+		fullFireScript.StopAllCoroutines();
+		mirrorCastScript.StopAllCoroutines();
 	}
 	
 	
