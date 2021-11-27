@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
 		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking && !gameManager.fadingToMenu && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
 			isShooting = true;
-			yurinaAnimator.SetBool("isShooting", true);		
+			yurinaAnimator.SetBool("isShooting", true);	
 		} else if(Input.GetButtonUp("Fire1") && !gameManager.pausedGame)
 		{
 			isShooting = false;
@@ -157,8 +157,10 @@ public class Player : MonoBehaviour
 		// cura
 		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6 && playerAttributes.currentMana >= 100 && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
+			playerAttributes.currentMana = 0;
+			playerAttributes.currentLife = playerAttributes.maxLife;
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
-			playerAttributes.CastHeal();
+			//playerAttributes.CastHeal();
             FindObjectOfType<AudioManager>().PlayOneShot("HealSpell");
 		}
 		
@@ -208,6 +210,7 @@ public class Player : MonoBehaviour
 
         if(Input.GetMouseButton(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
+			castingLaser = true;
             UpdateLaser();
         }
 
