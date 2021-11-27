@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Definindo a mira para ficar funcionando 100% do tempo no update.
-		if(!gameManager.fadingToMenu && !BossDamage.bossIsDead)
+		if(!gameManager.fadingToMenu && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
 			Aim();
 		}
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
 			fireRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking && !gameManager.fadingToMenu && !BossDamage.bossIsDead)
+		if(Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isAttacking && !gameManager.fadingToMenu && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
 			isShooting = true;
 			yurinaAnimator.SetBool("isShooting", true);		
@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
 		}
 		
 		// tiro normal
-        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu && !castingLaser && !BossDamage.bossIsDead)
+        if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu && !castingLaser && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
             Shoot();
 			isShooting = true;
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         }
 		
 		// cura
-		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6 && playerAttributes.currentMana >= 100 && !BossDamage.bossIsDead)
+		if (Input.GetKeyDown(KeyCode.R) && playerAttributes.currentMana == playerAttributes.maxMana && !gameManager.fadingToMenu && !gameManager.pausedGame && playerAttributes.currentLife < 6 && playerAttributes.currentMana >= 100 && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
             GameObject healing = Instantiate(yurinaHealing,transform.position, yurinaHealing.transform.rotation) as GameObject;
 			playerAttributes.CastHeal();
@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
 			meleeRateTimer -= Time.deltaTime;
 		}
 		
-		if(Input.GetKeyDown(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser && !BossDamage.bossIsDead)
+		if(Input.GetKeyDown(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isShooting && !isAttacking && !gameManager.fadingToMenu && !isDashing && !castingLaser && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
 			isAttacking = true;
 			yurinaAnimator.SetBool("isAttacking", true);
@@ -178,15 +178,25 @@ public class Player : MonoBehaviour
 		}
 		
 		// golpe melee
-        if(Input.GetKeyUp(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu && !castingLaser){
-            MeleeAttack();
+        if(Input.GetKeyUp(KeyCode.Q) && !gameManager.pausedGame && meleeRateTimer <= 0 && !isDashing && !isShooting && !gameManager.fadingToMenu && !castingLaser && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead){
+            //if(!BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
+			//{
+				MeleeAttack();
+				if(amayasHp.bossHPCurrent == 0)
+				{
+					amayasHp.PlayerWon();
+				}
+			//}
 			meleeRateTimer = meleeRate;
 			//isAttacking = true;
-            FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeSwoosh");
+			if(!BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
+			{
+				FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeSwoosh");
+			}        
         } 
 		
 		// raio que vai ser no NÚMERO/LETRA R
-        if (Input.GetMouseButtonDown(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead)
+        if (Input.GetMouseButtonDown(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
 			castingLaser = true;
             EnableLaser();
@@ -196,7 +206,7 @@ public class Player : MonoBehaviour
             DisableLaser();
         }
 
-        if(Input.GetMouseButton(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead)
+        if(Input.GetMouseButton(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
             UpdateLaser();
         }
@@ -208,7 +218,7 @@ public class Player : MonoBehaviour
         }
 		
 		// shield
-        if(Input.GetKey(KeyCode.E) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu && !BossDamage.bossIsDead)
+        if(Input.GetKey(KeyCode.E) && playerAttributes.currentMana >= 20 && !gameManager.pausedGame && !isShielded && !gameManager.fadingToMenu && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
             isShielded = true;
 			playerAttributes.currentMana -= 20;
@@ -230,7 +240,7 @@ public class Player : MonoBehaviour
     {
         //Inputs de WASD para movimentacao em 8 direcoes utilizando a multiplicacao de velocidade por tempo.
 
-        if (!recentlyDamaged && !isDashing && !gameManager.fadingToMenu && !gameManager.pausedGame && !BossDamage.bossIsDead)
+        if (!recentlyDamaged && !isDashing && !gameManager.fadingToMenu && !gameManager.pausedGame && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
 
             if (Input.GetKey(KeyCode.W))
@@ -287,9 +297,9 @@ public class Player : MonoBehaviour
             {
                 
 				//FORÇA ADICIONADA EM CADA DIREÇÃO, os que tem /mathf.sqrt(2f) são por que são em diagonal, aí precisa dividir por raiz de 2 para ter o dash na mesma distância que os nas direções normais
-                if (Input.GetKey(KeyCode.Space) && direction == 1 && !isDashing && !castingLaser)
+                if (Input.GetKey(KeyCode.Space) && direction == 1 && !isDashing && !castingLaser && !BossDamage.bossIsDead /* && !PlayerAttributes.playerIsDead*/)
                 {
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -302,7 +312,7 @@ public class Player : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 2 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{			
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -315,7 +325,7 @@ public class Player : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 3 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -328,7 +338,7 @@ public class Player : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 4 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -342,7 +352,7 @@ public class Player : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 5 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -355,7 +365,7 @@ public class Player : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 6 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -368,7 +378,7 @@ public class Player : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Space) && direction == 7 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
                         GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -381,7 +391,7 @@ public class Player : MonoBehaviour
                 }         
                 else if (Input.GetKey(KeyCode.Space) && direction == 8 && !isDashing && !castingLaser)
                 {     
-					if(dashAmount < maxDashAmount)
+					if(dashAmount < maxDashAmount && !PlayerAttributes.playerIsDead)
 					{
 						GameObject dashTrail = Instantiate(yurinaDash,transform.position, transform.rotation) as GameObject;
                         dashTrail.transform.parent = gameObject.transform;
@@ -478,7 +488,10 @@ public class Player : MonoBehaviour
     }
     public void DisableLaser()
     {
-        FindObjectOfType<AudioManager>().Play("LaserSpell3");
+		if(!BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
+		{
+			FindObjectOfType<AudioManager>().Play("LaserSpell3");
+		}
         spawnedLaser.SetActive(false);
     }
 
@@ -500,6 +513,7 @@ public class Player : MonoBehaviour
 				StartCoroutine(WaitMeleeBossSound(0.3f));
                 //MeleeBossSound();FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeConnect");
                 //GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+				
             }
 
             if(enemy.tag == "Mirror1" && !gameManager.pausedGame)

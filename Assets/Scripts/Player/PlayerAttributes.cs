@@ -20,6 +20,8 @@ public class PlayerAttributes : MonoBehaviour
 	public float maxMana = 100;
 	public Image[] manaAmount;
 	
+	public static bool playerIsDead;
+	
 	public GameObject[] canUseOrNot;
 	
 	public Slider playerManaPoolSlider;
@@ -52,6 +54,7 @@ public class PlayerAttributes : MonoBehaviour
 		PlayerHealth.SetText("HP: " + currentLife.ToString());
 		currentMana = maxMana;
 		PlayerMana.SetText("Mana: " + currentMana.ToString());
+		playerIsDead = false;
 		// printar no TMPro text o hp do player
     }
 
@@ -89,6 +92,10 @@ public class PlayerAttributes : MonoBehaviour
 	{
 		losePanelObject.SetActive(true);
 		playerScript.canBeDamaged = false;
+		bossStateScript.ZaWarudo(); // wtf?? is this another jojo reference?
+		playerIsDead = true;
+		playerScript.StopCoroutine("DamageReset");
+		playerScript.characterModel.SetActive(true);
 	}
 	
 	public void UpdateHealth()

@@ -120,6 +120,10 @@ public class BossDamage : MonoBehaviour
         {
 			Debug.Log("acertei raio");
             bossHPCurrent = bossHPCurrent - Time.deltaTime * playerScript.laserDPS;
+			if(bossHPCurrent == 0)
+			{
+				PlayerWon();
+			}
         } else if(!canTakeDamage)
 		{
 			Debug.Log("imune ao raio");
