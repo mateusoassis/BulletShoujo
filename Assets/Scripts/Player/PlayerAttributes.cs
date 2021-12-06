@@ -40,6 +40,8 @@ public class PlayerAttributes : MonoBehaviour
 	[SerializeField]TextMeshProUGUI BossHealth;
 	[SerializeField]TextMeshProUGUI TimeStamp;
 	
+	[SerializeField] private GameManagerScript gameManager;
+	
 	private float min;
 	private float sec;
 	
@@ -52,7 +54,13 @@ public class PlayerAttributes : MonoBehaviour
         currentLife = maxLife;
         pauseMenuInvk = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
 		PlayerHealth.SetText("HP: " + currentLife.ToString());
-		currentMana = maxMana;
+		if(gameManager.sceneIndex == 2)
+		{
+			currentMana = 0;
+		} else{
+			currentMana = maxMana;
+		}
+		
 		PlayerMana.SetText("Mana: " + currentMana.ToString());
 		playerIsDead = false;
 		// printar no TMPro text o hp do player

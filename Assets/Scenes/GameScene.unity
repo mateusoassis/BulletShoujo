@@ -3135,6 +3135,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556368299}
   m_CullTransparentMesh: 1
+--- !u!1 &560431857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560431858}
+  m_Layer: 6
+  m_Name: FireSwirlPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &560431858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560431857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1926142979}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591846145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5659,7 +5689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019489740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.046, z: 0}
+  m_LocalPosition: {x: -0.484, y: 0.808, z: 0.79}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 1926142979}
@@ -8085,7 +8115,7 @@ MonoBehaviour:
   resetDashCooldown: 1
   resetDashTimer: 0
   damageResetTimer: 2
-  laserDPS: 10
+  laserDPS: 6
   meleePoint: {fileID: 1965678241}
   attackRange: 2
   meleeAttackStrength: 5
@@ -8186,6 +8216,7 @@ MonoBehaviour:
   PlayerMana: {fileID: 1413811757}
   BossHealth: {fileID: 1365093062}
   TimeStamp: {fileID: 1224710800}
+  gameManager: {fileID: 200436349}
 --- !u!1 &1393471779 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 18b1e2fe0902eab489bae690668794d4, type: 3}
@@ -11820,6 +11851,7 @@ Transform:
   - {fileID: 1426101586184369989}
   - {fileID: 1866946671}
   - {fileID: 1393471780}
+  - {fileID: 560431858}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
