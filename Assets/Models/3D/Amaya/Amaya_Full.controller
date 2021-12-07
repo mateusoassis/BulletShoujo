@@ -36,7 +36,7 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
+  m_Name: 4.5
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isVerticalSlash
@@ -89,7 +89,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: A_Vertical
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8017393105713549292}
@@ -795,7 +795,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: A_Horizontall
-  m_Speed: 3
+  m_Speed: 3.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8685385873432910032}

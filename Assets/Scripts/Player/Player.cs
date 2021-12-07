@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
 		// tiro normal
         if (Input.GetButton("Fire1") && !gameManager.pausedGame && fireRateTimer <= 0 && !isDashing && !isAttacking && !gameManager.fadingToMenu && !castingLaser && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
         {
+			DisableLaserOnAwake();
             Shoot();
 			isShooting = true;
             FindObjectOfType<AudioManager>().PlayOneShot("MagicShot");
@@ -201,10 +202,12 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && playerAttributes.currentMana >= 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting && !BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
 			castingLaser = true;
+			yurinaAnimator.SetBool("isShooting", true);
             EnableLaser();
         }else if(Input.GetMouseButtonDown(1) && playerAttributes.currentMana < 5 && !gameManager.fadingToMenu && !gameManager.pausedGame && !isDashing && !isShooting)
         {
 			castingLaser = false;
+			yurinaAnimator.SetBool("isShooting", false);
             DisableLaser();
         }
 
