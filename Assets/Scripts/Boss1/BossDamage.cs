@@ -102,7 +102,7 @@ public class BossDamage : MonoBehaviour
 			}			
             GameObject explosion = Instantiate(yurinaExplosions, transform.position, Quaternion.identity) as GameObject;
             Destroy(col.gameObject);
-			if(bossHPCurrent == 0)
+			if(bossHPCurrent <= 0)
 			{
 				PlayerWon();
 			}
@@ -120,7 +120,7 @@ public class BossDamage : MonoBehaviour
         {
 			Debug.Log("acertei raio");
             bossHPCurrent = bossHPCurrent - Time.deltaTime * playerScript.laserDPS;
-			if(bossHPCurrent == 0)
+			if(bossHPCurrent <= 0)
 			{
 				PlayerWon();
 			}
