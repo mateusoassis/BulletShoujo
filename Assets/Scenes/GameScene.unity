@@ -11887,7 +11887,7 @@ MonoBehaviour:
   hpToChangeToPhase2: 10
   canTakeDamage: 0
   bossCollider: {fileID: 1926142976}
-  bossHP: 20
+  bossHP: 105
   bossHPCurrent: 0
   pauseMenuInvk: {fileID: 0}
   winPanelObject: {fileID: 1283836870}
