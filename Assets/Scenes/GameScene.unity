@@ -3145,7 +3145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 560431858}
   m_Layer: 6
-  m_Name: FireSwirlPoint
+  m_Name: ShaderPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3159,7 +3159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560431857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.064, y: 0.8, z: 1.305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1926142979}
@@ -4546,7 +4546,7 @@ MonoBehaviour:
   amayaAnimator: {fileID: 1393471781}
   horizontalCutShader: {fileID: 2189314023654068760, guid: f28f08909df0d78438e64d9f638dddab, type: 3}
   verticalCutShader: {fileID: 8413164919753617078, guid: 3cc426ed755f74d40b2d3bc0a88d8d38, type: 3}
-  amayaSword: {fileID: 233181203}
+  amayaSword: {fileID: 560431858}
   a: 0
   playerPositionSaved: 0
   moveSpeed: 5
@@ -4582,13 +4582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a2cc56c8f2e1c43bf3127856224f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  bossTarget: {fileID: 0}
-  reflectionSpeed: 0
-  mirror1: {fileID: 0}
-  mirror2: {fileID: 0}
-  mirrorInside1: {fileID: 0}
-  mirrorInside2: {fileID: 0}
+  rotationSpeed: 145
+  bossTarget: {fileID: 1926142979}
+  reflectionSpeed: 3
+  mirror1: {fileID: 1245485251}
+  mirror2: {fileID: 335750902}
+  mirrorInside1: {fileID: 231871339}
+  mirrorInside2: {fileID: 155116477}
   mirrorsUp: 0
   canUseMirror: 0
 --- !u!1 &888370510
@@ -8343,6 +8343,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1393471782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393471779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4e292b380804c4f83d36edbb4d9bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeBossScript: {fileID: 866273808}
+  bossStateScript: {fileID: 1926142975}
+  bossMirrorAttackScript: {fileID: 866273809}
 --- !u!1 &1395736593
 GameObject:
   m_ObjectHideFlags: 0

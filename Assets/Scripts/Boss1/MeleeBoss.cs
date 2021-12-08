@@ -173,6 +173,15 @@ public class MeleeBoss : MonoBehaviour
 		}
 	}
 	
+	public void HorizontalShader()
+	{
+		GameObject slash = Instantiate(horizontalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
+	}
+	public void VerticalShader()
+	{
+		GameObject slash = Instantiate(verticalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
+	}
+	
 	public IEnumerator MeleeAttack()
 	{
 		Vector3 horSlash = new Vector3(transform.rotation.x,transform.rotation.y,transform.rotation.z);
@@ -182,12 +191,12 @@ public class MeleeBoss : MonoBehaviour
 		{
 			amayaAnimator.SetBool("isHorizontalSlash", true);
 			//instanciar horizontal
-			GameObject slash = Instantiate(horizontalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
+			//GameObject slash = Instantiate(horizontalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
 		} else if(!isHor)
 		{
 			amayaAnimator.SetBool("isVerticalSlash", true);
 			//instanciar vertical
-			GameObject slash = Instantiate(verticalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
+			//GameObject slash = Instantiate(verticalCutShader,amayaSword.position, bossTransform.rotation) as GameObject;
 		}
 		
 		canBossMove = false;

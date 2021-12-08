@@ -331,8 +331,8 @@ public class BossState : MonoBehaviour
 		amayaAnimator.SetBool("isMirror", true);
 		meleeBoss.canBossMove = false;
 		FindObjectOfType<AudioManager>().PlayOneShot("AmayaMirrorShield");
-		yield return new WaitForSeconds(0.8f);
-		mirrorCastScript.ActivateMirrors();
+		//yield return new WaitForSeconds(0.8f);
+		//mirrorCastScript.ActivateMirrors();
 		yield return new WaitForSeconds(6.0f);
 		meleeBoss.canBossMove = true;
 		isCasting = false;
