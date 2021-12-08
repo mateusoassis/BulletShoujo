@@ -19,9 +19,13 @@ public class Tutorial : MonoBehaviour
 	
 	public bool resetPlayerPos;
 	
+	[SerializeField] private BossDamage bossDamageScript;
+	
 	void Awake()
 	{
 		gameManagerScript = GameObject.Find("GameManagerObject").GetComponent<GameManagerScript>();
+		PlayerAttributes.playerIsDead = false;
+		BossDamage.bossIsDead = false;
 	}
 	
     void Start()

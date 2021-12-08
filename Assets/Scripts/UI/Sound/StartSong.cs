@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class StartSong : MonoBehaviour
 {
-    void Start() {
-        FindObjectOfType<AudioManager>().PlayOneShot("Song");
+	
+    void Start() 
+	{
+        FindObjectOfType<AudioManager>().Play("Song");
     }
-    
 }

@@ -20,6 +20,7 @@ TagManager:
   - PlayerTransformReset
   - Mirror3
   - Mirror4
+  - MirrorDestroy
   layers:
   - Default
   - TransparentFX

@@ -23,7 +23,7 @@ public class BossMirrorAttack : MonoBehaviour
 	
     void Start()
     {
-        bossTarget = GameObject.Find("Boss").GetComponent<Transform>();
+        //bossTarget = GameObject.Find("Boss").GetComponent<Transform>();
 		mirrorsUp = 0;
     }
     void Update()

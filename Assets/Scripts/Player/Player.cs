@@ -577,6 +577,16 @@ public class Player : MonoBehaviour
 				//MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
 				//GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
 			}
+			
+			if (enemy.tag == "MirrorDestroy" && !gameManager.pausedGame)
+			{
+				Debug.Log("acertou mirror destroy");
+
+				StartCoroutine(WaitMeleeMirrorSound(0.1f));
+				Destroy(enemy.gameObject);
+				//MirrorBreakSound();//FindObjectOfType<AudioManager>().PlayOneShot("YurinaMeleeMirrorBreak");
+				//GameObject explosion = Instantiate(yurinaExplosions, meleePoint.transform.position, Quaternion.identity) as GameObject;
+			}
 		}
     }
 	
