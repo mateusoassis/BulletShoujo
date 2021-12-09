@@ -310,6 +310,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2647d39d8d09e7349814bbadc23dc8f3, type: 3}
     - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
+      propertyPath: sounds.Array.data[9].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 694546241551766327, guid: 33b309f844469124080ea2ae4562b8d7, type: 3}
       propertyPath: sounds.Array.data[9].name
       value: LaserSpell2
       objectReference: {fileID: 0}

@@ -79,10 +79,29 @@ public class AudioManager : MonoBehaviour
     public void PlayOneShot(string name){
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
-         if(s == null){
+        if(s == null){
             Debug.Log("Som "+ name + " escrito errado");
             return;
         }
         s.source.PlayOneShot(s.clip);
+    }
+
+    public void StopSound(string name){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null){
+            Debug.Log("Som "+ name + " escrito errado");
+            return;
+        }
+        s.source.Stop();
+    }
+
+    public void Loopable(string name, bool loop){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null){
+            Debug.Log("Som "+ name + " escrito errado");
+            return;
+        }
+        s.loop = loop;
+
     }
 }

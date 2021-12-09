@@ -137,6 +137,7 @@ public class GameManagerScript : MonoBehaviour
 	public void MenuScene()
 	{
 		TimeScaleNormal();
+		FindObjectOfType<AudioManager>().StopSound("Song");
 		SceneManager.LoadScene("MenuScene");
 		tutorialStarted = false;
 		gameStarted = false;

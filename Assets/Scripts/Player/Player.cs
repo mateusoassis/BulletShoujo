@@ -479,12 +479,13 @@ public class Player : MonoBehaviour
 		{
 			FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell1");
 			spawnedLaser.SetActive(true); 
-			FindObjectOfType<AudioManager>().PlayOneShot("LaserSpell2");
+			FindObjectOfType<AudioManager>().Play("LaserSpell2");
 		}
     }
 
     public void UpdateLaser()
-    {
+    {	
+
         spawnedLaser.transform.position = laserFirePoint.transform.position;
         playerAttributes.currentMana = playerAttributes.currentMana - Time.deltaTime * 8;
 		if(playerAttributes.currentMana < 5f)
@@ -494,6 +495,7 @@ public class Player : MonoBehaviour
     }
     public void DisableLaser()
     {
+		FindObjectOfType<AudioManager>().StopSound("LaserSpell2");
 		if(!BossDamage.bossIsDead && !PlayerAttributes.playerIsDead)
 		{
 			FindObjectOfType<AudioManager>().Play("LaserSpell3");
